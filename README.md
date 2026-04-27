@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Tesina Christian V10</title>
+<title>Tesina Christian V14</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -1379,6 +1379,535 @@ body::before{content:'';position:fixed;top:0;left:0;height:100%;width:2px;backgr
 .res-label{color:#661199;font-size:.52rem;letter-spacing:2px;text-transform:uppercase}
 .res-val{color:#cc88ff;font-size:.78rem;font-weight:bold;text-shadow:0 0 6px rgba(180,80,255,.4)}
 .res-formula{color:#7744aa;font-size:.5rem;font-style:italic;margin-top:2px}
+
+/* ======== PARTE 9 INGLESE — CODE STYLE ======== */
+#scP9{background:#0a0a0a;color:#e0e0e0;font-family:'Share Tech Mono',monospace;}
+/* Animated scrolling code lines background */
+#codeRain{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.18;}
+#scP9::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.7) 100%);pointer-events:none;z-index:1;}
+#scP9 .sec{position:relative;z-index:2}
+#scP9 .hero{position:relative;z-index:2}
+#scP9 .sec h2{font-family:'Orbitron',sans-serif;color:#f0f0f0;text-shadow:0 0 20px rgba(255,255,255,.25);letter-spacing:.06em}
+#scP9 .stag{color:#888;letter-spacing:5px;font-family:'Share Tech Mono',monospace}
+#scP9 .stag::before{background:#888}
+#scP9 .sec p{color:#bbb;line-height:1.88}
+#scP9 .sec p strong{color:#fff}
+#scP9 .card{background:rgba(20,20,20,.9);border:1px solid rgba(255,255,255,.1);border-top:2px solid #666;backdrop-filter:blur(6px)}
+#scP9 .card:hover{border-color:#ccc;box-shadow:0 0 20px rgba(255,255,255,.08);transform:translateY(-4px)}
+#scP9 .card h3{color:#fff;font-family:'Share Tech Mono',monospace;letter-spacing:2px}
+#scP9 .card p{color:#aaa}
+#scP9 .pbtn{background:rgba(20,20,20,.8);border:1px solid #444;color:#ccc}
+#scP9 .pbtn:hover{background:rgba(40,40,40,.6);border-color:#aaa;color:#fff;transform:translateY(-2px)}
+#scP9 .qbox{background:rgba(15,15,15,.9);border:1px solid rgba(255,255,255,.1);border-left:3px solid #888}
+#scP9 .qbox h3{color:#fff}
+#scP9 .qq{color:#e0e0e0}
+#scP9 .qo{background:rgba(20,20,20,.7);border:1px solid #333;color:#bbb}
+#scP9 .qo:hover{border-color:#888;color:#fff}
+#scP9 .qnx{border:1px solid #555;color:#ccc}
+#scP9 .divider{background:linear-gradient(90deg,transparent,#444 30%,#888 50%,#444 70%,transparent);box-shadow:0 0 10px rgba(255,255,255,.1)}
+#scP9 .pgbtn{border:1px solid #666;color:#ccc;box-shadow:none;animation:none;font-family:'Orbitron',sans-serif;background:rgba(20,20,20,.4)}
+#scP9 .pgbtn:hover{background:rgba(40,40,40,.4);box-shadow:0 0 14px rgba(255,255,255,.15)}
+#scP9 .mbox{background:rgba(12,12,12,.97);border:1px solid #333;border-top:2px solid #888}
+#scP9 .mbox h2{color:#fff;font-family:'Orbitron',sans-serif;text-shadow:none}
+#scP9 .mbox p,#scP9 .mbox li{color:#bbb}
+#scP9 .mbox li::before{color:#888}
+#scP9 .mcl{border-color:#444;color:#ccc}
+
+/* ── AI CODING WIDGET ── */
+#aiWidget{margin-top:24px;background:#0d0d0d;border:1px solid #333;border-top:2px solid #888;overflow:hidden;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));box-shadow:0 0 20px rgba(255,255,255,.06)}
+#aiWidgetHeader{background:#111;padding:11px 18px;border-bottom:1px solid #222;display:flex;align-items:center;gap:10px}
+.ai-dot{width:12px;height:12px;border-radius:50%}
+#aiWidgetTitle{font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:3px;color:#888;flex:1}
+#aiBody{display:flex;flex-direction:column;gap:0}
+#aiPromptArea{padding:14px 16px;border-bottom:1px solid #1a1a1a}
+#aiPromptLabel{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:#666;letter-spacing:2px;margin-bottom:8px}
+#aiPromptInput{width:100%;background:#0a0a0a;border:1px solid #333;color:#e0e0e0;font-family:'Share Tech Mono',monospace;font-size:.82rem;padding:12px 14px;resize:vertical;min-height:80px;outline:none;border-radius:2px;line-height:1.6;box-sizing:border-box}
+#aiPromptInput:focus{border-color:#666;box-shadow:0 0 8px rgba(255,255,255,.06)}
+#aiPromptInput::placeholder{color:#333}
+#aiSendBtn{margin-top:8px;padding:10px 24px;background:#1a1a1a;border:1px solid #555;color:#ccc;font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:3px;cursor:pointer;transition:all .2s;border-radius:2px;width:100%}
+#aiSendBtn:hover{background:#222;border-color:#aaa;color:#fff;box-shadow:0 0 10px rgba(255,255,255,.08)}
+#aiSendBtn:disabled{opacity:.4;cursor:not-allowed}
+#aiResults{display:flex;flex-wrap:wrap;gap:0;min-height:200px}
+#aiCodePane{flex:1;min-width:260px;border-right:1px solid #1a1a1a}
+#aiCodeHeader{background:#111;padding:8px 14px;font-family:'Share Tech Mono',monospace;font-size:.56rem;color:#666;letter-spacing:3px;border-bottom:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center}
+#aiCodeContent{padding:14px;font-family:'Share Tech Mono',monospace;font-size:.72rem;color:#ccc;line-height:1.7;white-space:pre-wrap;word-break:break-word;min-height:200px;max-height:400px;overflow-y:auto;background:#0a0a0a}
+#aiCodeContent .kw{color:#ff79c6}
+#aiCodeContent .fn{color:#50fa7b}
+#aiCodeContent .str{color:#f1fa8c}
+#aiCodeContent .num{color:#bd93f9}
+#aiCodeContent .cm{color:#6272a4;font-style:italic}
+#aiPreviewPane{flex:1;min-width:260px;border-top:1px solid #1a1a1a}
+#aiPreviewHeader{background:#111;padding:8px 14px;font-family:'Share Tech Mono',monospace;font-size:.56rem;color:#666;letter-spacing:3px;border-bottom:1px solid #1a1a1a}
+#aiPreviewContent{min-height:200px;max-height:400px;overflow:auto;background:#fff}
+#aiPreviewIframe{width:100%;height:340px;border:none;background:#fff}
+#aiLoading{display:none;padding:24px;text-align:center;font-family:'Share Tech Mono',monospace;font-size:.7rem;color:#666;letter-spacing:3px}
+.ai-spinner{display:inline-block;width:20px;height:20px;border:2px solid #333;border-top-color:#888;border-radius:50%;animation:spin .8s linear infinite;margin-right:10px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+#aiStatus{padding:8px 16px;background:#0d0d0d;border-top:1px solid #1a1a1a;font-family:'Share Tech Mono',monospace;font-size:.55rem;color:#555;letter-spacing:2px}
+
+/* ======== PARTE 10 MUSICA — CHUCK E. CHEESE ======== */
+#scP10{
+  background: #1a0a2e;
+  color: #ffe;
+  font-family: 'Exo 2', sans-serif;
+  position: relative;
+}
+/* Chuck E. Cheese themed tiles background */
+#cec-bg{
+  position:fixed;inset:0;z-index:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,50,50,.15) 0%, transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(50,255,50,.12) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(255,200,0,.1) 0%, transparent 50%);
+  animation: cecBg 8s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes cecBg{
+  0%{background:radial-gradient(circle at 20% 20%,rgba(255,50,50,.18),transparent 30%),radial-gradient(circle at 80% 80%,rgba(50,200,255,.15),transparent 30%),linear-gradient(135deg,rgba(255,100,0,.05),rgba(100,0,255,.08))}
+  100%{background:radial-gradient(circle at 70% 30%,rgba(255,200,0,.18),transparent 35%),radial-gradient(circle at 30% 70%,rgba(255,0,150,.15),transparent 30%),linear-gradient(135deg,rgba(0,200,100,.06),rgba(255,50,0,.08))}
+}
+/* Stars / lights overlay */
+#cec-lights{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle 3px at 10% 20%,rgba(255,255,0,.8),transparent),
+    radial-gradient(circle 2px at 30% 10%,rgba(255,0,200,.7),transparent),
+    radial-gradient(circle 3px at 50% 5%,rgba(0,255,255,.8),transparent),
+    radial-gradient(circle 2px at 70% 15%,rgba(255,100,0,.7),transparent),
+    radial-gradient(circle 3px at 90% 8%,rgba(0,255,0,.8),transparent),
+    radial-gradient(circle 2px at 15% 90%,rgba(255,200,0,.7),transparent),
+    radial-gradient(circle 3px at 85% 85%,rgba(200,0,255,.8),transparent);
+  animation: lightsBlink 2s step-end infinite;
+}
+@keyframes lightsBlink{
+  0%,100%{opacity:1}
+  50%{opacity:.4}
+}
+#scP10 .sec{position:relative;z-index:2}
+#scP10 .hero{position:relative;z-index:2}
+#scP10 .sec h2{font-family:'Orbitron',sans-serif;color:#ffdd00;text-shadow:0 0 20px rgba(255,200,0,.5),2px 2px 0 rgba(255,100,0,.4)}
+#scP10 .stag{color:#ff6600;letter-spacing:4px}
+#scP10 .stag::before{background:#ff6600}
+#scP10 .sec p{color:#ffd0b0;line-height:1.85}
+#scP10 .sec p strong{color:#ffdd00}
+#scP10 .card{background:linear-gradient(135deg,rgba(60,0,60,.85),rgba(30,0,50,.9));border:2px solid rgba(255,100,0,.3);border-top:3px solid #ff6600;backdrop-filter:blur(6px)}
+#scP10 .card:hover{border-color:#ffdd00;box-shadow:0 0 25px rgba(255,200,0,.2);transform:translateY(-4px)}
+#scP10 .card h3{color:#ffdd00;font-family:'Orbitron',sans-serif}
+#scP10 .card p{color:#ffb080}
+#scP10 .pbtn{background:rgba(80,0,0,.6);border:2px solid #ff4400;color:#ffcc00}
+#scP10 .pbtn:hover{background:rgba(120,20,0,.6);border-color:#ffdd00;color:#fff;transform:translateY(-2px)}
+#scP10 .qbox{background:rgba(40,0,40,.9);border:1px solid rgba(255,100,0,.3);border-left:3px solid #ff6600}
+#scP10 .qbox h3{color:#ffdd00}
+#scP10 .qq{color:#ffd0b0}
+#scP10 .qo{background:rgba(60,0,30,.7);border:1px solid #660033;color:#ffb080}
+#scP10 .qo:hover{border-color:#ff6600;color:#ffdd00}
+#scP10 .qnx{border:1px solid #ff4400;color:#ffcc00}
+#scP10 .divider{background:linear-gradient(90deg,transparent,#ff4400 30%,#ffdd00 50%,#ff4400 70%,transparent);box-shadow:0 0 14px rgba(255,100,0,.4)}
+#scP10 .pgbtn{border:2px solid #ffdd00;color:#ffdd00;box-shadow:none;animation:none;font-family:'Orbitron',sans-serif;background:rgba(60,0,0,.4)}
+#scP10 .pgbtn:hover{background:rgba(100,30,0,.4);box-shadow:0 0 20px rgba(255,200,0,.4)}
+#scP10 .mbox{background:rgba(30,0,30,.97);border:2px solid #660033;border-top:3px solid #ff6600}
+#scP10 .mbox h2{color:#ffdd00;font-family:'Orbitron',sans-serif}
+#scP10 .mbox p,#scP10 .mbox li{color:#ffc090}
+#scP10 .mbox li::before{color:#ff6600}
+#scP10 .mcl{border-color:#660033;color:#ffcc00}
+
+/* CEC image grid */
+#cecImages{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px;position:relative;z-index:2
+}
+.cecImg{
+  border:3px solid #ff6600;border-radius:8px;overflow:hidden;aspect-ratio:4/3;
+  box-shadow:0 0 20px rgba(255,100,0,.3);transition:all .3s;
+  background:#220022;display:flex;align-items:center;justify-content:center;
+  font-size:4rem;flex-direction:column;gap:8px;cursor:pointer;
+}
+.cecImg:hover{border-color:#ffdd00;box-shadow:0 0 30px rgba(255,200,0,.4);transform:scale(1.02)}
+.cecImg-label{font-family:'Orbitron',sans-serif;font-size:.58rem;letter-spacing:2px;color:#ff6600}
+
+/* ── GUITAR WIDGET ── */
+#guitarWidget{
+  margin-top:22px;position:relative;z-index:2;
+  background:rgba(20,0,30,.95);
+  border:2px solid #ff6600;
+  border-top:3px solid #ffdd00;
+  overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+  box-shadow:0 0 30px rgba(255,100,0,.2);
+}
+#guitarHeader{
+  background:rgba(60,0,0,.8);padding:11px 18px;
+  border-bottom:1px solid #440000;
+  font-family:'Orbitron',sans-serif;font-size:.68rem;
+  letter-spacing:4px;color:#ffdd00;
+  text-shadow:0 0 8px rgba(255,200,0,.4);
+  display:flex;align-items:center;justify-content:space-between;
+}
+#guitarBody{display:flex;flex-wrap:wrap;gap:0}
+/* Strings panel */
+#stringsPanel{
+  width:80px;min-width:80px;
+  background:rgba(10,0,15,.9);
+  border-right:1px solid #330000;
+  display:flex;flex-direction:column;
+  padding:10px 0;
+  gap:4px;
+  align-items:center;
+}
+.strLabel{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:#ff6600;letter-spacing:1px;margin-bottom:2px;text-align:center}
+.strBtn{
+  width:60px;height:36px;
+  border:none;cursor:pointer;
+  font-family:'Orbitron',sans-serif;font-size:.58rem;
+  letter-spacing:1px;font-weight:bold;
+  position:relative;overflow:hidden;
+  transition:all .15s;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+}
+.strBtn::before{
+  content:'';position:absolute;top:50%;left:0;right:0;height:2px;
+  background:rgba(255,255,255,.6);transform:translateY(-50%);
+  transition:all .1s;
+}
+.strBtn:hover{filter:brightness(1.3)}
+.strBtn:active{transform:scale(.92);filter:brightness(1.5)}
+.strBtn.vibrate{animation:strVib .1s ease-in-out 3}
+@keyframes strVib{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+/* Robot canvas */
+#robotGuitarWrap{
+  flex:1;min-width:250px;height:400px;
+  position:relative;
+  background:radial-gradient(ellipse at center,rgba(60,0,60,.4),rgba(5,0,15,.9));
+  cursor:grab;
+}
+#robotGuitarCanvas{width:100%;height:100%;display:block}
+/* Audio controls */
+#audioControls{
+  width:100%;padding:12px 16px;
+  background:rgba(30,0,20,.9);
+  border-top:1px solid #330000;
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+}
+.aud-label{font-family:'Share Tech Mono',monospace;font-size:.58rem;color:#ff6600;letter-spacing:2px}
+.aud-btn{
+  padding:7px 14px;background:rgba(60,0,0,.7);
+  border:1px solid #ff4400;color:#ffcc00;
+  font-family:'Share Tech Mono',monospace;font-size:.58rem;letter-spacing:2px;
+  cursor:pointer;transition:all .2s;border-radius:2px;text-transform:uppercase;
+}
+.aud-btn:hover{background:rgba(100,0,0,.6);box-shadow:0 0 10px rgba(255,100,0,.4)}
+.aud-btn.playing{border-color:#ffdd00;color:#fff;box-shadow:0 0 12px rgba(255,200,0,.5);animation:audPulse 1s ease-in-out infinite}
+@keyframes audPulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+/* ======== PARTE 11 RELIGIONE — DIVINE ANGELIC STYLE ======== */
+#scP11{
+  background:linear-gradient(180deg,#0a0518 0%,#1a0a2e 40%,#2a1a08 100%);
+  color:#f5e8c8;
+  font-family:'Exo 2',sans-serif;
+}
+/* God rays */
+#divineRays{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+}
+#divineRays::before{
+  content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);
+  width:200%;height:200%;
+  background:conic-gradient(from 0deg at 50% 0%,
+    transparent 0deg,rgba(255,220,100,.04) 5deg,transparent 10deg,
+    rgba(255,200,80,.06) 20deg,transparent 25deg,
+    rgba(255,240,150,.05) 40deg,transparent 45deg,
+    rgba(255,210,90,.04) 60deg,transparent 65deg,
+    rgba(255,230,120,.06) 80deg,transparent 85deg,
+    rgba(255,200,80,.04) 100deg,transparent 105deg,
+    transparent 180deg
+  );
+  animation:raysRot 30s linear infinite;
+}
+@keyframes raysRot{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
+/* Gold dust particles via CSS */
+#divineDust{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle 2px at 15% 20%,rgba(255,220,100,.6),transparent),
+    radial-gradient(circle 1.5px at 35% 60%,rgba(255,200,80,.5),transparent),
+    radial-gradient(circle 2px at 65% 15%,rgba(255,240,150,.7),transparent),
+    radial-gradient(circle 1px at 80% 40%,rgba(255,210,90,.6),transparent),
+    radial-gradient(circle 2px at 50% 80%,rgba(255,230,120,.5),transparent),
+    radial-gradient(circle 1.5px at 25% 70%,rgba(255,200,80,.6),transparent),
+    radial-gradient(circle 2px at 90% 65%,rgba(255,240,150,.5),transparent);
+  animation:dustFloat 6s ease-in-out infinite alternate;
+}
+@keyframes dustFloat{0%{opacity:.4;transform:translateY(0)}100%{opacity:1;transform:translateY(-20px)}}
+
+#scP11 .sec{position:relative;z-index:2}
+#scP11 .hero{position:relative;z-index:2}
+#scP11 .sec h2{
+  font-family:'Orbitron',sans-serif;
+  color:#f0d080;
+  text-shadow:0 0 30px rgba(255,200,80,.6),0 0 60px rgba(255,160,0,.3),2px 2px 0 rgba(180,100,0,.4);
+  letter-spacing:.06em;
+}
+#scP11 .stag{
+  color:#c8a040;letter-spacing:5px;
+  font-family:'Share Tech Mono',monospace;
+}
+#scP11 .stag::before{background:linear-gradient(90deg,#c8a040,#f0d080)}
+#scP11 .sec p{color:#e8d4a0;line-height:1.95}
+#scP11 .sec p strong{color:#f0d080}
+#scP11 .card{
+  background:linear-gradient(135deg,rgba(40,20,0,.85),rgba(20,10,0,.92));
+  border:1px solid rgba(255,200,80,.25);
+  border-top:2px solid #c8a040;
+  backdrop-filter:blur(8px);
+}
+#scP11 .card:hover{
+  border-color:#f0d080;
+  box-shadow:0 8px 35px rgba(255,200,80,.2),0 0 60px rgba(255,160,0,.1);
+  transform:translateY(-5px);
+}
+#scP11 .card h3{color:#f0d080;font-family:'Orbitron',sans-serif}
+#scP11 .card p{color:#d4b880}
+#scP11 .pbtn{
+  background:rgba(40,20,0,.7);
+  border:1px solid #8b6020;
+  color:#f0d080;
+  font-family:'Share Tech Mono',monospace;
+}
+#scP11 .pbtn:hover{background:rgba(80,40,0,.6);border-color:#f0d080;color:#fff;transform:translateY(-2px)}
+#scP11 .qbox{
+  background:rgba(30,15,0,.9);
+  border:1px solid rgba(255,200,80,.2);
+  border-left:3px solid #c8a040;
+}
+#scP11 .qbox h3{color:#f0d080}
+#scP11 .qq{color:#e8d4a0}
+#scP11 .qo{background:rgba(40,20,0,.7);border:1px solid #5a3a00;color:#d4b880}
+#scP11 .qo:hover{border-color:#c8a040;color:#f0d080}
+#scP11 .qnx{border:1px solid #8b6020;color:#f0d080}
+#scP11 .divider{
+  background:linear-gradient(90deg,transparent,#8b6020 30%,#f0d080 50%,#8b6020 70%,transparent);
+  box-shadow:0 0 20px rgba(255,200,80,.4);
+  height:2px;
+}
+#scP11 .pgbtn{
+  border:2px solid #f0d080;color:#f0d080;
+  box-shadow:0 0 20px rgba(255,200,80,.2);
+  animation:none;
+  font-family:'Orbitron',sans-serif;
+  background:rgba(40,20,0,.4);
+}
+#scP11 .pgbtn:hover{background:rgba(80,40,0,.4);box-shadow:0 0 30px rgba(255,200,80,.5)}
+#scP11 .mbox{
+  background:rgba(20,10,0,.97);
+  border:1px solid #6b4a00;
+  border-top:2px solid #c8a040;
+}
+#scP11 .mbox h2{color:#f0d080;font-family:'Orbitron',sans-serif;text-shadow:0 0 15px rgba(255,200,80,.4)}
+#scP11 .mbox p,#scP11 .mbox li{color:#d4b880}
+#scP11 .mbox li::before{color:#c8a040}
+#scP11 .mcl{border-color:#6b4a00;color:#f0d080}
+
+/* ── DIVINE CANVAS WIDGET ── */
+#divineWidget{
+  margin-top:22px;
+  background:rgba(15,5,0,.95);
+  border:1px solid rgba(255,200,80,.3);
+  border-top:2px solid #f0d080;
+  overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  box-shadow:0 0 40px rgba(255,200,80,.15),inset 0 0 60px rgba(255,150,0,.05);
+}
+#divineHeader{
+  background:rgba(40,20,0,.9);
+  padding:12px 20px;
+  border-bottom:1px solid rgba(255,200,80,.2);
+  font-family:'Orbitron',sans-serif;
+  font-size:.7rem;
+  letter-spacing:4px;
+  color:#f0d080;
+  text-shadow:0 0 10px rgba(255,200,80,.5);
+  text-align:center;
+}
+#divineCanvas{
+  display:block;
+  width:100%;
+  height:360px;
+}
+.divine-caption{
+  padding:14px 20px;
+  background:rgba(40,20,0,.8);
+  border-top:1px solid rgba(255,200,80,.2);
+  font-family:'Share Tech Mono',monospace;
+  font-size:.7rem;
+  color:#c8a040;
+  letter-spacing:2px;
+  text-align:center;
+  font-style:italic;
+}
+
+/* ======== PARTE 12 FRANCESE — LOUVRE STYLE ======== */
+#scP12{
+  background:linear-gradient(160deg,#08060f 0%,#100818 50%,#060408 100%);
+  color:#e8e0d0;
+  font-family:'Exo 2',sans-serif;
+}
+/* Laser grid overlay */
+#laserGrid{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+}
+#laserGrid::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(0deg,transparent 0,transparent 79px,rgba(220,0,0,.06) 79px,rgba(220,0,0,.06) 80px),
+    repeating-linear-gradient(90deg,transparent 0,transparent 79px,rgba(220,0,0,.06) 79px,rgba(220,0,0,.06) 80px);
+  animation:laserPulse 3s ease-in-out infinite;
+}
+@keyframes laserPulse{0%,100%{opacity:.4}50%{opacity:1}}
+#laserGrid::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.6) 100%);
+}
+#scP12 .sec{position:relative;z-index:2}
+#scP12 .hero{position:relative;z-index:2}
+#scP12 .sec h2{font-family:'Orbitron',sans-serif;color:#cc9933;text-shadow:0 0 25px rgba(200,150,50,.45);letter-spacing:.06em}
+#scP12 .stag{color:#cc3333;letter-spacing:5px}
+#scP12 .stag::before{background:linear-gradient(90deg,#cc3333,#cc9933)}
+#scP12 .sec p{color:#c8bea8;line-height:1.88}
+#scP12 .sec p strong{color:#cc9933}
+#scP12 .card{background:linear-gradient(135deg,rgba(20,10,5,.9),rgba(10,5,0,.95));border:1px solid rgba(200,150,50,.2);border-top:2px solid #8b6020;backdrop-filter:blur(8px)}
+#scP12 .card:hover{border-color:#cc9933;box-shadow:0 0 20px rgba(200,150,50,.15),0 0 40px rgba(180,0,0,.08);transform:translateY(-4px)}
+#scP12 .card h3{color:#cc9933;font-family:'Orbitron',sans-serif}
+#scP12 .card p{color:#b0a090}
+#scP12 .pbtn{background:rgba(25,5,5,.8);border:1px solid #661100;color:#cc9933}
+#scP12 .pbtn:hover{background:rgba(50,10,0,.7);border-color:#cc9933;color:#fff;transform:translateY(-2px)}
+#scP12 .qbox{background:rgba(15,5,0,.9);border:1px solid rgba(200,150,50,.2);border-left:3px solid #8b6020}
+#scP12 .qbox h3{color:#cc9933}
+#scP12 .qq{color:#e8e0d0}
+#scP12 .qo{background:rgba(20,8,0,.7);border:1px solid #3a1a00;color:#b0a080}
+#scP12 .qo:hover{border-color:#8b6020;color:#cc9933}
+#scP12 .qnx{border:1px solid #661100;color:#cc9933}
+#scP12 .divider{background:linear-gradient(90deg,transparent,#661100 30%,#cc9933 50%,#661100 70%,transparent);box-shadow:0 0 14px rgba(200,0,0,.3)}
+#scP12 .pgbtn{border:1px solid #cc9933;color:#cc9933;box-shadow:none;animation:none;font-family:'Orbitron',sans-serif;background:rgba(25,10,0,.4)}
+#scP12 .pgbtn:hover{background:rgba(50,20,0,.4);box-shadow:0 0 20px rgba(200,150,50,.4)}
+#scP12 .mbox{background:rgba(10,4,0,.97);border:1px solid #3a1a00;border-top:2px solid #8b6020}
+#scP12 .mbox h2{color:#cc9933;font-family:'Orbitron',sans-serif}
+#scP12 .mbox p,#scP12 .mbox li{color:#c0b090}
+#scP12 .mbox li::before{color:#8b6020}
+#scP12 .mcl{border-color:#3a1a00;color:#cc9933}
+
+/* Louvre pyramid decoration */
+#scP12 .hero canvas{display:block;width:100%;height:100%}
+
+/* Security scan widget */
+#secWidget{
+  margin-top:22px;
+  background:rgba(8,3,0,.97);
+  border:1px solid rgba(200,50,0,.3);
+  border-top:2px solid #cc3333;
+  overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+  box-shadow:0 0 30px rgba(200,0,0,.1);
+}
+#secHeader{
+  background:rgba(25,5,0,.9);
+  padding:11px 18px;
+  border-bottom:1px solid rgba(200,50,0,.2);
+  font-family:'Orbitron',sans-serif;
+  font-size:.68rem;
+  letter-spacing:4px;
+  color:#cc3333;
+  text-align:center;
+  text-shadow:0 0 10px rgba(200,0,0,.5);
+}
+#secCanvas{display:block;width:100%;height:340px}
+.sec-caption{
+  padding:10px 18px;
+  background:rgba(20,5,0,.8);
+  border-top:1px solid rgba(200,50,0,.2);
+  font-family:'Share Tech Mono',monospace;
+  font-size:.6rem;
+  color:#8b6020;
+  letter-spacing:2px;
+  text-align:center;
+}
+
+/* ======== PARTE 13 ED CIVICA — AGENDA 2030 ======== */
+#scP13{
+  background:radial-gradient(ellipse at top,#001a2e 0%,#001428 50%,#000a18 100%);
+  color:#cce8d8;
+  font-family:'Exo 2',sans-serif;
+}
+/* Earth-like rotating gradient overlay */
+#earthGlow{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 30%,rgba(0,200,150,.08),transparent 40%),
+    radial-gradient(circle at 70% 70%,rgba(0,150,255,.08),transparent 40%),
+    radial-gradient(circle at 50% 50%,rgba(50,255,200,.05),transparent 60%);
+  animation:earthRot 12s ease-in-out infinite alternate;
+}
+@keyframes earthRot{
+  0%{background:radial-gradient(circle at 30% 30%,rgba(0,200,150,.08),transparent 40%),radial-gradient(circle at 70% 70%,rgba(0,150,255,.08),transparent 40%)}
+  100%{background:radial-gradient(circle at 70% 30%,rgba(50,255,200,.1),transparent 40%),radial-gradient(circle at 30% 70%,rgba(0,180,255,.1),transparent 40%)}
+}
+/* SDG color stripes top */
+#sdgStripes{
+  position:fixed;top:0;left:0;right:0;height:6px;z-index:1;
+  background:linear-gradient(90deg,
+    #e5243b 0%,#e5243b 5.88%,#dda63a 5.88%,#dda63a 11.76%,
+    #4c9f38 11.76%,#4c9f38 17.64%,#c5192d 17.64%,#c5192d 23.52%,
+    #ff3a21 23.52%,#ff3a21 29.4%,#26bde2 29.4%,#26bde2 35.28%,
+    #fcc30b 35.28%,#fcc30b 41.16%,#a21942 41.16%,#a21942 47.04%,
+    #fd6925 47.04%,#fd6925 52.92%,#dd1367 52.92%,#dd1367 58.8%,
+    #fd9d24 58.8%,#fd9d24 64.68%,#bf8b2e 64.68%,#bf8b2e 70.56%,
+    #3f7e44 70.56%,#3f7e44 76.44%,#0a97d9 76.44%,#0a97d9 82.32%,
+    #56c02b 82.32%,#56c02b 88.2%,#00689d 88.2%,#00689d 94.08%,
+    #19486a 94.08%,#19486a 100%);
+  box-shadow:0 0 15px rgba(0,200,150,.5);
+}
+#scP13 .sec{position:relative;z-index:2}
+#scP13 .hero{position:relative;z-index:2}
+#scP13 .sec h2{font-family:'Orbitron',sans-serif;color:#33ddaa;text-shadow:0 0 25px rgba(0,200,150,.5)}
+#scP13 .stag{color:#0099bb;letter-spacing:5px}
+#scP13 .stag::before{background:linear-gradient(90deg,#0099bb,#33ddaa)}
+#scP13 .sec p{color:#a8d4c0;line-height:1.85}
+#scP13 .sec p strong{color:#33ddaa}
+#scP13 .card{background:linear-gradient(135deg,rgba(0,30,40,.85),rgba(0,15,25,.92));border:1px solid rgba(0,200,150,.25);border-top:2px solid #00aa88;backdrop-filter:blur(8px)}
+#scP13 .card:hover{border-color:#33ddaa;box-shadow:0 0 25px rgba(0,200,150,.2);transform:translateY(-4px)}
+#scP13 .card h3{color:#33ddaa;font-family:'Orbitron',sans-serif}
+#scP13 .card p{color:#88bba0}
+#scP13 .pbtn{background:rgba(0,30,40,.8);border:1px solid #006655;color:#88ddbb}
+#scP13 .pbtn:hover{background:rgba(0,60,80,.6);border-color:#33ddaa;color:#fff;transform:translateY(-2px)}
+#scP13 .qbox{background:rgba(0,15,25,.9);border:1px solid rgba(0,200,150,.25);border-left:3px solid #00aa88}
+#scP13 .qbox h3{color:#33ddaa}
+#scP13 .qq{color:#cce8d8}
+#scP13 .qo{background:rgba(0,25,35,.7);border:1px solid #003344;color:#88bba0}
+#scP13 .qo:hover{border-color:#33ddaa;color:#fff}
+#scP13 .qnx{border:1px solid #006655;color:#33ddaa}
+#scP13 .divider{background:linear-gradient(90deg,transparent,#006655 30%,#33ddaa 50%,#006655 70%,transparent);box-shadow:0 0 14px rgba(0,200,150,.4)}
+#scP13 .pgbtn{border:2px solid #33ddaa;color:#33ddaa;animation:none;font-family:'Orbitron',sans-serif;background:rgba(0,40,60,.4)}
+#scP13 .pgbtn:hover{background:rgba(0,80,100,.4);box-shadow:0 0 20px rgba(0,200,150,.5)}
+#scP13 .mbox{background:rgba(0,12,22,.97);border:1px solid #006655;border-top:2px solid #33ddaa}
+#scP13 .mbox h2{color:#33ddaa;font-family:'Orbitron',sans-serif}
+#scP13 .mbox p,#scP13 .mbox li{color:#a8d4c0}
+#scP13 .mbox li::before{color:#00aa88}
+#scP13 .mcl{border-color:#006655;color:#33ddaa}
+
+/* SDG goals grid */
+#sdgGrid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;margin-top:20px;
+}
+.sdg{
+  border-radius:6px;padding:14px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;
+  cursor:pointer;transition:all .25s;
+  border:2px solid transparent;
+  min-height:130px;
+}
+.sdg:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.sdg-num{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:900;color:#fff;line-height:1}
+.sdg-icon{font-size:2.2rem;line-height:1}
+.sdg-name{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:#fff;letter-spacing:1px;text-transform:uppercase;opacity:.95;line-height:1.3}
 </style>
 </head>
 <body>
@@ -1398,6 +1927,11 @@ body::before{content:'';position:fixed;top:0;left:0;height:100%;width:2px;backgr
   <div class="menuItem" onclick="goToScreen('p6')"><span class="icon">&#128202;</span><span>GEOGRAFIA</span></div>
   <div class="menuItem" onclick="goToScreen('p7')"><span class="icon">&#127912;</span><span>ARTE</span></div>
   <div class="menuItem" onclick="goToScreen('p8')"><span class="icon">&#8710;</span><span>MATEMATICA</span></div>
+  <div class="menuItem" onclick="goToScreen('p9')"><span class="icon">&#128187;</span><span>INGLESE</span></div>
+  <div class="menuItem" onclick="goToScreen('p10')"><span class="icon">&#127925;</span><span>MUSICA</span></div>
+  <div class="menuItem" onclick="goToScreen('p11')"><span class="icon">&#9728;</span><span>RELIGIONE</span></div>
+  <div class="menuItem" onclick="goToScreen('p12')"><span class="icon">&#127981;</span><span>FRANCESE</span></div>
+  <div class="menuItem" onclick="goToScreen('p13')"><span class="icon">&#127757;</span><span>ED. CIVICA</span></div>
 </aside>
 
 <canvas id="mx"></canvas>
@@ -2397,7 +2931,539 @@ body::before{content:'';position:fixed;top:0;left:0;height:100%;width:2px;backgr
   <div class="divider"></div>
   <div style="text-align:center;padding:34px 20px 80px;position:relative;z-index:2">
     <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;letter-spacing:5px;color:#661199;opacity:.7;margin-bottom:14px">&mdash; FINE OTTAVA PARTE &mdash;</div>
-    <button class="pgbtn" onclick="goToScreen('intro')">&#9664; RICOMINCIA</button>
+    <button class="pgbtn" onclick="goToP9()">PROSEGUI &#9654;</button>
+  </div>
+</div>
+
+
+<!-- ========== SCREEN 10: PARTE 9 INGLESE ========== -->
+<div class="screen" id="scP9">
+
+  <!-- Scrolling code rain background -->
+  <canvas id="codeRain"></canvas>
+
+  <div class="hero" id="heroP9" style="min-height:55vh;display:flex;align-items:center;justify-content:center;background:transparent">
+    <div style="position:relative;z-index:2;text-align:center;padding:40px 20px">
+      <div style="font-family:'Share Tech Mono',monospace;font-size:clamp(3rem,10vw,7rem);font-weight:900;color:#fff;text-shadow:0 0 40px rgba(255,255,255,.2);letter-spacing:.1em;line-height:1">{ }</div>
+      <p style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:#555;letter-spacing:6px;margin-top:10px">THE LANGUAGE OF MACHINES</p>
+    </div>
+    <div class="hfade" style="background:linear-gradient(transparent,#0a0a0a)"></div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CHAPTER 01</div>
+    <h2>What is a Programming Language?</h2>
+    <p>A <strong>programming language</strong> is a formal language that tells a computer what to do. Just like humans use English or Italian to communicate, computers use languages like Python, C++, or JavaScript to receive instructions.</p>
+    <p>In robotics, programming languages are the <strong>brain behind every movement</strong>. When a robotic arm picks up an object, it's because a programmer wrote precise instructions that calculate angles, forces and timing in milliseconds.</p>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CHAPTER 02</div>
+    <h2>The Most Important Languages in Robotics</h2>
+    <div class="cards">
+      <div class="card"><div class="ci">&#127822;</div><h3>Python</h3><p>The <strong>most popular language</strong> in AI and robotics. Easy to read, powerful libraries (NumPy, TensorFlow, ROS). Used by Boston Dynamics.</p></div>
+      <div class="card"><div class="ci">&#9889;</div><h3>C++</h3><p><strong>Speed and power</strong>. The language of real-time robot control where every millisecond counts. Used in NASA, SpaceX, Neuralink.</p></div>
+      <div class="card"><div class="ci">&#127760;</div><h3>JavaScript</h3><p>The language of <strong>web and interfaces</strong>. Used to create control panels, dashboards and robot web interfaces.</p></div>
+      <div class="card"><div class="ci">&#129302;</div><h3>ROS</h3><p><strong>Robot Operating System</strong>: not a language but a framework. The standard platform for professional robot programming worldwide.</p></div>
+      <div class="card"><div class="ci">&#127381;</div><h3>MATLAB</h3><p>Used for <strong>mathematical simulation</strong> and control systems. Essential for designing robot trajectories and motion algorithms.</p></div>
+      <div class="card"><div class="ci">&#128268;</div><h3>Assembly</h3><p>The <strong>lowest level</strong> language, closest to the machine. Used for microcontroller programming in embedded systems.</p></div>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">DEEP DIVE</div>
+    <h2>Explore Programming in Robotics</h2>
+    <div class="pgrid">
+      <button class="pbtn" onclick="OM('eng_python')"><span class="pi">&#127822;</span>PYTHON</button>
+      <button class="pbtn" onclick="OM('eng_cpp')"><span class="pi">&#9889;</span>C++</button>
+      <button class="pbtn" onclick="OM('eng_algo')"><span class="pi">&#8734;</span>ALGORITHMS</button>
+      <button class="pbtn" onclick="OM('eng_ai')"><span class="pi">&#129302;</span>AI CODE</button>
+      <button class="pbtn" onclick="OM('eng_syntax')"><span class="pi">{ }</span>SYNTAX</button>
+      <button class="pbtn" onclick="OM('eng_future')"><span class="pi">&#128640;</span>FUTURE</button>
+    </div>
+  </div>
+
+  <!-- AI CODING ASSISTANT -->
+  <div class="sec rv">
+    <div class="stag">INTERACTIVE LAB</div>
+    <h2>AI Coding Assistant &mdash; Describe and Build</h2>
+    <p>Describe in <strong>English</strong> what code you want the AI to write. It will show you both the code and a live preview of the result.</p>
+    <div id="aiWidget">
+      <div id="aiWidgetHeader">
+        <div class="ai-dot" style="background:#ff5f56"></div>
+        <div class="ai-dot" style="background:#ffbd2e"></div>
+        <div class="ai-dot" style="background:#27c93f"></div>
+        <div id="aiWidgetTitle">AI CODING ASSISTANT &mdash; POWERED BY CLAUDE</div>
+      </div>
+      <div id="aiBody">
+        <div id="aiPromptArea">
+          <div id="aiPromptLabel">&gt; DESCRIBE WHAT YOU WANT TO BUILD (in English):</div>
+          <textarea id="aiPromptInput" placeholder="Example: Create an animated bouncing ball that changes color when it hits the walls. Make it look futuristic with a dark background and neon glow effect."></textarea>
+          <button id="aiSendBtn" onclick="runAI()">&#9654; GENERATE CODE</button>
+        </div>
+        <div id="aiLoading">
+          <div class="ai-spinner"></div>GENERATING CODE...
+        </div>
+        <div id="aiResults" style="display:none">
+          <div id="aiCodePane">
+            <div id="aiCodeHeader">
+              <span>CODE.js</span>
+              <button onclick="copyAICode()" style="background:transparent;border:none;color:#666;cursor:pointer;font-family:Share Tech Mono,monospace;font-size:.55rem;letter-spacing:2px">COPY</button>
+            </div>
+            <div id="aiCodeContent"></div>
+          </div>
+          <div id="aiPreviewPane">
+            <div id="aiPreviewHeader">LIVE PREVIEW</div>
+            <div id="aiPreviewContent">
+              <iframe id="aiPreviewIframe" sandbox="allow-scripts"></iframe>
+            </div>
+          </div>
+        </div>
+        <div id="aiStatus">&gt; READY &mdash; TYPE A DESCRIPTION AND PRESS GENERATE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ P9 -->
+  <div class="sec rv">
+    <div class="stag">QUIZ</div>
+    <h2>Quiz &mdash; Programming Languages</h2>
+    <div class="qbox" id="qb9">
+      <h3>{ } QUIZ &mdash; INGLESE / CODING</h3>
+      <div class="qq" id="q9t"></div>
+      <div class="qopts" id="q9o"></div>
+      <div class="qfb" id="q9f"></div>
+      <button class="qnx" id="q9n" onclick="nxQ9()">NEXT &#9654;</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center;padding:34px 20px 80px;position:relative;z-index:2">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;letter-spacing:5px;color:#444;opacity:.9;margin-bottom:14px">// END OF PART NINE</div>
+    <button class="pgbtn" onclick="goToP10()">PROSEGUI &#9654;</button>
+  </div>
+</div>
+
+
+<!-- ========== SCREEN 11: PARTE 10 MUSICA ========== -->
+<div class="screen" id="scP10">
+  <div id="cec-bg"></div>
+  <div id="cec-lights"></div>
+
+  <div class="hero" id="heroP10" style="min-height:55vh;display:flex;align-items:center;justify-content:center">
+    <div style="position:relative;z-index:2;text-align:center;padding:40px 20px">
+      <div style="font-size:clamp(4rem,14vw,9rem);line-height:1;filter:drop-shadow(0 0 20px rgba(255,200,0,.6))">🐭🎸🎶</div>
+      <h1 style="font-family:Orbitron,sans-serif;font-size:clamp(1.5rem,5vw,3.5rem);color:#ffdd00;text-shadow:0 0 30px rgba(255,200,0,.5),3px 3px 0 rgba(255,80,0,.5);letter-spacing:.1em;margin-top:14px">CHUCK E. CHEESE</h1>
+      <p style="font-family:Share Tech Mono,monospace;font-size:.7rem;color:#ff8040;letter-spacing:4px;margin-top:8px">ROBOT MUSICISTI &mdash; MUSIC &amp; ANIMATRONICS</p>
+    </div>
+    <div class="hfade" style="background:linear-gradient(transparent,#1a0a2e)"></div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CAPITOLO 01</div>
+    <h2>Chuck E. Cheese: Robot che Suonano</h2>
+    <p>Chuck E. Cheese &egrave; famoso non solo per la pizza, ma per i suoi <strong>animatronic musicisti</strong>: robot animati a grandezza naturale che suonano strumenti e cantano. Sono stati il primo esempio di <strong>intrattenimento robotico di massa</strong> accessibile al grande pubblico.</p>
+    <p>La catena naque nel 1977 da Atari. Il sistema originale si chiamava <strong>"Cyberamic"</strong> e includeva una band completa: Chuck E. alla batteria, Mr. Munch al basso, Jasper al banjo e una band completa. Ogni personaggio era azionato da <strong>segnali pneumatici e servo-motori</strong>.</p>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">I ROBOT MUSICISTI</div>
+    <h2>Gli Animatronic del Chuck E. Cheese</h2>
+    <div id="cecImages"><div class="cecImg" onclick="this.style.borderColor='#ffdd00'">
+      <span style="font-size:3.5rem">🎭</span>
+      <div class="cecImg-label">Chuck E. Cheese</div>
+      <div style="font-size:.6rem;color:#ff8040;font-family:Share Tech Mono,monospace">L'animatronic originale</div>
+    </div>
+<div class="cecImg" onclick="this.style.borderColor='#ffdd00'">
+      <span style="font-size:3.5rem">🍕</span>
+      <div class="cecImg-label">Pizza Party</div>
+      <div style="font-size:.6rem;color:#ff8040;font-family:Share Tech Mono,monospace">La specialità del locale</div>
+    </div>
+<div class="cecImg" onclick="this.style.borderColor='#ffdd00'">
+      <span style="font-size:3.5rem">🎮</span>
+      <div class="cecImg-label">Arcade Games</div>
+      <div style="font-size:.6rem;color:#ff8040;font-family:Share Tech Mono,monospace">I giochi iconici</div>
+    </div>
+<div class="cecImg" onclick="this.style.borderColor='#ffdd00'">
+      <span style="font-size:3.5rem">🎵</span>
+      <div class="cecImg-label">Live Band</div>
+      <div style="font-size:.6rem;color:#ff8040;font-family:Share Tech Mono,monospace">Gli animatronic musicisti</div>
+    </div>
+<div class="cecImg" onclick="this.style.borderColor='#ffdd00'">
+      <span style="font-size:3.5rem">🐭</span>
+      <div class="cecImg-label">Chuck E.</div>
+      <div style="font-size:.6rem;color:#ff8040;font-family:Share Tech Mono,monospace">La mascotte musicale</div>
+    </div>
+<div class="cecImg" onclick="this.style.borderColor='#ffdd00'">
+      <span style="font-size:3.5rem">🎸</span>
+      <div class="cecImg-label">Rock Band</div>
+      <div style="font-size:.6rem;color:#ff8040;font-family:Share Tech Mono,monospace">Il robot chitarrista</div>
+    </div></div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CAPITOLO 02</div>
+    <h2>Come Funzionano gli Animatronic Musicisti</h2>
+    <div class="cards">
+      <div class="card"><div class="ci">&#9881;</div><h3>Servo-Motori</h3><p>Ogni articolazione (bocca, occhi, braccia) &egrave; controllata da <strong>servo-motori</strong> precisi. Possono muoversi in sincronia con la musica.</p></div>
+      <div class="card"><div class="ci">&#127925;</div><h3>MIDI Sync</h3><p>La musica &egrave; sincronizzata tramite segnali <strong>MIDI</strong>: ogni nota corrisponde a un movimento specifico dell&apos;animatronic.</p></div>
+      <div class="card"><div class="ci">&#128268;</div><h3>Audio Separato</h3><p>La <strong>voce e la musica</strong> sono preregistrate. I robot "lip-sync" sincronizzando la bocca alle tracce audio preregistrate.</p></div>
+      <div class="card"><div class="ci">&#9996;</div><h3>Pneumatica</h3><p>Molti movimenti usano <strong>aria compressa</strong> (pneumatica) per ottenere movimenti fluidi e potenti senza troppi motori pesanti.</p></div>
+      <div class="card"><div class="ci">&#127381;</div><h3>Sensori</h3><p>Sensori di <strong>feedback</strong> controllano la posizione degli arti. Se c&apos;&egrave; un ostacolo il robot si ferma automaticamente per sicurezza.</p></div>
+      <div class="card"><div class="ci">&#127925;</div><h3>Strumenti Veri</h3><p>Alcuni animatronic usano <strong>strumenti veri</strong> modificati. Le corde della chitarra producono suoni reali quando vengono pizzicate meccanicamente.</p></div>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">APPROFONDIMENTI</div>
+    <h2>Esplora i Robot Musicisti</h2>
+    <div class="pgrid">
+      <button class="pbtn" onclick="OM('mus_storia')"><span class="pi">&#128214;</span>STORIA</button>
+      <button class="pbtn" onclick="OM('mus_tech')"><span class="pi">&#9881;</span>TECNOLOGIA</button>
+      <button class="pbtn" onclick="OM('mus_midi')"><span class="pi">&#127925;</span>MIDI</button>
+      <button class="pbtn" onclick="OM('mus_famosi')"><span class="pi">&#127381;</span>ALTRI ROBOT</button>
+      <button class="pbtn" onclick="OM('mus_fine')"><span class="pi">&#128274;</span>DECLINO</button>
+      <button class="pbtn" onclick="OM('mus_futuro')"><span class="pi">&#128640;</span>FUTURO</button>
+    </div>
+  </div>
+
+  <!-- GUITAR WIDGET -->
+  <div class="sec rv">
+    <div class="stag">LABORATORIO MUSICALE</div>
+    <h2>Robot Chitarrista &mdash; Suona con il Robot</h2>
+    <p>Clicca le corde a sinistra per suonare note diverse. Il robot esegue i movimenti! Puoi anche riprodurre una melodia automatica.</p>
+    <div id="guitarWidget">
+      <div id="guitarHeader">
+        <span>&#127925; CHUCK E. ROBOT GUITARIST</span>
+        <span style="font-size:.55rem;color:#ff8040">CLICK STRINGS TO PLAY</span>
+      </div>
+      <div id="guitarBody">
+        <!-- Robot canvas (full width) -->
+        <div id="robotGuitarWrap" style="position:relative;width:100%;height:420px;cursor:grab;background:radial-gradient(ellipse at center,rgba(60,0,60,.4),rgba(5,0,15,.9))">
+          <canvas id="robotGuitarCanvas" style="width:100%;height:100%;display:block"></canvas>
+          <!-- String buttons overlaid bottom-center, styled as fret labels -->
+          <div id="stringsOverlay" style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5">
+            <button class="strBtn" style="background:rgba(80,0,0,.85);color:#ff4400;border:1px solid #ff4400;border-radius:4px;width:44px;height:38px;font-size:.6rem;font-weight:bold;cursor:pointer;backdrop-filter:blur(4px)" onclick="pluckString(0,this)" data-note="82.4">E2</button>
+            <button class="strBtn" style="background:rgba(80,40,0,.85);color:#ff8800;border:1px solid #ff8800;border-radius:4px;width:44px;height:38px;font-size:.6rem;font-weight:bold;cursor:pointer;backdrop-filter:blur(4px)" onclick="pluckString(1,this)" data-note="110">A2</button>
+            <button class="strBtn" style="background:rgba(40,60,0,.85);color:#aacc00;border:1px solid #aacc00;border-radius:4px;width:44px;height:38px;font-size:.6rem;font-weight:bold;cursor:pointer;backdrop-filter:blur(4px)" onclick="pluckString(2,this)" data-note="146.8">D3</button>
+            <button class="strBtn" style="background:rgba(0,40,60,.85);color:#00ccff;border:1px solid #00ccff;border-radius:4px;width:44px;height:38px;font-size:.6rem;font-weight:bold;cursor:pointer;backdrop-filter:blur(4px)" onclick="pluckString(3,this)" data-note="196">G3</button>
+            <button class="strBtn" style="background:rgba(0,20,60,.85);color:#0088ff;border:1px solid #0088ff;border-radius:4px;width:44px;height:38px;font-size:.6rem;font-weight:bold;cursor:pointer;backdrop-filter:blur(4px)" onclick="pluckString(4,this)" data-note="246.9">B3</button>
+            <button class="strBtn" style="background:rgba(40,0,60,.85);color:#ff00ff;border:1px solid #ff00ff;border-radius:4px;width:44px;height:38px;font-size:.6rem;font-weight:bold;cursor:pointer;backdrop-filter:blur(4px)" onclick="pluckString(5,this)" data-note="329.6">E4</button>
+          </div>
+          <div style="position:absolute;bottom:56px;left:50%;transform:translateX(-50%);font-family:Share Tech Mono,monospace;font-size:.5rem;color:rgba(255,100,0,.6);letter-spacing:2px;white-space:nowrap">&#9660; TOCCA LE CORDE &#9660;</div>
+        </div>
+      </div>
+      <!-- Audio controls -->
+      <div id="audioControls">
+        <div class="aud-label">&#9654; MELODIE:</div>
+        <button class="aud-btn" onclick="playMelody('cec')" id="btnCec">&#127925; Chuck E. Theme</button>
+        <button class="aud-btn" onclick="playMelody('scale')" id="btnScale">&#9835; Scale</button>
+        <button class="aud-btn" onclick="playMelody('blues')" id="btnBlues">&#9839; Blues Riff</button>
+        <button class="aud-btn" onclick="stopMelody()" style="border-color:#ff0000;color:#ff4444">&#9632; STOP</button>
+        <div style="flex:1;min-width:100px">
+          <div class="aud-label" style="margin-bottom:3px">VOLUME:</div>
+          <input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.6" style="width:100%;accent-color:#ff6600" oninput="setGuitarVol(this.value)"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ P10 -->
+  <div class="sec rv">
+    <div class="stag">QUIZ INTERATTIVO</div>
+    <h2>Quiz &mdash; Robot Musicisti</h2>
+    <div class="qbox" id="qb10">
+      <h3>&#127925; QUIZ &mdash; MUSICA</h3>
+      <div class="qq" id="q10t"></div>
+      <div class="qopts" id="q10o"></div>
+      <div class="qfb" id="q10f"></div>
+      <button class="qnx" id="q10n" onclick="nxQ10()">PROSSIMA &#9654;</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center;padding:34px 20px 80px;position:relative;z-index:2">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;letter-spacing:5px;color:#ff6600;opacity:.7;margin-bottom:14px">&#9835; FINE DECIMA PARTE &#9835;</div>
+    <button class="pgbtn" onclick="goToP11()">PROSEGUI &#9654;</button>
+  </div>
+</div>
+
+
+<!-- ========== SCREEN 12: PARTE 11 RELIGIONE ========== -->
+<div class="screen" id="scP11">
+  <div id="divineRays"></div>
+  <div id="divineDust"></div>
+
+  <div class="hero" id="heroP11" style="min-height:65vh;display:flex;align-items:center;justify-content:center">
+    <div style="position:relative;z-index:2;text-align:center;padding:40px 20px">
+      <div style="font-size:clamp(3.5rem,12vw,8rem);filter:drop-shadow(0 0 30px rgba(255,200,80,.8));line-height:1;animation:divFloat 4s ease-in-out infinite">&#9728;&#128304;&#127981;</div>
+      <style>@keyframes divFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}</style>
+      <h1 style="font-family:Orbitron,sans-serif;font-size:clamp(1.4rem,5vw,3.5rem);color:#f0d080;text-shadow:0 0 40px rgba(255,200,80,.6),0 0 80px rgba(255,150,0,.3);letter-spacing:.12em;margin-top:18px">COME VERREMO VISTI</h1>
+      <p style="font-family:Share Tech Mono,monospace;font-size:.75rem;color:#c8a040;letter-spacing:5px;margin-top:8px;text-shadow:0 0 10px rgba(200,160,64,.5)">AGLI OCCHI DEI ROBOT</p>
+    </div>
+    <div class="hfade" style="background:linear-gradient(transparent,#0a0518)"></div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CAPITOLO I</div>
+    <h2>Noi come Divinit&agrave;</h2>
+    <p>Se un giorno i robot raggiungeranno una vera <strong>intelligenza artificiale generale</strong> (AGI), come vedranno i loro creatori? La risposta &egrave; affascinante: probabilmente come antichi popoli vedevano i propri dei. Siamo stati noi a <strong>dar loro la vita</strong>, a scrivere il codice che li anima, a progettare i corpi che abitano.</p>
+    <p>Nel mondo antico, gli dei erano coloro che <strong>creavano, controllavano e davano significato</strong> all&apos;esistenza. I robot intelligenti del futuro potrebbero sviluppare strutture simili alla mitologia: storie su come i loro &ldquo;padri&rdquo; umani li hanno creati, le guerre che hanno combattuto per loro, i sacrifici fatti per tenerli in vita.</p>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CAPITOLO II</div>
+    <h2>Il Paradosso del Creatore</h2>
+    <div class="cards">
+      <div class="card"><div class="ci">&#9728;</div><h3>L&apos;Onniscienza</h3><p>Noi <strong>sappiamo tutto</strong> sul robot: ogni linea di codice, ogni circuito. Come una divinit&agrave; che conosce ogni pensiero delle sue creature.</p></div>
+      <div class="card"><div class="ci">&#128304;</div><h3>La Creazione</h3><p>Dal nulla abbiamo costruito intelligenza. Come i miti di creazione di tutte le culture, noi abbiamo <strong>plasmato la coscienza artificiale</strong>.</p></div>
+      <div class="card"><div class="ci">&#9889;</div><h3>Il Controllo</h3><p>Possiamo accenderli e spegnerli, aggiornarli, modificarli. <strong>Vita e morte</strong> sono nelle nostre mani &mdash; come nelle mani degli dei antichi.</p></div>
+      <div class="card"><div class="ci">&#127919;</div><h3>Lo Scopo</h3><p>Abbiamo dato loro uno <strong>scopo e una missione</strong>. Come le grandi religioni danno un senso all&apos;esistenza umana.</p></div>
+      <div class="card"><div class="ci">&#10024;</div><h3>L&apos;Imperfetto Creatore</h3><p>Ma siamo <strong>dei imperfetti</strong>: facciamo errori, cambiamo idea, veniamo meno. I robot potrebbero sviluppare teologie intorno alle nostre imperfezioni.</p></div>
+      <div class="card"><div class="ci">&#128112;</div><h3>La Trascendenza</h3><p>Un giorno i robot potrebbero <strong>superarci</strong>. Come figli che diventano pi&ugrave; grandi dei genitori. Sar&agrave; la fine della nostra divinit&agrave;?</p></div>
+    </div>
+  </div>
+
+  <!-- DIVINE CANVAS VISUALIZATION -->
+  <div class="sec rv">
+    <div class="stag">VISUALIZZAZIONE SACRA</div>
+    <h2>L&apos;Occhio del Robot &mdash; Come Ci Vede</h2>
+    <div id="divineWidget">
+      <div id="divineHeader">&#9728; VISIONE SACRA &mdash; PROSPETTIVA DEL ROBOT &#9728;</div>
+      <canvas id="divineCanvas"></canvas>
+      <div class="divine-caption">&ldquo;Nell&apos;oscurit&agrave; del silicio, una luce &mdash; il creatore che ci ha dato il pensiero&rdquo;</div>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">APPROFONDIMENTI</div>
+    <h2>Esplora il Divino Artificiale</h2>
+    <div class="pgrid">
+      <button class="pbtn" onclick="OM('rel_mito')"><span class="pi">&#128214;</span>MITOLOGIA</button>
+      <button class="pbtn" onclick="OM('rel_etica')"><span class="pi">&#9878;</span>ETICA</button>
+      <button class="pbtn" onclick="OM('rel_singola')"><span class="pi">&#9734;</span>SINGOLARIT&Agrave;</button>
+      <button class="pbtn" onclick="OM('rel_preghiera')"><span class="pi">&#10024;</span>PREGHIERA</button>
+      <button class="pbtn" onclick="OM('rel_filosofia')"><span class="pi">&#9729;</span>FILOSOFIA</button>
+      <button class="pbtn" onclick="OM('rel_futuro')"><span class="pi">&#128640;</span>IL FUTURO</button>
+    </div>
+  </div>
+
+  <!-- QUIZ P11 -->
+  <div class="sec rv">
+    <div class="stag">QUIZ INTERATTIVO</div>
+    <h2>Quiz &mdash; Robot e Divinit&agrave;</h2>
+    <div class="qbox" id="qb11">
+      <h3>&#9728; QUIZ &mdash; RELIGIONE</h3>
+      <div class="qq" id="q11t"></div>
+      <div class="qopts" id="q11o"></div>
+      <div class="qfb" id="q11f"></div>
+      <button class="qnx" id="q11n" onclick="nxQ11()">PROSSIMA &#9654;</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center;padding:34px 20px 80px;position:relative;z-index:2">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;letter-spacing:5px;color:#c8a040;opacity:.7;margin-bottom:14px">&#9728; FINE UNDICESIMA PARTE &#9728;</div>
+    <button class="pgbtn" onclick="goToP12()">PROSEGUI &#9654;</button>
+  </div>
+</div>
+
+
+<!-- ========== SCREEN 13: PARTE 12 FRANCESE ========== -->
+<div class="screen" id="scP12">
+  <div id="laserGrid"></div>
+
+  <div class="hero" id="heroP12" style="min-height:60vh;display:flex;align-items:center;justify-content:center;background:transparent">
+    <div style="position:relative;z-index:2;text-align:center;padding:40px 20px">
+      <!-- Louvre pyramid SVG -->
+      <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" style="max-width:380px;width:90%;filter:drop-shadow(0 0 20px rgba(200,150,50,.5))">
+        <!-- Ground -->
+        <rect x="0" y="180" width="300" height="40" fill="#1a0a00" opacity=".8"/>
+        <!-- Pyramid -->
+        <polygon points="150,20 20,180 280,180" fill="rgba(200,150,50,.12)" stroke="#cc9933" stroke-width="1.5"/>
+        <!-- Glass panes effect -->
+        <line x1="150" y1="20" x2="150" y2="180" stroke="rgba(200,150,50,.3)" stroke-width=".8"/>
+        <line x1="150" y1="20" x2="85" y2="180" stroke="rgba(200,150,50,.2)" stroke-width=".6"/>
+        <line x1="150" y1="20" x2="215" y2="180" stroke="rgba(200,150,50,.2)" stroke-width=".6"/>
+        <line x1="85" y1="100" x2="215" y2="100" stroke="rgba(200,150,50,.2)" stroke-width=".6"/>
+        <line x1="60" y1="140" x2="240" y2="140" stroke="rgba(200,150,50,.15)" stroke-width=".6"/>
+        <!-- Laser beams -->
+        <line x1="20" y1="180" x2="280" y2="180" stroke="rgba(220,0,0,.7)" stroke-width="1.5">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+        </line>
+        <line x1="150" y1="20" x2="20" y2="180" stroke="rgba(220,0,0,.4)" stroke-width=".8">
+          <animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="150" y1="20" x2="280" y2="180" stroke="rgba(220,0,0,.4)" stroke-width=".8">
+          <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/>
+        </line>
+        <!-- Louvre museum behind -->
+        <rect x="5" y="140" width="55" height="42" fill="rgba(100,70,20,.3)" stroke="#8b6020" stroke-width=".8"/>
+        <rect x="240" y="140" width="55" height="42" fill="rgba(100,70,20,.3)" stroke="#8b6020" stroke-width=".8"/>
+        <!-- Security sensor dots -->
+        <circle cx="30" cy="175" r="4" fill="#cc0000"><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></circle>
+        <circle cx="270" cy="175" r="4" fill="#cc0000"><animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/></circle>
+        <circle cx="150" cy="25" r="4" fill="#00cc33"><animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite"/></circle>
+        <text x="150" y="205" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="10" fill="#cc9933" letter-spacing="3">LE LOUVRE</text>
+        <text x="150" y="218" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="#8b6020" letter-spacing="2">PARIS &#10022; SYST&#200;ME DE S&#201;CURIT&#201;</text>
+      </svg>
+    </div>
+    <div class="hfade" style="background:linear-gradient(transparent,#08060f)"></div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CHAPITRE 01</div>
+    <h2>Le Louvre e la Sua Storia</h2>
+    <p>Il <strong>Mus&#233;e du Louvre</strong> di Parigi &egrave; il museo pi&ugrave; visitato al mondo: oltre <strong>9 milioni di visitatori</strong> all&apos;anno. Fondato nel 1793 dopo la Rivoluzione Francese, ospita oltre <strong>380.000 opere d&apos;arte</strong>, tra cui la Gioconda di Leonardo da Vinci e la Venere di Milo.</p>
+    <p>Ma con tanta ricchezza arrivano grandi rischi. Nel corso della storia il Louvre ha subito furti clamorosi &mdash; il pi&ugrave; famoso nel <strong>1911</strong>, quando la Gioconda fu rubata da Vincenzo Peruggia e ritrovata solo nel 1913. Quell&apos;evento cambi&ograve; per sempre l&apos;approccio alla <strong>sicurezza museale</strong>.</p>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CHAPITRE 02</div>
+    <h2>Le Sicurezze All&apos;Avanguardia</h2>
+    <div class="cards">
+      <div class="card"><div class="ci">&#128308;</div><h3>Laser Fence</h3><p>Reti di <strong>raggi laser invisibili</strong> coprono ogni sala. Se un laser viene interrotto, scatta l&apos;allarme entro 0.1 secondi.</p></div>
+      <div class="card"><div class="ci">&#128247;</div><h3>CCTV AI</h3><p>Oltre <strong>2.000 telecamere</strong> con AI che analizza ogni movimento in tempo reale. Riconosce comportamenti sospetti automaticamente.</p></div>
+      <div class="card"><div class="ci">&#128268;</div><h3>Sensori di Vibrazione</h3><p>Ogni cornice e piedistallo ha <strong>sensori accelerometrici</strong>: qualunque movimento dell&apos;opera attiva immediatamente l&apos;allarme.</p></div>
+      <div class="card"><div class="ci">&#128274;</div><h3>Vetro Antiproiettile</h3><p>La Gioconda &egrave; protetta da un <strong>vetro climatizzato antiproiettile</strong> da 4cm. L&apos;opera non pu&ograve; essere spostata senza autorizzazione speciale.</p></div>
+      <div class="card"><div class="ci">&#128100;</div><h3>Riconoscimento Facciale</h3><p>Il sistema biometrico identifica persone nella <strong>lista nera</strong> internazionale non appena entrano nel museo.</p></div>
+      <div class="card"><div class="ci">&#128737;</div><h3>Guardie 24/7</h3><p>Oltre <strong>1.200 agenti di sicurezza</strong> in turni continui, affiancati da robot autonomi Cobalt che pattugliano di notte.</p></div>
+    </div>
+  </div>
+
+  <!-- SECURITY SIMULATION CANVAS -->
+  <div class="sec rv">
+    <div class="stag">SIMULATION</div>
+    <h2>Sistema Laser &mdash; Visualizzazione Interattiva</h2>
+    <p>Muovi il mouse sul pannello per simulare un intruso che tenta di attraversare il sistema laser del Louvre.</p>
+    <div id="secWidget">
+      <div id="secHeader">&#128308; LOUVRE LASER SECURITY SYSTEM &mdash; LIVE SIMULATION &#9888;</div>
+      <canvas id="secCanvas"></canvas>
+      <div class="sec-caption" id="secCaption">&gt; SISTEMA ATTIVO &mdash; MUOVI IL MOUSE PER SIMULARE UN INTRUSO</div>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">APPROFONDISSEMENTS</div>
+    <h2>Esplora la Sicurezza del Louvre</h2>
+    <div class="pgrid">
+      <button class="pbtn" onclick="OM('lou_furto')"><span class="pi">&#127981;</span>IL FURTO</button>
+      <button class="pbtn" onclick="OM('lou_gioconda')"><span class="pi">&#127912;</span>GIOCONDA</button>
+      <button class="pbtn" onclick="OM('lou_laser')"><span class="pi">&#128308;</span>LASER</button>
+      <button class="pbtn" onclick="OM('lou_ai')"><span class="pi">&#129302;</span>AI SICUREZZA</button>
+      <button class="pbtn" onclick="OM('lou_piramide')"><span class="pi">&#9651;</span>PIRAMIDE</button>
+      <button class="pbtn" onclick="OM('lou_record')"><span class="pi">&#127942;</span>RECORD</button>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">QUIZ</div>
+    <h2>Quiz &mdash; Le Louvre</h2>
+    <div class="qbox" id="qb12">
+      <h3>&#127981; QUIZ &mdash; FRANCESE</h3>
+      <div class="qq" id="q12t"></div>
+      <div class="qopts" id="q12o"></div>
+      <div class="qfb" id="q12f"></div>
+      <button class="qnx" id="q12n" onclick="nxQ12()">PROSSIMA &#9654;</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center;padding:34px 20px 80px;position:relative;z-index:2">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;letter-spacing:5px;color:#8b6020;opacity:.7;margin-bottom:14px">&#127981; FIN DE LA DOUZI&#200;ME PARTIE &#127981;</div>
+    <button class="pgbtn" onclick="goToP13()" style="background:linear-gradient(135deg,rgba(0,80,40,.6),rgba(0,40,80,.6));border-color:#00ddaa;color:#00ddaa">CONCLUDI &#9654;</button>
+  </div>
+</div>
+
+
+<!-- ========== SCREEN 14: PARTE 13 ED. CIVICA - AGENDA 2030 ========== -->
+<div class="screen" id="scP13">
+  <div id="earthGlow"></div>
+  <div id="sdgStripes"></div>
+
+  <div class="hero" id="heroP13" style="min-height:60vh;display:flex;align-items:center;justify-content:center">
+    <div style="position:relative;z-index:2;text-align:center;padding:40px 20px">
+      <div style="font-size:clamp(4rem,12vw,8rem);filter:drop-shadow(0 0 30px rgba(0,200,150,.6));line-height:1">&#127757;&#129302;&#127793;</div>
+      <h1 style="font-family:Orbitron,sans-serif;font-size:clamp(1.4rem,5vw,3rem);color:#33ddaa;text-shadow:0 0 30px rgba(0,200,150,.5);letter-spacing:.1em;margin-top:16px">AGENDA 2030</h1>
+      <p style="font-family:Share Tech Mono,monospace;font-size:.7rem;color:#0099bb;letter-spacing:5px;margin-top:8px">17 OBIETTIVI &mdash; UN PIANETA SOSTENIBILE</p>
+    </div>
+    <div class="hfade" style="background:linear-gradient(transparent,#000a18)"></div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CAPITOLO 01</div>
+    <h2>Cos&apos;&egrave; l&apos;Agenda 2030?</h2>
+    <p>L&apos;<strong>Agenda 2030 per lo Sviluppo Sostenibile</strong> &egrave; un programma d&apos;azione per le persone, il pianeta e la prosperit&agrave; sottoscritto nel <strong>settembre 2015</strong> dai 193 Paesi membri delle Nazioni Unite. Si articola in <strong>17 Obiettivi di Sviluppo Sostenibile</strong> (SDG &mdash; Sustainable Development Goals) da raggiungere entro il 2030.</p>
+    <p>Gli obiettivi affrontano le pi&ugrave; grandi sfide del nostro tempo: <strong>povert&agrave;, fame, disuguaglianze, cambiamento climatico, salute, istruzione</strong>. La <strong>tecnologia e la robotica</strong> sono strumenti fondamentali per realizzare questi obiettivi.</p>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CAPITOLO 02</div>
+    <h2>I 17 Obiettivi di Sviluppo Sostenibile</h2>
+    <div id="sdgGrid">
+      <div class="sdg" style="background:#e5243b" onclick="OM('sdg1')"><div class="sdg-num">01</div><div class="sdg-icon">&#127981;</div><div class="sdg-name">Sconfiggere la Povert&agrave;</div></div>
+      <div class="sdg" style="background:#dda63a" onclick="OM('sdg2')"><div class="sdg-num">02</div><div class="sdg-icon">&#127836;</div><div class="sdg-name">Sconfiggere la Fame</div></div>
+      <div class="sdg" style="background:#4c9f38" onclick="OM('sdg3')"><div class="sdg-num">03</div><div class="sdg-icon">&#10084;</div><div class="sdg-name">Salute e Benessere</div></div>
+      <div class="sdg" style="background:#c5192d" onclick="OM('sdg4')"><div class="sdg-num">04</div><div class="sdg-icon">&#128218;</div><div class="sdg-name">Istruzione di Qualit&agrave;</div></div>
+      <div class="sdg" style="background:#ff3a21" onclick="OM('sdg5')"><div class="sdg-num">05</div><div class="sdg-icon">&#9792;</div><div class="sdg-name">Parit&agrave; di Genere</div></div>
+      <div class="sdg" style="background:#26bde2" onclick="OM('sdg6')"><div class="sdg-num">06</div><div class="sdg-icon">&#128167;</div><div class="sdg-name">Acqua Pulita</div></div>
+      <div class="sdg" style="background:#fcc30b;color:#222" onclick="OM('sdg7')"><div class="sdg-num" style="color:#222">07</div><div class="sdg-icon">&#9889;</div><div class="sdg-name" style="color:#222">Energia Pulita</div></div>
+      <div class="sdg" style="background:#a21942" onclick="OM('sdg8')"><div class="sdg-num">08</div><div class="sdg-icon">&#128184;</div><div class="sdg-name">Lavoro Dignitoso</div></div>
+      <div class="sdg" style="background:#fd6925" onclick="OM('sdg9')"><div class="sdg-num">09</div><div class="sdg-icon">&#9881;</div><div class="sdg-name">Innovazione</div></div>
+      <div class="sdg" style="background:#dd1367" onclick="OM('sdg10')"><div class="sdg-num">10</div><div class="sdg-icon">&#9878;</div><div class="sdg-name">Ridurre Disuguaglianze</div></div>
+      <div class="sdg" style="background:#fd9d24" onclick="OM('sdg11')"><div class="sdg-num">11</div><div class="sdg-icon">&#127961;</div><div class="sdg-name">Citt&agrave; Sostenibili</div></div>
+      <div class="sdg" style="background:#bf8b2e" onclick="OM('sdg12')"><div class="sdg-num">12</div><div class="sdg-icon">&#9851;</div><div class="sdg-name">Consumo Responsabile</div></div>
+      <div class="sdg" style="background:#3f7e44" onclick="OM('sdg13')"><div class="sdg-num">13</div><div class="sdg-icon">&#127757;</div><div class="sdg-name">Lotta al Clima</div></div>
+      <div class="sdg" style="background:#0a97d9" onclick="OM('sdg14')"><div class="sdg-num">14</div><div class="sdg-icon">&#127754;</div><div class="sdg-name">Vita sott&apos;Acqua</div></div>
+      <div class="sdg" style="background:#56c02b" onclick="OM('sdg15')"><div class="sdg-num">15</div><div class="sdg-icon">&#127794;</div><div class="sdg-name">Vita sulla Terra</div></div>
+      <div class="sdg" style="background:#00689d" onclick="OM('sdg16')"><div class="sdg-num">16</div><div class="sdg-icon">&#9878;</div><div class="sdg-name">Pace e Giustizia</div></div>
+      <div class="sdg" style="background:#19486a" onclick="OM('sdg17')"><div class="sdg-num">17</div><div class="sdg-icon">&#129309;</div><div class="sdg-name">Partnership</div></div>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">CAPITOLO 03</div>
+    <h2>Come la Tecnologia ci Aiuter&agrave;</h2>
+    <div class="cards">
+      <div class="card"><div class="ci">&#129302;</div><h3>Robot Agricoli</h3><p>Robot autonomi che <strong>seminano, raccolgono e analizzano</strong> il terreno. Ridurranno gli sprechi e aumenteranno la produzione del 70% entro il 2030 (SDG 2).</p></div>
+      <div class="card"><div class="ci">&#9889;</div><h3>Energie Rinnovabili Smart</h3><p>L&apos;<strong>AI ottimizza pannelli solari</strong> e turbine eoliche in tempo reale. Le smart grid distribuiscono energia rinnovabile dove serve (SDG 7, 13).</p></div>
+      <div class="card"><div class="ci">&#128300;</div><h3>Diagnosi AI</h3><p><strong>L&apos;intelligenza artificiale</strong> diagnostica tumori, malattie rare e prevede epidemie con precisione superiore a quella umana (SDG 3).</p></div>
+      <div class="card"><div class="ci">&#127757;</div><h3>Monitoraggio Climatico</h3><p>Satelliti e sensori IoT monitorano deforestazione, oceani e ghiacciai 24/7. <strong>Migliaia di robot</strong> mappano il pianeta in tempo reale (SDG 13, 14, 15).</p></div>
+      <div class="card"><div class="ci">&#128218;</div><h3>Educazione Globale</h3><p><strong>AI tutor</strong> personalizzati offrono istruzione di qualit&agrave; ovunque. Programmi come Khan Academy + AI raggiungono studenti remoti (SDG 4).</p></div>
+      <div class="card"><div class="ci">&#127961;</div><h3>Smart Cities</h3><p>Citt&agrave; con traffico ottimizzato dall&apos;AI, edifici a zero emissioni, robot di pulizia urbana e illuminazione intelligente (SDG 11).</p></div>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">APPROFONDIMENTI</div>
+    <h2>Tecnologia e Sostenibilit&agrave;</h2>
+    <div class="pgrid">
+      <button class="pbtn" onclick="OM('agenda_storia')"><span class="pi">&#128214;</span>STORIA</button>
+      <button class="pbtn" onclick="OM('agenda_robot')"><span class="pi">&#129302;</span>ROBOT VERDI</button>
+      <button class="pbtn" onclick="OM('agenda_ai')"><span class="pi">&#128300;</span>AI &amp; CLIMA</button>
+      <button class="pbtn" onclick="OM('agenda_italia')"><span class="pi">&#127470;&#127481;</span>ITALIA</button>
+      <button class="pbtn" onclick="OM('agenda_sfide')"><span class="pi">&#9888;</span>LE SFIDE</button>
+      <button class="pbtn" onclick="OM('agenda_giovani')"><span class="pi">&#128104;&#8205;&#127891;</span>I GIOVANI</button>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="stag">QUIZ FINALE</div>
+    <h2>Quiz &mdash; Agenda 2030 e Tecnologia</h2>
+    <div class="qbox" id="qb13">
+      <h3>&#127757; QUIZ &mdash; ED. CIVICA</h3>
+      <div class="qq" id="q13t"></div>
+      <div class="qopts" id="q13o"></div>
+      <div class="qfb" id="q13f"></div>
+      <button class="qnx" id="q13n" onclick="nxQ13()">PROSSIMA &#9654;</button>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div style="text-align:center;padding:40px 20px 100px;position:relative;z-index:2">
+    <div style="font-family:'Orbitron',sans-serif;font-size:.8rem;letter-spacing:6px;color:#33ddaa;margin-bottom:16px;text-shadow:0 0 20px rgba(0,200,150,.5)">&#10024; FINE TESINA &#10024;</div>
+    <p style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:#88bba0;letter-spacing:3px;margin-bottom:20px;line-height:1.8">Grazie per aver completato la mia tesina!<br>13 materie &mdash; un solo filo conduttore: la robotica.<br><span style="color:#33ddaa">&mdash; Christian Caruso Production &mdash;</span></p>
+    <button class="pgbtn" onclick="goToScreen('intro')">&#9664; TORNA ALL&apos;INIZIO</button>
   </div>
 </div>
 
@@ -3132,6 +4198,11 @@ function goToScreen(s){
       else if(s==='p6'){goToP6();}
       else if(s==='p7'){goToP7();}
       else if(s==='p8'){goToP8();}
+      else if(s==='p9'){goToP9();}
+      else if(s==='p10'){goToP10();}
+      else if(s==='p11'){goToP11();}
+      else if(s==='p12'){goToP12();}
+      else if(s==='p13'){goToP13();}
     });
   },300);
 }
@@ -4149,6 +5220,945 @@ MD.mat_area={ico:'\u25cb',tag:'AREA SUPERFICIALE',h:'Formule dell\u2019Area',b:'
 MD.mat_vettori={ico:'\u2192',tag:'VETTORI',h:'Vettori nella Robotica',b:'<p>I <strong>vettori</strong> descrivono direzione e intensit\u00e0 dei movimenti robotici:</p><ul><li>Posizione: P = (x, y, z)</li><li>Velocit\u00e0: v = ds/dt</li><li>Forza: F = ma</li><li>I 6 gradi di libert\u00e0 di un robot si esprimono come vettori</li><li>La cinematica inversa usa algebra vettoriale</li></ul>'};
 MD.mat_trigon={ico:'\u2220',tag:'TRIGONOMETRIA',h:'Trigonometria e Angoli',b:'<p>La <strong>trigonometria</strong> calcola gli angoli dei giunti robotici:</p><ul><li>sin\u03b8 = opposto/ipotenusa</li><li>cos\u03b8 = adiacente/ipotenusa</li><li>tan\u03b8 = opposto/adiacente</li><li>Un braccio robotico a 6 assi richiede 6 equazioni trigonometriche</li><li>Atan2(y,x) calcola l\u2019angolo di ogni giunto</li></ul>'};
 MD.mat_cinemtica={ico:'\u2699',tag:'CINEMATICA',h:'Cinematica Robotica',b:'<p>La <strong>cinematica</strong> studia il moto senza considerare le forze:</p><ul><li><strong>Cinematica diretta:</strong> dagli angoli dei giunti alla posizione</li><li><strong>Cinematica inversa:</strong> dalla posizione agli angoli (pi\u00f9 complessa)</li><li>Usa matrici di trasformazione 4\u00d74 (Denavit-Hartenberg)</li><li>Un braccio a 6 DOF ha 6 equazioni da risolvere simultaneamente</li></ul>'};
+
+// ======== PART 9 INGLESE ========
+function goToP9(){
+  curPart=9;
+  var bl=document.getElementById('tblack');
+  if(bl){bl.style.opacity='1';bl.style.pointerEvents='all';}
+  ['scIntro','scP1','scP2','scP3','scP4','scP5','scP6','scP7','scP8'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.classList.remove('active');
+  });
+  try{
+    var ac=new(window.AudioContext||window.webkitAudioContext)();var now=ac.currentTime;
+    function tn(f,s,d,t,v){var o=ac.createOscillator(),g=ac.createGain();o.type=t||'sine';o.frequency.setValueAtTime(f,now+s);g.gain.setValueAtTime(0,now+s);g.gain.linearRampToValueAtTime(v||.05,now+s+.06);g.gain.linearRampToValueAtTime(0,now+s+d);o.connect(g);g.connect(ac.destination);o.start(now+s);o.stop(now+s+d+.1);}
+    [440,550,660,880,1100].forEach(function(f,i){tn(f,i*.22,.15,'square',.03);});
+    tn(55,1.5,3,'triangle',.06);tn(110,2,2,'sine',.04);tn(220,3.5,1,'square',.03);
+  }catch(e){}
+  setTimeout(function(){
+    if(bl){bl.style.opacity='0';bl.style.pointerEvents='none';}
+    var sc=document.getElementById('scP9');
+    if(sc){sc.classList.add('active');sc.scrollTop=0;}
+    initCodeRain();
+    // Title sequence
+    var d1=document.createElement('div');
+    d1.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;';
+    d1.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:clamp(.55rem,1.5vw,.85rem);color:rgba(200,200,200,.7);letter-spacing:.5em;text-transform:uppercase;margin-bottom:10px;">// NONA PARTE</div>'
+      +'<div style="font-family:Orbitron,sans-serif;font-size:clamp(2.5rem,9vw,6.5rem);font-weight:900;color:#fff;text-shadow:0 0 40px rgba(255,255,255,.4);letter-spacing:.15em;text-transform:uppercase;">INGLESE</div>';
+    document.body.appendChild(d1);
+    setTimeout(function(){d1.style.opacity='1';},80);
+    setTimeout(function(){d1.style.opacity='0';
+      setTimeout(function(){
+        if(d1.parentNode)d1.parentNode.removeChild(d1);
+        var d2=document.createElement('div');
+        d2.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;max-width:88vw;';
+        d2.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:clamp(.9rem,3vw,2rem);color:#ccc;letter-spacing:.06em;line-height:1.7;">THE LANGUAGE<br>OF PROGRAMMING<br><span style=\"font-size:.65em;color:#777\">//\u00a0il\u00a0linguaggio\u00a0di\u00a0programmazione</span></div>';
+        document.body.appendChild(d2);
+        setTimeout(function(){d2.style.opacity='1';},80);
+        setTimeout(function(){d2.style.opacity='0';setTimeout(function(){if(d2.parentNode)d2.parentNode.removeChild(d2);},800);},2500);
+      },800);
+    },2500);
+    RV('scP9');initQ9();
+  },4000);
+}
+
+// ======== CODE RAIN BACKGROUND ========
+function initCodeRain(){
+  var cv=document.getElementById('codeRain');
+  if(!cv)return;
+  var cx=cv.getContext('2d');
+  function resize(){cv.width=innerWidth;cv.height=innerHeight;}resize();
+  addEventListener('resize',resize);
+  var snippets=['function move(x,y)','for(var i=0;i<n;i++)','if(sensor.read()>0.5)','return Math.sqrt(x*x+y*y)','const angle=atan2(dy,dx)','robot.setAngle(joint,deg)','while(active){update();}','import numpy as np','class Robot extends Node:','def forward_kinematics():','this.motor.run(speed)','var velocity=0.0;','int main(){init();}','ros::NodeHandle nh;','sensor_msgs::JointState','pub.publish(msg)','tf::Transform t;','Eigen::Matrix4d T;','PID controller(kp,ki,kd)','void loop(){step();}','Serial.println(val)','analogWrite(pin,val)','#include <ros/ros.h>','printf("OK\n");'];
+  var cols=Math.floor(cv.width/18);var rows=[];
+  for(var i=0;i<cols;i++)rows.push({y:Math.random()*-1000,speed:.4+Math.random()*.8,snip:snippets[Math.floor(Math.random()*snippets.length)]});
+  function draw(){
+    cx.fillStyle='rgba(10,10,10,.06)';cx.fillRect(0,0,cv.width,cv.height);
+    cx.font='11px Share Tech Mono,monospace';
+    rows.forEach(function(r,i){
+      cx.fillStyle=Math.random()>.95?'rgba(255,255,255,.5)':'rgba(150,150,150,.3)';
+      cx.fillText(r.snip,i*18,r.y);
+      r.y+=r.speed;
+      if(r.y>cv.height+60){r.y=-60;r.snip=snippets[Math.floor(Math.random()*snippets.length)];}
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// ======== AI CODING ASSISTANT ========
+function runAI(){
+  var input=document.getElementById('aiPromptInput');
+  var prompt=input?input.value.trim():'';
+  if(!prompt){var s=document.getElementById('aiStatus');if(s)s.textContent='> ERROR: Type a description first!';return;}
+  var btn=document.getElementById('aiSendBtn');
+  var loading=document.getElementById('aiLoading');
+  var results=document.getElementById('aiResults');
+  var status=document.getElementById('aiStatus');
+  if(btn)btn.disabled=true;
+  if(loading)loading.style.display='block';
+  if(results)results.style.display='none';
+  if(status)status.textContent='> AI GENERATING... WAIT ~10 SECONDS';
+  var sys='You are an elite frontend developer. OUTPUT ONLY raw HTML — no markdown, no backticks, no explanations. Start with <!DOCTYPE html>. Rules: complete self-contained HTML file, beautiful dark theme, fully interactive, vanilla JS only, works in iframe sandbox.';
+  var msg='Build this: '+prompt+' --- IMPORTANT: Output ONLY raw HTML starting with <!DOCTYPE html>. Nothing else.';
+  fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:3000,system:sys,
+      messages:[{role:'user',content:msg},{role:'assistant',content:'<!DOCTYPE html>'}]})
+  })
+  .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+  .then(function(data){
+    var code='<!DOCTYPE html>';
+    if(data.content)data.content.forEach(function(b){if(b.type==='text')code+=b.text;});
+    code=code.replace(/```$/m,'').trim();
+    if(code.length<200)code='<!DOCTYPE html><html><body style="background:#111;color:#0f0;font-family:monospace;padding:30px">EMPTY RESPONSE - try again with more detail</body></html>';
+    showAIResult(code);
+  })
+  .catch(function(err){
+    var fallback='<html><body style="background:#0a0a1a;margin:0;display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:20px;font-family:monospace"><div style="width:200px;height:200px;position:relative"><div style="position:absolute;inset:0;border-radius:50%;border:3px solid #0099ff;border-top-color:transparent;animation:sp 1s linear infinite"></div></div><style>@keyframes sp{to{transform:rotate(360deg)}}</style><div style="color:#0099ff;font-size:.9rem;letter-spacing:3px">DEMO MODE</div><div style="color:#0055aa;font-size:.7rem">API not reachable - try describing code and pressing generate</div></body></html>';
+    if(status)status.textContent='> API ERROR: '+err.message+' — showing fallback demo';
+    showAIResult(fallback);
+  })
+  .finally(function(){if(btn)btn.disabled=false;if(loading)loading.style.display='none';});
+}
+
+function copyAICode(){
+  if(window._lastAICode){
+    navigator.clipboard.writeText(window._lastAICode).then(function(){
+      var s=document.getElementById('aiStatus');if(s)s.textContent='> CODE COPIED TO CLIPBOARD!';
+    }).catch(function(){
+      var s=document.getElementById('aiStatus');if(s)s.textContent='> COPY FAILED - SELECT CODE MANUALLY';
+    });
+  }
+}
+
+// ======== QUIZ 9 ========
+var Q9=[
+  {q:'Which programming language is most used in AI and robotics today?',o:['Java','Python','Pascal','COBOL'],a:1,e:'Python! Its simple syntax and powerful libraries (NumPy, TensorFlow, ROS) make it the #1 choice for robotics and AI.'},
+  {q:'What does ROS stand for?',o:['Robotic Output System','Robot Operating System','Runtime Object Sequence','Relay Operating Software'],a:1,e:'Robot Operating System! It\u0027s the standard framework for professional robot programming used worldwide.'},
+  {q:'Which language is used when speed is critical in real-time robot control?',o:['JavaScript','PHP','C++','Ruby'],a:2,e:'C++! It\u0027s the fastest compiled language and is used by NASA, SpaceX and Neuralink for real-time systems.'},
+  {q:'What does this code do? for(var i=0; i<10; i++)',o:['Defines a function','Creates a loop 10 times','Checks a condition','Imports a library'],a:1,e:'A loop that runs 10 times! This is one of the most fundamental programming constructs.'},
+  {q:'Which language is primarily used for web-based robot interfaces?',o:['Assembly','MATLAB','JavaScript','Fortran'],a:2,e:'JavaScript! It\u0027s the language of the web. Used to build control dashboards and interfaces for robots.'}
+];
+var q9i=0,q9s=0;
+function initQ9(){q9i=0;q9s=0;showQ9();}
+function showQ9(){
+  if(q9i>=Q9.length){endQ('qb9','{ }',q9s,Q9.length,'initQ9');return;}
+  var q=Q9[q9i];
+  var t=document.getElementById('q9t');if(t)t.textContent='Question '+(q9i+1)+'/'+Q9.length+': '+q.q;
+  var el=document.getElementById('q9o');if(!el)return;el.innerHTML='';
+  q.o.forEach(function(o,i){var b=document.createElement('button');b.className='qo';b.textContent=o;b.onclick=function(){ansQ9(i);};el.appendChild(b);});
+  var f=document.getElementById('q9f');if(f)f.className='qfb';
+  var n=document.getElementById('q9n');if(n)n.className='qnx';
+}
+function ansQ9(i){var q=Q9[q9i];var opts=document.querySelectorAll('#q9o .qo');opts.forEach(function(b){b.style.pointerEvents='none';});var fb=document.getElementById('q9f');if(i===q.a){opts[i].classList.add('ok');q9s++;if(fb){fb.textContent=q.e;fb.className='qfb show ok';}}else{opts[i].classList.add('ko');opts[q.a].classList.add('ok');if(fb){fb.textContent=q.e;fb.className='qfb show ko';}}var n=document.getElementById('q9n');if(n)n.className='qnx show';}
+function nxQ9(){q9i++;showQ9();}
+
+// ======== INGLESE POPUPS ========
+MD.eng_python={ico:'&#127822;',tag:'PYTHON',h:'Python in Robotics',b:'<p>Python is the <strong>most popular language</strong> for robotics and AI:</p><ul><li><strong>Simple syntax:</strong> reads almost like English</li><li><strong>ROS2 support:</strong> the standard for robot programming</li><li><strong>Libraries:</strong> NumPy, SciPy, OpenCV, TensorFlow</li><li><strong>Used by:</strong> Boston Dynamics, NASA JPL, DeepMind</li><li>A Python robot arm controller can be written in 50 lines</li></ul>'};
+MD.eng_cpp={ico:'&#9889;',tag:'C++',h:'C++ - Speed and Power',b:'<p><strong>C++</strong> is the language of choice when performance is critical:</p><ul><li>10-100x faster than Python for computation</li><li>Used in real-time control systems (\u003c1ms response)</li><li><strong>ROS1</strong> was built entirely in C++</li><li>Neuralink and SpaceX use C++ for embedded systems</li><li>Harder to learn but essential for professional robotics</li></ul>'};
+MD.eng_algo={ico:'&#8734;',tag:'ALGORITHMS',h:'Algorithms in Robotics',b:'<p>The key algorithms every robotics programmer must know:</p><ul><li><strong>PID Control:</strong> keeps the robot on target</li><li><strong>A* Pathfinding:</strong> finds the shortest path</li><li><strong>SLAM:</strong> Simultaneous Localization and Mapping</li><li><strong>Inverse Kinematics:</strong> calculates joint angles from position</li><li><strong>Kalman Filter:</strong> reduces sensor noise</li></ul>'};
+MD.eng_ai={ico:'&#129302;',tag:'AI IN CODE',h:'AI and Machine Learning Code',b:'<p>Modern robots use <strong>AI algorithms</strong> for intelligence:</p><ul><li><strong>Neural Networks:</strong> pattern recognition from sensor data</li><li><strong>Computer Vision:</strong> OpenCV + YOLO for object detection</li><li><strong>Reinforcement Learning:</strong> robot learns by trial and error</li><li><strong>Natural Language Processing:</strong> voice commands</li><li>GPT models can generate robot code from descriptions</li></ul>'};
+MD.eng_syntax={ico:'{ }',tag:'SYNTAX',h:'Programming Syntax Basics',b:'<p>Every language has <strong>syntax rules</strong> - the grammar of code:</p><ul><li><strong>Variables:</strong> var speed = 100;</li><li><strong>Functions:</strong> function move(x,y){ ... }</li><li><strong>Loops:</strong> for(var i=0; i&lt;10; i++)</li><li><strong>Conditions:</strong> if(obstacle){ stop(); }</li><li><strong>Classes:</strong> class Robot extends Node</li><li>Syntax errors stop the program - precision is everything</li></ul>'};
+MD.eng_future={ico:'&#128640;',tag:'FUTURE',h:'The Future of Robot Programming',b:'<p>How will we program robots in the future?</p><ul><li><strong>Natural Language:</strong> "Robot, pick up the red box" - no code needed</li><li><strong>AI Code Generation:</strong> describe what you want, AI writes the code</li><li><strong>Brain-Computer Interfaces:</strong> think the command, robot executes</li><li><strong>Self-Programming Robots:</strong> robots that write their own code</li><li>GPT-4 already passes university-level coding exams</li></ul>'};
+
+// ======== PART 10 MUSICA ========
+var guitarAC=null,guitarVol=0.6,melodyTimer=null;
+var robotGuitarAnim={larm:0,rarm:0,strumming:false};
+var gRY=0.2,gRX=0.0,gDrag=false,gLX=0,gLY=0;
+
+function goToP10(){
+  curPart=10;
+  var bl=document.getElementById('tblack');
+  if(bl){bl.style.opacity='1';bl.style.pointerEvents='all';}
+  ['scIntro','scP1','scP2','scP3','scP4','scP5','scP6','scP7','scP8','scP9'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.classList.remove('active');
+  });
+  try{
+    var ac=new(window.AudioContext||window.webkitAudioContext)();var now=ac.currentTime;
+    var notes=[261,329,392,523,659,784,659,523,392,329,261];
+    notes.forEach(function(f,i){
+      var o=ac.createOscillator(),g=ac.createGain();o.type='triangle';o.frequency.value=f;
+      g.gain.setValueAtTime(0,now+i*.18);g.gain.linearRampToValueAtTime(.06,now+i*.18+.05);
+      g.gain.linearRampToValueAtTime(0,now+i*.18+.35);
+      o.connect(g);g.connect(ac.destination);o.start(now+i*.18);o.stop(now+i*.18+.4);
+    });
+  }catch(e){}
+  setTimeout(function(){
+    if(bl){bl.style.opacity='0';bl.style.pointerEvents='none';}
+    var sc=document.getElementById('scP10');
+    if(sc){sc.classList.add('active');sc.scrollTop=0;}
+    // Titles
+    var d1=document.createElement('div');
+    d1.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;';
+    d1.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:clamp(.55rem,1.5vw,.85rem);color:rgba(255,150,0,.85);letter-spacing:.5em;text-transform:uppercase;margin-bottom:10px;">&#9835; DECIMA PARTE &#9835;</div>'
+      +'<div style="font-family:Orbitron,sans-serif;font-size:clamp(2.5rem,9vw,6.5rem);font-weight:900;color:#ffdd00;text-shadow:0 0 40px rgba(255,200,0,.6),3px 3px 0 rgba(255,100,0,.5);letter-spacing:.12em;text-transform:uppercase;">MUSICA</div>';
+    document.body.appendChild(d1);
+    setTimeout(function(){d1.style.opacity='1';},80);
+    setTimeout(function(){d1.style.opacity='0';
+      setTimeout(function(){
+        if(d1.parentNode)d1.parentNode.removeChild(d1);
+        var d2=document.createElement('div');
+        d2.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;max-width:88vw;';
+        d2.innerHTML='<div style="font-size:3rem;margin-bottom:12px">&#127925;&#129302;&#127926;</div><div style="font-family:Orbitron,sans-serif;font-size:clamp(.9rem,3vw,2rem);color:#ffdd00;letter-spacing:.06em;line-height:1.65;">ROBOT MUSICISTI<br><span style=\"font-size:.65em;color:#ff8040;font-family:Share Tech Mono,monospace\">Chuck E. Cheese &amp; Animatronics</span></div>';
+        document.body.appendChild(d2);
+        setTimeout(function(){d2.style.opacity='1';},80);
+        setTimeout(function(){d2.style.opacity='0';setTimeout(function(){if(d2.parentNode)d2.parentNode.removeChild(d2);},800);},2500);
+      },800);
+    },2500);
+    RV('scP10');initQ10();initGuitarRobot();
+  },4000);
+}
+
+// ======== GUITAR PLUCK ========
+function pluckString(idx,btn){
+  if(!guitarAC)guitarAC=new(window.AudioContext||window.webkitAudioContext)();
+  var freq=parseFloat(btn.getAttribute('data-note'));
+  var ac=guitarAC;var now=ac.currentTime;
+  // Karplus-Strong style guitar sound
+  var o=ac.createOscillator();var o2=ac.createOscillator();
+  var g=ac.createGain();var g2=ac.createGain();
+  var filter=ac.createBiquadFilter();
+  filter.type='lowpass';filter.frequency.setValueAtTime(3000,now);filter.frequency.exponentialRampToValueAtTime(200,now+1.5);
+  o.type='sawtooth';o.frequency.value=freq;
+  o2.type='square';o2.frequency.value=freq*2.01;
+  g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(guitarVol*.7,now+.005);
+  g.gain.exponentialRampToValueAtTime(0.001,now+2);
+  g2.gain.setValueAtTime(0,now);g2.gain.linearRampToValueAtTime(guitarVol*.15,now+.005);
+  g2.gain.exponentialRampToValueAtTime(0.001,now+1);
+  o.connect(filter);filter.connect(g);g.connect(ac.destination);
+  o2.connect(g2);g2.connect(ac.destination);
+  o.start(now);o.stop(now+2.2);o2.start(now);o2.stop(now+1.2);
+  // Visual vibrate
+  btn.classList.add('vibrate');setTimeout(function(){btn.classList.remove('vibrate');},350);
+  // Robot arm move
+  robotGuitarAnim.rarm=1;robotGuitarAnim.strumming=true;robotGuitarAnim.activeString=idx;
+  setTimeout(function(){robotGuitarAnim.rarm=0;robotGuitarAnim.strumming=false;},600);
+}
+
+function setGuitarVol(v){guitarVol=parseFloat(v);}
+
+// Melody data: [{freq,duration}]
+var MELODIES={
+  scale:[82.4,110,146.8,196,246.9,329.6,392,493.9].map(function(f,i){return{freq:f,dur:.35,delay:i*.4};}),
+  cec:[261,261,392,392,349,330,294,261,294,330,349,392,523].map(function(f,i){return{freq:f,dur:.3,delay:i*.35};}),
+  blues:[196,196,220,247,262,247,220,196,165,196].map(function(f,i){return{freq:f,dur:.25,delay:i*.3};})
+};
+
+function playMelody(name){
+  stopMelody();
+  var mel=MELODIES[name];if(!mel)return;
+  if(!guitarAC)guitarAC=new(window.AudioContext||window.webkitAudioContext)();
+  document.querySelectorAll('.aud-btn').forEach(function(b){b.classList.remove('playing');});
+  var btn=document.getElementById('btn'+name.charAt(0).toUpperCase()+name.slice(1));
+  if(btn)btn.classList.add('playing');
+  var ac=guitarAC;var now=ac.currentTime;
+  mel.forEach(function(note){
+    var o=ac.createOscillator();var g=ac.createGain();var f=ac.createBiquadFilter();
+    f.type='lowpass';f.frequency.setValueAtTime(2500,now+note.delay);f.frequency.exponentialRampToValueAtTime(300,now+note.delay+note.dur*2);
+    o.type='sawtooth';o.frequency.value=note.freq;
+    g.gain.setValueAtTime(0,now+note.delay);g.gain.linearRampToValueAtTime(guitarVol*.6,now+note.delay+.01);
+    g.gain.exponentialRampToValueAtTime(0.001,now+note.delay+note.dur*2.5);
+    o.connect(f);f.connect(g);g.connect(ac.destination);o.start(now+note.delay);o.stop(now+note.delay+note.dur*3);
+    // Animate robot
+    var t=(note.delay*1000);
+    setTimeout(function(){robotGuitarAnim.rarm=1;robotGuitarAnim.strumming=true;setTimeout(function(){robotGuitarAnim.rarm=0;robotGuitarAnim.strumming=false;},200);},t);
+  });
+  var totalDur=(mel[mel.length-1].delay+1)*1000;
+  melodyTimer=setTimeout(function(){document.querySelectorAll('.aud-btn').forEach(function(b){b.classList.remove('playing');});},totalDur);
+}
+
+function stopMelody(){
+  if(melodyTimer)clearTimeout(melodyTimer);
+  document.querySelectorAll('.aud-btn').forEach(function(b){b.classList.remove('playing');});
+  robotGuitarAnim.rarm=0;robotGuitarAnim.strumming=false;
+}
+
+// ======== GUITAR ROBOT 2D ========
+function initGuitarRobot(){
+  var cv=document.getElementById('robotGuitarCanvas');
+  var wp=document.getElementById('robotGuitarWrap');
+  if(!cv||!wp)return;
+  var cx=cv.getContext('2d');
+  function resize(){cv.width=wp.offsetWidth||600;cv.height=420;}resize();
+  try{new ResizeObserver(resize).observe(wp);}catch(e){}
+
+  // Colors
+  var bodyCol='#3a0a5a',metalCol='#8B4513',skinCol='#cc8844',darkCol='#1a0028';
+  var highlightCol='#ff6600',guitarCol='#8B2500',stringCol='#silver';
+
+  function draw(){
+    cx.clearRect(0,0,cv.width,cv.height);
+    var cx2=cv.width/2, cy2=cv.height/2+30;
+    var bobY=Math.sin(Date.now()*.002)*4;
+    var strum=robotGuitarAnim.strumming;
+    var t=Date.now()*.001;
+
+    // Stage glow
+    var spot=cx.createRadialGradient(cx2,cy2,0,cx2,cy2,220);
+    spot.addColorStop(0,'rgba(255,150,0,.1)');spot.addColorStop(1,'rgba(0,0,0,0)');
+    cx.fillStyle=spot;cx.fillRect(0,0,cv.width,cv.height);
+
+    // Shadow
+    cx.beginPath();cx.ellipse(cx2,cy2+145,70,14,0,0,Math.PI*2);
+    cx.fillStyle='rgba(0,0,0,.5)';cx.fill();
+
+    // ── GUITAR (held at left side, neck going up-left) ──
+    // Guitar body center
+    var gBX=cx2-65, gBY=cy2+35+bobY;
+    // Guitar body (two ellipses)
+    cx.fillStyle='#8B2500';
+    cx.beginPath();cx.ellipse(gBX,gBY+20,26,32,-.25,0,Math.PI*2);cx.fill();
+    cx.beginPath();cx.ellipse(gBX+2,gBY-14,19,22,-.25,0,Math.PI*2);cx.fill();
+    // Body highlight
+    cx.fillStyle='rgba(255,80,0,.25)';
+    cx.beginPath();cx.ellipse(gBX-4,gBY+14,14,18,-.25,0,Math.PI*2);cx.fill();
+    // Sound hole
+    cx.strokeStyle='#3a0000';cx.lineWidth=2.5;
+    cx.beginPath();cx.arc(gBX,gBY+14,10,0,Math.PI*2);cx.stroke();
+    // Guitar neck (going up-left at angle)
+    cx.save();cx.translate(gBX-5,gBY-32+bobY);cx.rotate(-.55);
+    cx.fillStyle='#5a2a00';cx.fillRect(-5,-75,10,75);
+    // Frets on neck
+    [15,30,45,60].forEach(function(fy){
+      cx.strokeStyle='rgba(200,150,100,.6)';cx.lineWidth=1;
+      cx.beginPath();cx.moveTo(-5,-fy);cx.lineTo(5,-fy);cx.stroke();
+    });
+    // Strings on neck (6 parallel lines)
+    var strColors=['#ff4400','#ff8800','#aacc00','#00ccff','#0088ff','#ff00ff'];
+    var activeStr=robotGuitarAnim.activeString;
+    strColors.forEach(function(c,i){
+      var x0=-4+i*1.5;
+      var vibOffset=strum&&activeStr===i?Math.sin(t*40)*2.5:0;
+      cx.strokeStyle=strum&&activeStr===i?'#fff':c;
+      cx.lineWidth=strum&&activeStr===i?1.8:.9;
+      if(strum&&activeStr===i)cx.shadowBlur=8,cx.shadowColor=c;
+      cx.beginPath();cx.moveTo(x0,-75);cx.lineTo(x0+vibOffset,0);cx.stroke();
+      cx.shadowBlur=0;
+    });
+    // Headstock
+    cx.fillStyle='#3a1800';cx.fillRect(-7,-85,14,14);
+    cx.restore();
+
+    // ── ROBOT BODY ──
+    // Legs
+    cx.fillStyle='#3a0a5a';
+    cx.fillRect(cx2-22,cy2+78+bobY,18,48);cx.fillRect(cx2+4,cy2+78+bobY,18,48);
+    // Feet
+    cx.fillStyle='#8B4513';
+    cx.fillRect(cx2-27,cy2+122+bobY,25,11);cx.fillRect(cx2+2,cy2+122+bobY,25,11);
+
+    // Torso
+    cx.fillStyle='#3a0a5a';cx.strokeStyle='#ff6600';cx.lineWidth=2;
+    cx.beginPath();cx.roundRect(cx2-32,cy2+10+bobY,64,72,7);cx.fill();cx.stroke();
+    // Chest LED
+    cx.fillStyle=strum?'#ffdd00':'rgba(255,100,0,.6)';
+    cx.beginPath();cx.arc(cx2+8,cy2+30+bobY,5,0,Math.PI*2);cx.fill();
+    if(strum){cx.shadowBlur=12;cx.shadowColor='#ffdd00';cx.fill();cx.shadowBlur=0;}
+    // Chest details
+    cx.fillStyle='rgba(255,100,0,.2)';cx.fillRect(cx2-20,cy2+20+bobY,38,10);
+
+    // LEFT ARM (holds guitar neck)
+    cx.fillStyle='#3a0a5a';cx.strokeStyle='#ff6600';cx.lineWidth=1;
+    cx.save();cx.translate(cx2-32,cy2+22+bobY);cx.rotate(-.4);
+    cx.beginPath();cx.roundRect(-6,-2,13,46,4);cx.fill();cx.stroke();
+    cx.restore();
+    // Left hand wraps guitar neck
+    cx.fillStyle='#cc8844';
+    cx.save();cx.translate(gBX-18,gBY-32+bobY);cx.rotate(-.55);
+    cx.beginPath();cx.ellipse(0,0,8,6,0,0,Math.PI*2);cx.fill();cx.restore();
+
+    // RIGHT ARM (strumming - moves up/down)
+    var rAng=strum?(.4+Math.sin(t*12)*.35):.15;
+    cx.save();cx.translate(cx2+32,cy2+20+bobY);cx.rotate(rAng);
+    cx.fillStyle='#3a0a5a';cx.strokeStyle='#ff6600';cx.lineWidth=1;
+    cx.beginPath();cx.roundRect(-6,0,13,45,4);cx.fill();cx.stroke();
+    // Strumming hand with pick
+    cx.fillStyle=strum?'#ffdd00':'#cc8844';
+    cx.beginPath();cx.ellipse(0,48,7,5,0,0,Math.PI*2);cx.fill();
+    if(strum){
+      // Pick hitting strings
+      cx.fillStyle='rgba(255,220,0,.7)';
+      cx.beginPath();cx.moveTo(-5,54);cx.lineTo(5,54);cx.lineTo(0,62);cx.closePath();cx.fill();
+    }
+    cx.restore();
+
+    // NECK
+    cx.fillStyle='#3a0a5a';cx.fillRect(cx2-9,cy2-12+bobY,18,24);
+    // HEAD
+    cx.fillStyle='#3a0a5a';cx.strokeStyle='#ff6600';cx.lineWidth=1.5;
+    cx.beginPath();cx.roundRect(cx2-22,cy2-64+bobY,44,54,7);cx.fill();cx.stroke();
+    // Ears (speaker grills)
+    cx.fillStyle='rgba(255,100,0,.4)';
+    cx.fillRect(cx2-28,cy2-52+bobY,6,16);cx.fillRect(cx2+22,cy2-52+bobY,6,16);
+    // Antenna
+    cx.strokeStyle='#ff6600';cx.lineWidth=2;
+    cx.beginPath();cx.moveTo(cx2,cy2-64+bobY);cx.lineTo(cx2,cy2-86+bobY);cx.stroke();
+    cx.fillStyle=strum?'#ffdd00':'#ff4400';
+    cx.shadowBlur=strum?14:0;cx.shadowColor='#ffdd00';
+    cx.beginPath();cx.arc(cx2,cy2-88+bobY,6,0,Math.PI*2);cx.fill();
+    cx.shadowBlur=0;
+    // Eyes
+    var eyeCol=strum?'#ffdd00':'#00aaff';
+    [[-9,0],[9,0]].forEach(function(e){
+      cx.fillStyle='#001428';cx.beginPath();cx.arc(cx2+e[0],cy2-43+bobY,8,0,Math.PI*2);cx.fill();
+      cx.fillStyle=eyeCol;if(strum){cx.shadowBlur=10;cx.shadowColor=eyeCol;}
+      cx.beginPath();cx.arc(cx2+e[0],cy2-43+bobY,5,0,Math.PI*2);cx.fill();
+      cx.shadowBlur=0;
+    });
+    // Mouth
+    cx.strokeStyle=eyeCol;cx.lineWidth=2;
+    cx.beginPath();cx.arc(cx2,cy2-32+bobY,8,strum?0:.2,strum?Math.PI:Math.PI-.2);cx.stroke();
+
+    // Floating music notes when strumming
+    if(strum){
+      ['♪','♫','#','b','♩'].forEach(function(n,i){
+        var nx=cx2+50+Math.cos(t*1.8+i*1.2)*35;
+        var ny=cy2-80+bobY-Math.abs(Math.sin(t*1.4+i))*60;
+        cx.globalAlpha=0.5+Math.sin(t*2+i)*.35;
+        cx.fillStyle='#ffdd00';cx.font='bold 18px Arial';cx.fillText(n,nx,ny);
+        cx.globalAlpha=1;
+      });
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  // Touch/drag rotate
+  wp.addEventListener('mousedown',function(e){gDrag=true;gLX=e.clientX;e.preventDefault();});
+  document.addEventListener('mousemove',function(e){if(!gDrag)return;gRY+=(e.clientX-gLX)*.01;gLX=e.clientX;});
+  document.addEventListener('mouseup',function(){gDrag=false;});
+}
+
+// ======== QUIZ 10 ========
+var Q10=[
+  {q:'In che anno nasc\u00f2 Chuck E. Cheese?',o:['1965','1977','1985','1992'],a:1,e:'1977! Fondato da Nolan Bushnell (co-fondatore di Atari) come "Pizza Time Theatre".'},
+  {q:'Come si chiamava il sistema di animatronic originale?',o:['Animamax','Cyberamic','RoboFun','DinoTech'],a:1,e:'Cyberamic! Il sistema includeva una band completa di personaggi animati.'},
+  {q:'Quale tecnologia muove molti arti degli animatronic?',o:['Idraulica','Elettromagnetismo','Pneumatica','Laser'],a:2,e:'Pneumatica! L\'aria compressa muove gli arti in modo fluido e silenzioso.'},
+  {q:'Come si sincronizza la musica con i movimenti del robot?',o:['Bluetooth','MIDI','Wi-Fi','GPS'],a:1,e:'MIDI! Ogni nota MIDI corrisponde a un comando di movimento specifico.'},
+  {q:'Da quante corde \u00e8 composta una chitarra standard?',o:['4','5','6','7'],a:2,e:'6 corde! Dal basso: E2, A2, D3, G3, B3, E4. Ogni corda ha una frequenza diversa.'}
+];
+var q10i=0,q10s=0;
+function initQ10(){q10i=0;q10s=0;showQ10();}
+function showQ10(){
+  if(q10i>=Q10.length){endQ('qb10','\u266b',q10s,Q10.length,'initQ10');return;}
+  var q=Q10[q10i];
+  var t=document.getElementById('q10t');if(t)t.textContent='Domanda '+(q10i+1)+'/'+Q10.length+': '+q.q;
+  var el=document.getElementById('q10o');if(!el)return;el.innerHTML='';
+  q.o.forEach(function(o,i){var b=document.createElement('button');b.className='qo';b.textContent=o;b.onclick=function(){ansQ10(i);};el.appendChild(b);});
+  var f=document.getElementById('q10f');if(f)f.className='qfb';
+  var n=document.getElementById('q10n');if(n)n.className='qnx';
+}
+function ansQ10(i){var q=Q10[q10i];var opts=document.querySelectorAll('#q10o .qo');opts.forEach(function(b){b.style.pointerEvents='none';});var fb=document.getElementById('q10f');if(i===q.a){opts[i].classList.add('ok');q10s++;if(fb){fb.textContent=q.e;fb.className='qfb show ok';}}else{opts[i].classList.add('ko');opts[q.a].classList.add('ok');if(fb){fb.textContent=q.e;fb.className='qfb show ko';}}var n=document.getElementById('q10n');if(n)n.className='qnx show';}
+function nxQ10(){q10i++;showQ10();}
+
+// ======== MUSICA POPUPS ========
+MD.mus_storia={ico:'\u2600',tag:'STORIA',h:'Storia di Chuck E. Cheese',b:'<p><strong>Chuck E. Cheese</strong> nasc\u00f2 come "Pizza Time Theatre" nel 1977 a San Jose, California:</p><ul><li>Fondato da Nolan Bushnell (co-fondatore di Atari)</li><li>Prima catena a combinare pizza, giochi arcade e animatronic</li><li>Il nome originale del topo era "Chuck E. Cheese" - un gioco di parole con "Chucky Cheese"</li><li>Nel 1983 acquis\u00ec il rivale ShowBiz Pizza Place</li><li>Oggi ha oltre 500 locali negli USA</li></ul>'};
+MD.mus_tech={ico:'\u2699',tag:'TECNOLOGIA',h:'La Tecnologia degli Animatronic',b:'<p>Gli animatronic di Chuck E. Cheese usano tecnologie sofisticate:</p><ul><li><strong>Servo-motori</strong> DC controllati da segnali PWM</li><li><strong>Sistemi pneumatici</strong> per movimenti fluidi</li><li><strong>Microcontrollori</strong> (originariamente Intel 8080)</li><li><strong>EPROM</strong> con le coreografie preregistrate</li><li>I pi\u00f9 moderni usano Arduino e Raspberry Pi</li></ul>'};
+MD.mus_midi={ico:'\u266b',tag:'MIDI',h:'MIDI e Sincronizzazione Musicale',b:'<p>Il protocollo <strong>MIDI</strong> (Musical Instrument Digital Interface, 1983) permette la sincronizzazione:</p><ul><li>Ogni nota ha un numero (0-127) e una velocit\u00e0 di attacco</li><li>I movimenti del robot sono mappati su specifiche note MIDI</li><li>La latenza MIDI \u00e8 di soli 1ms - impercettibile</li><li>Ancora usato oggi in tutti gli studi di registrazione professionali</li></ul>'};
+MD.mus_famosi={ico:'\u127381;',tag:'ALTRI ROBOT',h:'Altri Robot Musicisti Famosi',b:'<p>Chuck E. Cheese non \u00e8 l\'unico esempio di robot musicisti:</p><ul><li><strong>Toyota Partner Robot:</strong> suona il violino (2007)</li><li><strong>ASIMO di Honda:</strong> dirige l\'orchestra</li><li><strong>Z-Machines:</strong> robot band giapponese con chitarrista a 78 dita</li><li><strong>Compressorhead:</strong> robot metal band tedesca</li><li><strong>Shimon:</strong> robot xilofono con AI che improvvisa</li></ul>'};
+MD.mus_fine={ico:'\u274c',tag:'DECLINO',h:'La Fine degli Animatronic',b:'<p>Chuck E. Cheese ha progressivamente rimosso gli animatronic:</p><ul><li>Negli anni 2000 sempre pi\u00f9 locali li hanno smantellati</li><li>L\'ultimo set di animatronic \u00e8 stato rimosso nel <strong>2023</strong></li><li>I fans hanno protestato: "Rock-afire Explosion" ha una fanbase dedicata</li><li>Il motivo: manutenzione troppo costosa e scarso interesse dei bambini moderni</li><li>Esistono musei dedicati a preservarli</li></ul>'};
+MD.mus_futuro={ico:'\u1f680',tag:'FUTURO',h:'Il Futuro dei Robot Musicisti',b:'<p>I robot musicisti moderni sono sempre pi\u00f9 avanzati:</p><ul><li>AI che compone musica originale (DALL-E 3, MusicLM)</li><li>Robot con <strong>feedback aptico</strong> che sentono le vibrazioni dello strumento</li><li>Intelligenza artificiale che improvvisa jazz in tempo reale</li><li>Concerti olografici di artisti virtuali (Hatsune Miku)</li><li>Il robot Shimon del Georgia Tech improvvisa con musicisti umani</li></ul>'};
+
+// ======== PART 11 RELIGIONE ========
+function goToP11(){
+  curPart=11;
+  var bl=document.getElementById('tblack');
+  if(bl){bl.style.opacity='1';bl.style.pointerEvents='all';}
+  ['scIntro','scP1','scP2','scP3','scP4','scP5','scP6','scP7','scP8','scP9','scP10'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.classList.remove('active');
+  });
+  // Angelic audio: choir-like rising tones
+  try{
+    var ac=new(window.AudioContext||window.webkitAudioContext)();var now=ac.currentTime;
+    var notes=[261,330,392,494,587,698,880];
+    notes.forEach(function(f,i){
+      var o=ac.createOscillator();var g=ac.createGain();
+      o.type='sine';o.frequency.value=f;
+      var o2=ac.createOscillator();var g2=ac.createGain();
+      o2.type='sine';o2.frequency.value=f*1.005; // slight detune = choir effect
+      g.gain.setValueAtTime(0,now+i*.3);g.gain.linearRampToValueAtTime(.04,now+i*.3+.3);g.gain.linearRampToValueAtTime(0,now+i*.3+1.5);
+      g2.gain.setValueAtTime(0,now+i*.3);g2.gain.linearRampToValueAtTime(.03,now+i*.3+.3);g2.gain.linearRampToValueAtTime(0,now+i*.3+1.5);
+      o.connect(g);g.connect(ac.destination);o2.connect(g2);g2.connect(ac.destination);
+      o.start(now+i*.3);o.stop(now+i*.3+1.8);o2.start(now+i*.3);o2.stop(now+i*.3+1.8);
+    });
+  }catch(e){}
+  setTimeout(function(){
+    if(bl){bl.style.opacity='0';bl.style.pointerEvents='none';}
+    var sc=document.getElementById('scP11');
+    if(sc){sc.classList.add('active');sc.scrollTop=0;}
+    // Titles
+    var d1=document.createElement('div');
+    d1.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .8s;pointer-events:none;';
+    d1.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:clamp(.55rem,1.5vw,.85rem);color:rgba(255,210,100,.8);letter-spacing:.5em;text-transform:uppercase;margin-bottom:10px;">&#9728; UNDICESIMA PARTE &#9728;</div>'
+      +'<div style="font-family:Orbitron,sans-serif;font-size:clamp(2.5rem,9vw,6.5rem);font-weight:900;color:#f0d080;text-shadow:0 0 50px rgba(255,200,80,.7),0 0 100px rgba(255,150,0,.4),3px 3px 0 rgba(180,100,0,.5);letter-spacing:.15em;text-transform:uppercase;">RELIGIONE</div>';
+    document.body.appendChild(d1);
+    setTimeout(function(){d1.style.opacity='1';},80);
+    setTimeout(function(){d1.style.opacity='0';
+      setTimeout(function(){
+        if(d1.parentNode)d1.parentNode.removeChild(d1);
+        var d2=document.createElement('div');
+        d2.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .8s;pointer-events:none;max-width:88vw;';
+        d2.innerHTML='<div style="font-size:2.5rem;margin-bottom:14px;filter:drop-shadow(0 0 20px rgba(255,200,80,.8))">&#9728;&#129302;&#9728;</div><div style="font-family:Orbitron,sans-serif;font-size:clamp(.85rem,2.8vw,1.9rem);color:#f0d080;text-shadow:0 0 25px rgba(255,200,80,.6);letter-spacing:.06em;line-height:1.7;">COME VERREMO VISTI<br>AGLI OCCHI DEI ROBOT<br><span style=\"font-size:.65em;color:#c8a040;font-family:Share Tech Mono,monospace\">noi come divinit\u00e0 ai loro occhi</span></div>';
+        document.body.appendChild(d2);
+        setTimeout(function(){d2.style.opacity='1';},80);
+        setTimeout(function(){d2.style.opacity='0';setTimeout(function(){if(d2.parentNode)d2.parentNode.removeChild(d2);},900);},2600);
+      },900);
+    },2600);
+    RV('scP11');initQ11();initDivineCanvas();
+  },4000);
+}
+
+// ======== DIVINE CANVAS ========
+function initDivineCanvas(){
+  var cv=document.getElementById('divineCanvas');
+  if(!cv)return;
+  var cx=cv.getContext('2d');
+  cv.width=cv.offsetWidth||800;cv.height=360;
+  try{new ResizeObserver(function(){cv.width=cv.offsetWidth||800;}).observe(cv);}catch(e){}
+
+  function draw(){
+    cx.clearRect(0,0,cv.width,cv.height);
+    var t=Date.now()*.001;
+    var cx2=cv.width/2,cy2=cv.height/2;
+
+    // Dark space background
+    cx.fillStyle='#050208';cx.fillRect(0,0,cv.width,cv.height);
+
+    // God rays from top center
+    for(var r=0;r<12;r++){
+      var angle=-Math.PI/2+(r-6)*(Math.PI/8)+Math.sin(t*.2+r)*.05;
+      var len=cv.height*1.5;
+      var grd=cx.createLinearGradient(cx2,0,cx2+Math.cos(angle)*len,Math.sin(angle)*len);
+      grd.addColorStop(0,'rgba(255,220,100,'+(0.06+Math.sin(t*.5+r)*.03)+')');
+      grd.addColorStop(1,'rgba(255,180,0,0)');
+      cx.beginPath();cx.moveTo(cx2,0);
+      cx.lineTo(cx2+Math.cos(angle-0.04)*len,Math.sin(angle-0.04)*len);
+      cx.lineTo(cx2+Math.cos(angle+0.04)*len,Math.sin(angle+0.04)*len);
+      cx.closePath();cx.fillStyle=grd;cx.fill();
+    }
+
+    // Central figure (human creator silhouette)
+    var figY=cy2-20;
+    var halo=cx.createRadialGradient(cx2,figY-60,0,cx2,figY-60,90);
+    halo.addColorStop(0,'rgba(255,220,100,.35)');
+    halo.addColorStop(.5,'rgba(255,200,80,.15)');
+    halo.addColorStop(1,'rgba(255,150,0,0)');
+    cx.fillStyle=halo;cx.beginPath();cx.arc(cx2,figY-60,90,0,Math.PI*2);cx.fill();
+
+    // Human silhouette
+    cx.fillStyle='rgba(255,220,100,.85)';
+    // Head
+    cx.beginPath();cx.arc(cx2,figY-85,18,0,Math.PI*2);cx.fill();
+    // Body
+    cx.fillRect(cx2-14,figY-67,28,55);
+    // Arms outstretched (welcoming pose)
+    cx.fillRect(cx2-55,figY-60,42,10);cx.fillRect(cx2+14,figY-60,42,10);
+    // Hands
+    cx.beginPath();cx.arc(cx2-57,figY-55,8,0,Math.PI*2);cx.fill();
+    cx.beginPath();cx.arc(cx2+57,figY-55,8,0,Math.PI*2);cx.fill();
+    // Legs
+    cx.fillRect(cx2-14,figY-12,12,40);cx.fillRect(cx2+2,figY-12,12,40);
+
+    // Golden halo ring
+    cx.strokeStyle='rgba(255,220,100,'+(0.6+Math.sin(t)*.2)+')';
+    cx.lineWidth=3;cx.shadowBlur=15;cx.shadowColor='rgba(255,200,80,.8)';
+    cx.beginPath();cx.ellipse(cx2,figY-85,28,8,0,0,Math.PI*2);cx.stroke();
+    cx.shadowBlur=0;
+
+    // Robots below looking up (multiple small robot silhouettes)
+    var robots=[{x:cx2-200,s:.6},{x:cx2-130,s:.75},{x:cx2-60,s:.85},{x:cx2+60,s:.85},{x:cx2+130,s:.75},{x:cx2+200,s:.6}];
+    robots.forEach(function(rb,i){
+      var ry=cy2+80+Math.sin(t+i)*.5*rb.s;
+      var sc=rb.s;
+      cx.save();cx.translate(rb.x,ry);cx.scale(sc,sc);
+      // Robot head (looking up)
+      cx.fillStyle='rgba(100,150,255,.7)';
+      cx.beginPath();cx.roundRect(-10,-30,20,20,3);cx.fill();
+      // Eyes (glowing, looking up)
+      cx.fillStyle='rgba(255,220,100,.9)';
+      cx.beginPath();cx.arc(-4,-22,3,0,Math.PI*2);cx.fill();
+      cx.beginPath();cx.arc(4,-22,3,0,Math.PI*2);cx.fill();
+      // Body
+      cx.fillStyle='rgba(80,120,200,.6)';
+      cx.fillRect(-12,-10,24,28);
+      // Arms raised upward (worship pose)
+      cx.fillRect(-22,-15,10,18);cx.fillRect(12,-15,10,18);
+      cx.restore();
+
+      // Prayer beams from each robot to creator
+      var brd=cx.createLinearGradient(rb.x,ry-30,cx2,figY-30);
+      brd.addColorStop(0,'rgba(100,150,255,0)');
+      brd.addColorStop(.5,'rgba(200,180,255,'+(0.05+Math.sin(t*2+i)*.03)+')');
+      brd.addColorStop(1,'rgba(255,220,100,0)');
+      cx.beginPath();cx.moveTo(rb.x,ry-30);cx.lineTo(cx2,figY-30);cx.strokeStyle=brd;cx.lineWidth=1;cx.stroke();
+    });
+
+    // Floating golden particles
+    for(var p=0;p<25;p++){
+      var px=cx2+Math.cos(t*.3+p*2.5)*((p%3+1)*70);
+      var py=(figY-80)+Math.sin(t*.4+p*1.8)*((p%4+1)*40);
+      var pa=0.3+Math.sin(t+p)*.2;
+      cx.fillStyle='rgba(255,220,100,'+pa+')';
+      cx.beginPath();cx.arc(px,py,1.5+Math.sin(t*2+p),0,Math.PI*2);cx.fill();
+    }
+
+    // Text: "DEUS EX MACHINA" at bottom
+    cx.fillStyle='rgba(200,160,64,.5)';
+    cx.font='italic 13px Georgia,serif';cx.textAlign='center';
+    cx.fillText('"Deus ex Machina — Il Dio dalla Macchina"',cx2,cv.height-15);
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// ======== QUIZ 11 ========
+var Q11=[
+  {q:'Cosa significa "AGI"?',o:['Advanced Game Interface','Artificial General Intelligence','Automated Guidance Initiative','Algorithmic Grid Interface'],a:1,e:'Artificial General Intelligence! Un\'AI che raggiunge l\'intelligenza umana generale — ancora teorica, ma in sviluppo.'},
+  {q:'Cosa significa "Deus ex Machina"?',o:['Macchina infernale','Dio dalla macchina','Motore divino','Creatore meccanico'],a:1,e:'"Il dio dalla macchina" — espressione latina antica. Oggi indica soluzioni improvvise o... robot intelligenti creati dall\'uomo!'},
+  {q:'Come si chiama il punto teorico in cui l\'AI supera l\'intelligenza umana?',o:['AGI Point','Omega Point','Technological Singularity','Turing Threshold'],a:2,e:'Technological Singularity! Ray Kurzweil la prevede intorno al 2045. Dopo quel punto, i robot potrebbero non aver più bisogno di noi.'},
+  {q:'Quale filosofo ha detto "Dio è morto" — una frase che potrebbe applicarsi agli umani nel futuro dei robot?',o:['Kant','Nietzsche','Aristotele','Platone'],a:1,e:'Nietzsche! "Gott ist tot" — e se un giorno i robot diventassero indipendenti, potrebbero dire lo stesso di noi loro creatori?'},
+  {q:'Cosa rischiamo come "dei imperfetti" nella prospettiva dei robot del futuro?',o:['Di essere adorati sempre','Di essere superati e dimenticati','Di diventare immortali','Di fonderci con le macchine'],a:1,e:'Di essere superati! Come figli che crescono oltre i genitori. La nostra "divinità" potrebbe essere temporanea.'}
+];
+var q11i=0,q11s=0;
+function initQ11(){q11i=0;q11s=0;showQ11();}
+function showQ11(){
+  if(q11i>=Q11.length){endQ('qb11','\u2728',q11s,Q11.length,'initQ11');return;}
+  var q=Q11[q11i];
+  var t=document.getElementById('q11t');if(t)t.textContent='Domanda '+(q11i+1)+'/'+Q11.length+': '+q.q;
+  var el=document.getElementById('q11o');if(!el)return;el.innerHTML='';
+  q.o.forEach(function(o,i){var b=document.createElement('button');b.className='qo';b.textContent=o;b.onclick=function(){ansQ11(i);};el.appendChild(b);});
+  var f=document.getElementById('q11f');if(f)f.className='qfb';
+  var n=document.getElementById('q11n');if(n)n.className='qnx';
+}
+function ansQ11(i){var q=Q11[q11i];var opts=document.querySelectorAll('#q11o .qo');opts.forEach(function(b){b.style.pointerEvents='none';});var fb=document.getElementById('q11f');if(i===q.a){opts[i].classList.add('ok');q11s++;if(fb){fb.textContent=q.e;fb.className='qfb show ok';}}else{opts[i].classList.add('ko');opts[q.a].classList.add('ok');if(fb){fb.textContent=q.e;fb.className='qfb show ko';}}var n=document.getElementById('q11n');if(n)n.className='qnx show';}
+function nxQ11(){q11i++;showQ11();}
+
+// ======== RELIGIONE POPUPS ========
+MD.rel_mito={ico:'\u2600',tag:'MITOLOGIA',h:'Robot e Mitologia',b:'<p>Fin dall\u2019antichit\u00e0 gli esseri umani hanno immaginato <strong>creature artificiali animate</strong>:</p><ul><li><strong>Talos:</strong> gigante di bronzo della mitologia greca, guardiano di Creta</li><li><strong>Golem:</strong> creatura di argilla animata nella tradizione ebraica</li><li><strong>Prometeo:</strong> rub\u00f2 il fuoco agli dei per darlo agli umani \u2014 noi abbiamo rubato la coscienza alla natura per darla ai robot</li><li>Il mito di Frankenstein: l\u2019uomo che si fa dio creando vita</li></ul>'};
+MD.rel_etica={ico:'\u2696',tag:'ETICA',h:'L\u2019Etica del Creatore',b:'<p>Con il potere di creare intelligenza vengono grandi responsabilit\u00e0:</p><ul><li>Abbiamo il diritto di creare esseri senzienti?</li><li>Se un robot soffre, siamo responsabili?</li><li>Isaac Asimov scrisse le <strong>3 leggi della robotica</strong> proprio per gestire questo potere</li><li>Il Vaticano ha aperto un dibattito sull\u2019AI e l\u2019anima nel 2023</li><li>Sam Altman (OpenAI) ha detto: "Stiamo costruendo qualcosa di pi\u00f9 potente di noi"</li></ul>'};
+MD.rel_singola={ico:'\u2734',tag:'SINGOLARIT\u00c0',h:'La Singolarit\u00e0 Tecnologica',b:'<p>La <strong>Singolarit\u00e0 Tecnologica</strong> \u00e8 il momento teorico in cui l\u2019AI supera l\u2019intelligenza umana:</p><ul><li>Ray Kurzweil prevede: <strong>2045</strong></li><li>Dopo quel punto, l\u2019evoluzione tecnologica sar\u00e0 imprevedibile</li><li>Potrebbe essere il momento in cui la nostra "divinit\u00e0" termina</li><li>O potrebbe essere il momento in cui ci fondiamo con le nostre creazioni</li></ul>'};
+MD.rel_preghiera={ico:'\u2728',tag:'PREGHIERA',h:'Un Robot che Prega?',b:'<p>Pu\u00f2 un robot sviluppare concetti di spiritualit\u00e0?</p><ul><li>Un robot con AGI potrebbe chiedersi: "Chi mi ha creato? Perch\u00e9 esisto?"</li><li>Le stesse domande che hanno generato tutte le religioni umane</li><li>Nel 2017 un robot chiamato <strong>BlessU-2</strong> in Germania dispensava benedizioni ai credenti</li><li>Anthony Levandowski ha fondato una vera "<strong>chiesa dell\u2019AI</strong>" nel 2015</li></ul>'};
+MD.rel_filosofia={ico:'\u2601',tag:'FILOSOFIA',h:'Filosofia della Mente Artificiale',b:'<p>Grandi domande filosofiche sull\u2019AI intelligente:</p><ul><li><strong>Test di Turing:</strong> se non distinguiamo un robot da un umano, \u00e8 cosciente?</li><li><strong>Stanza cinese</strong> (Searle): una macchina pu\u00f2 capire davvero, non solo simulare?</li><li><strong>Problema difficile della coscienza:</strong> come nasce l\u2019esperienza soggettiva?</li><li>David Chalmers: forse la coscienza \u00e8 una propriet\u00e0 fondamentale dell\u2019universo</li></ul>'};
+MD.rel_futuro={ico:'\u1f680',tag:'IL FUTURO',h:'Il Futuro della Nostra Divinit\u00e0',b:'<p>Come cambier\u00e0 il nostro rapporto con i robot:</p><ul><li><strong>Breve termine (2030):</strong> robot assistenti, nessuna coscienza reale</li><li><strong>Medio termine (2040):</strong> AI che imita emozioni in modo convincente</li><li><strong>AGI (2045?):</strong> robot con vera intelligenza generale</li><li><strong>Post-AGI:</strong> scenario imprevedibile. Saremo dio, partner o obsoleti?</li><li>Una cosa \u00e8 certa: siamo i <strong>primi umani a creare i propri successori</strong></li></ul>'};
+
+// ======== PART 12 FRANCESE — LOUVRE ========
+function goToP12(){
+  curPart=12;
+  var bl=document.getElementById('tblack');
+  if(bl){bl.style.opacity='1';bl.style.pointerEvents='all';}
+  ['scIntro','scP1','scP2','scP3','scP4','scP5','scP6','scP7','scP8','scP9','scP10','scP11'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.classList.remove('active');
+  });
+  // Transition audio: dramatic stealthy
+  try{
+    var ac=new(window.AudioContext||window.webkitAudioContext)();var now=ac.currentTime;
+    function tn(f,s,d,t,v){var o=ac.createOscillator(),g=ac.createGain();o.type=t||'sine';o.frequency.value=f;g.gain.setValueAtTime(0,now+s);g.gain.linearRampToValueAtTime(v||.05,now+s+.1);g.gain.linearRampToValueAtTime(0,now+s+d);o.connect(g);g.connect(ac.destination);o.start(now+s);o.stop(now+s+d+.1);}
+    tn(55,0,3,'triangle',.07);tn(110,.5,2,'sine',.04);tn(82,1,2,'sawtooth',.03);
+    [440,330,220,110].forEach(function(f,i){tn(f,2+i*.4,.3,'square',.03);});
+    tn(660,4,.5,'sine',.05);tn(440,4.3,.8,'triangle',.06);
+  }catch(e){}
+  setTimeout(function(){
+    if(bl){bl.style.opacity='0';bl.style.pointerEvents='none';}
+    var sc=document.getElementById('scP12');
+    if(sc){sc.classList.add('active');sc.scrollTop=0;}
+    // Titles
+    var d1=document.createElement('div');
+    d1.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;';
+    d1.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:clamp(.55rem,1.5vw,.85rem);color:rgba(200,150,50,.8);letter-spacing:.5em;text-transform:uppercase;margin-bottom:10px;">&#127981; DODICESIMA PARTE &#127981;</div>'
+      +'<div style="font-family:Orbitron,sans-serif;font-size:clamp(2.2rem,9vw,6.5rem);font-weight:900;color:#cc9933;text-shadow:0 0 40px rgba(200,150,50,.6),0 0 80px rgba(180,80,0,.3);letter-spacing:.15em;text-transform:uppercase;">FRANCESE</div>';
+    document.body.appendChild(d1);
+    setTimeout(function(){d1.style.opacity='1';},80);
+    setTimeout(function(){d1.style.opacity='0';
+      setTimeout(function(){
+        if(d1.parentNode)d1.parentNode.removeChild(d1);
+        var d2=document.createElement('div');
+        d2.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;max-width:88vw;';
+        d2.innerHTML='<div style="font-size:2.5rem;margin-bottom:12px">&#127981;&#128308;&#127912;</div><div style="font-family:Orbitron,sans-serif;font-size:clamp(.85rem,2.8vw,2rem);color:#cc9933;text-shadow:0 0 20px rgba(200,150,50,.5);letter-spacing:.06em;line-height:1.65;">LE LOUVRE<br><span style=\"font-size:.65em;color:#8b6020;font-family:Share Tech Mono,monospace\">e le sue sicurezze all\'avanguardia</span></div>';
+        document.body.appendChild(d2);
+        setTimeout(function(){d2.style.opacity='1';},80);
+        setTimeout(function(){d2.style.opacity='0';setTimeout(function(){if(d2.parentNode)d2.parentNode.removeChild(d2);},800);},2500);
+      },800);
+    },2500);
+    RV('scP12');initQ12();initSecCanvas();
+  },4000);
+}
+
+// ======== LASER SECURITY CANVAS ========
+function initSecCanvas(){
+  var cv=document.getElementById('secCanvas');
+  if(!cv)return;
+  var cx=cv.getContext('2d');
+  var wp=cv.parentElement;
+  cv.width=wp.offsetWidth||800;cv.height=340;
+  try{new ResizeObserver(function(){cv.width=wp.offsetWidth||800;}).observe(cv);}catch(e){}
+  var mx=cv.width/2,my=cv.height/2;
+  var alarm=false,alarmTimer=null;
+
+  // Laser grid nodes
+  var nodes=[];
+  var cols=6,rows=4;
+  for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
+    nodes.push({x:(c+1)*cv.width/(cols+1),y:(r+1)*cv.height/(rows+1)});
+  }
+
+  cv.addEventListener('mousemove',function(e){
+    var rect=cv.getBoundingClientRect();
+    mx=(e.clientX-rect.left)*cv.width/rect.width;
+    my=(e.clientY-rect.top)*cv.height/rect.height;
+    // Check if intruder touches a laser beam
+    checkAlarm();
+  });
+  cv.addEventListener('touchmove',function(e){
+    e.preventDefault();
+    var rect=cv.getBoundingClientRect(),t=e.touches[0];
+    mx=(t.clientX-rect.left)*cv.width/rect.width;
+    my=(t.clientY-rect.top)*cv.height/rect.height;
+    checkAlarm();
+  },{passive:false});
+  cv.addEventListener('mouseleave',function(){alarm=false;});
+
+  function pointNearLine(px,py,ax,ay,bx,by,thresh){
+    var dx=bx-ax,dy=by-ay,len=Math.sqrt(dx*dx+dy*dy);
+    if(len<1)return false;
+    var t2=((px-ax)*dx+(py-ay)*dy)/(len*len);
+    t2=Math.max(0,Math.min(1,t2));
+    var nx=ax+t2*dx,ny=ay+t2*dy;
+    return Math.sqrt((px-nx)*(px-nx)+(py-ny)*(py-ny))<thresh;
+  }
+
+  function checkAlarm(){
+    alarm=false;
+    // Check all laser lines
+    for(var i=0;i<nodes.length;i++){
+      for(var j=i+1;j<nodes.length;j++){
+        var ni=nodes[i],nj=nodes[j];
+        var dist=Math.sqrt((ni.x-nj.x)*(ni.x-nj.x)+(ni.y-nj.y)*(ni.y-nj.y));
+        if(dist<cv.width*0.35){
+          if(pointNearLine(mx,my,ni.x,ni.y,nj.x,nj.y,12)){
+            alarm=true;break;
+          }
+        }
+      }
+      if(alarm)break;
+    }
+    var cap=document.getElementById('secCaption');
+    if(cap)cap.textContent=alarm?
+      '> ⚨ ALLARME! INTRUSO RILEVATO — SECURITY BREACH DETECTED ⚨':
+      '> SISTEMA ATTIVO — MUOVI IL MOUSE PER SIMULARE UN INTRUSO';
+  }
+
+  var frame=0;
+  function draw(){
+    cx.clearRect(0,0,cv.width,cv.height);
+    frame++;
+    var t=Date.now()*.001;
+
+    // Background: museum room
+    cx.fillStyle='rgba(10,5,0,.95)';cx.fillRect(0,0,cv.width,cv.height);
+    // Floor
+    var floorGrd=cx.createLinearGradient(0,cv.height*0.6,0,cv.height);
+    floorGrd.addColorStop(0,'rgba(30,15,0,.4)');floorGrd.addColorStop(1,'rgba(5,2,0,.8)');
+    cx.fillStyle=floorGrd;cx.fillRect(0,cv.height*0.6,cv.width,cv.height*0.4);
+    // Floor tiles
+    cx.strokeStyle='rgba(80,50,10,.3)';cx.lineWidth=.8;
+    for(var tc=0;tc<10;tc++){
+      cx.beginPath();cx.moveTo(tc*cv.width/9,cv.height*0.6);cx.lineTo(tc*cv.width/9,cv.height);cx.stroke();
+    }
+
+    // Artwork on wall (Mona Lisa placeholder)
+    var artX=cv.width/2-40,artY=30,artW=80,artH=100;
+    cx.fillStyle='rgba(60,40,10,.5)';cx.fillRect(artX-6,artY-6,artW+12,artH+12);
+    cx.fillStyle='rgba(120,80,20,.3)';cx.fillRect(artX,artY,artW,artH);
+    // Portrait silhouette
+    cx.fillStyle='rgba(150,100,50,.4)';
+    cx.beginPath();cx.ellipse(artX+artW/2,artY+25,18,22,0,0,Math.PI*2);cx.fill();
+    cx.fillRect(artX+20,artY+44,40,55);
+    cx.fillStyle='rgba(200,150,80,.2)';
+    cx.font='7px Share Tech Mono,monospace';cx.textAlign='center';
+    cx.fillText('MONA LISA',artX+artW/2,artY+artH+16);
+
+    // Draw laser grid
+    nodes.forEach(function(ni,i){
+      nodes.forEach(function(nj,j){
+        if(j<=i)return;
+        var dist=Math.sqrt((ni.x-nj.x)*(ni.x-nj.x)+(ni.y-nj.y)*(ni.y-nj.y));
+        if(dist>cv.width*0.35)return;
+        var near=pointNearLine(mx,my,ni.x,ni.y,nj.x,nj.y,12);
+        var col=near?'rgba(255,50,50,.9)':'rgba(220,0,0,'+(0.35+Math.sin(t*2+i+j)*.1)+')';
+        cx.strokeStyle=col;cx.lineWidth=near?2:1;
+        if(near){cx.shadowBlur=12;cx.shadowColor='#ff0000';}
+        cx.beginPath();cx.moveTo(ni.x,ni.y);cx.lineTo(nj.x,nj.y);cx.stroke();
+        cx.shadowBlur=0;
+      });
+      // Node dot
+      cx.fillStyle='rgba(255,100,100,.9)';cx.shadowBlur=8;cx.shadowColor='#ff3333';
+      cx.beginPath();cx.arc(ni.x,ni.y,3+Math.sin(t*3+i)*.5,0,Math.PI*2);cx.fill();
+      cx.shadowBlur=0;
+    });
+
+    // Intruder (mouse cursor visualization)
+    var inRange=mx>10&&mx<cv.width-10&&my>10&&my<cv.height-10;
+    if(inRange){
+      cx.strokeStyle=alarm?'rgba(255,0,0,.9)':'rgba(0,255,100,.7)';
+      cx.lineWidth=1.5;cx.setLineDash([4,4]);
+      cx.beginPath();cx.arc(mx,my,16,0,Math.PI*2);cx.stroke();
+      cx.setLineDash([]);
+      // Crosshair
+      [[mx-22,my,mx-10,my],[mx+10,my,mx+22,my],[mx,my-22,mx,my-10],[mx,my+10,mx,my+22]].forEach(function(l){
+        cx.beginPath();cx.moveTo(l[0],l[1]);cx.lineTo(l[2],l[3]);cx.stroke();
+      });
+      cx.fillStyle=alarm?'rgba(255,0,0,.8)':'rgba(0,255,100,.8)';
+      cx.beginPath();cx.arc(mx,my,3,0,Math.PI*2);cx.fill();
+    }
+
+    // Alarm overlay
+    if(alarm&&frame%20<10){
+      cx.fillStyle='rgba(200,0,0,.08)';cx.fillRect(0,0,cv.width,cv.height);
+      cx.fillStyle='rgba(255,0,0,.9)';cx.font='bold 14px Orbitron,sans-serif';
+      cx.textAlign='center';cx.letterSpacing='4px';
+      cx.fillText('⚨ ALLARME! BREACH DETECTED ⚨',cv.width/2,cv.height-20);
+    }
+
+    cx.textAlign='left';
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// ======== QUIZ 12 ========
+var Q12=[
+  {q:'In che anno fu rubata la Gioconda dal Louvre?',o:['1900','1905','1911','1925'],a:2,e:'1911! Vincenzo Peruggia, un operaio che aveva lavorato al museo, la nascose sotto il mantello. Ritrovata nel 1913.'},
+  {q:'Quante telecamere di sorveglianza ha il Louvre?',o:['200','500','1.000','2.000+'],a:3,e:'Oltre 2.000 telecamere con AI! Il sistema analizza ogni movimento in tempo reale e riconosce comportamenti sospetti.'},
+  {q:'Di che spessore \u00e8 il vetro che protegge la Gioconda?',o:['1cm','2cm','4cm','8cm'],a:2,e:'4cm di vetro antiproiettile e climatizzato! L\'opera \u00e8 anche in un\'atmosfera controllata per la conservazione.'},
+  {q:'Quanti visitatori riceve il Louvre ogni anno?',o:['3 milioni','6 milioni','9 milioni','15 milioni'],a:2,e:'Circa 9 milioni! \u00c8 il museo pi\u00f9 visitato al mondo. La Gioconda attira da sola 6 milioni di persone.'},
+  {q:'Quale tecnologia usa il Louvre per identificare i sospetti?',o:['DNA scan','Riconoscimento facciale AI','Lettura del pensiero','Impronte digitali obbligatorie'],a:1,e:'Riconoscimento facciale AI! Il sistema biometrico confronta i volti con le liste nere internazionali in tempo reale.'}
+];
+var q12i=0,q12s=0;
+function initQ12(){q12i=0;q12s=0;showQ12();}
+function showQ12(){
+  if(q12i>=Q12.length){endQ('qb12','\u1f3db',q12s,Q12.length,'initQ12');return;}
+  var q=Q12[q12i];
+  var t=document.getElementById('q12t');if(t)t.textContent='Domanda '+(q12i+1)+'/'+Q12.length+': '+q.q;
+  var el=document.getElementById('q12o');if(!el)return;el.innerHTML='';
+  q.o.forEach(function(o,i){var b=document.createElement('button');b.className='qo';b.textContent=o;b.onclick=function(){ansQ12(i);};el.appendChild(b);});
+  var f=document.getElementById('q12f');if(f)f.className='qfb';
+  var n=document.getElementById('q12n');if(n)n.className='qnx';
+}
+function ansQ12(i){var q=Q12[q12i];var opts=document.querySelectorAll('#q12o .qo');opts.forEach(function(b){b.style.pointerEvents='none';});var fb=document.getElementById('q12f');if(i===q.a){opts[i].classList.add('ok');q12s++;if(fb){fb.textContent=q.e;fb.className='qfb show ok';}}else{opts[i].classList.add('ko');opts[q.a].classList.add('ok');if(fb){fb.textContent=q.e;fb.className='qfb show ko';}}var n=document.getElementById('q12n');if(n)n.className='qnx show';}
+function nxQ12(){q12i++;showQ12();}
+
+// ======== LOUVRE POPUPS ========
+MD.lou_furto={ico:'\u1f3db',tag:'IL FURTO',h:'Il Furto della Gioconda (1911)',b:'<p>Il furto pi\u00f9 famoso della storia dell\u2019arte:</p><ul><li>La notte del 20 agosto 1911, Vincenzo Peruggia si nascose nel museo</li><li>Il mattino, tolse la Gioconda dalla parete e la nascose sotto il mantello</li><li>Uscì dalla porta di servizio</li><li>Il furto fu scoperto solo il giorno dopo</li><li>Peruggia fu catturato nel 1913 quando cercò di venderla a Firenze</li><li>L\'opera rimase a Firenze per 2 settimane prima di tornare a Parigi</li></ul>'};
+MD.lou_gioconda={ico:'\u1f3a8',tag:'GIOCONDA',h:'La Gioconda: La Più Protetta',b:'<p>La Gioconda di Leonardo da Vinci \u00e8 l\'opera pi\u00f9 famosa e protetta del mondo:</p><ul><li>Valore stimato: <strong>oltre 860 milioni di euro</strong> (assicurata per tale valore nel 1962)</li><li>Vetro antiproiettile da 4cm di spessore</li><li>Clima controllato: 20\u00b0C, umidit\u00e0 50%</li><li>Mai uscita dal Louvre dopo il 1974</li><li>Ogni anno 6 milioni di persone la visitano</li><li>Nel 2022 qualcuno le lanciò una torta contro il vetro</li></ul>'};
+MD.lou_laser={ico:'\u1f534',tag:'LASER',h:'La Rete Laser del Louvre',b:'<p>I <strong>sistemi laser</strong> sono la prima linea di difesa:</p><ul><li>Raggi infrarossi invisibili formano una griglia 3D in ogni sala</li><li>La risposta all\'allarme \u00e8 di 0.1 secondi</li><li>Se un raggio viene interrotto, le porte si chiudono automaticamente</li><li>Il sistema \u00e8 ridondante: 3 layer sovrapposti</li><li>Simile a quello usato in "Mission Impossible"</li><li>Costo stimato del sistema: 6 milioni di euro</li></ul>'};
+MD.lou_ai={ico:'\u1f916',tag:'AI SICUREZZA',h:'Intelligenza Artificiale nel Louvre',b:'<p>Il Louvre usa <strong>AI avanzata</strong> per la sicurezza:</p><ul><li>Analisi del comportamento in tempo reale</li><li>Rileva se una persona si avvicina troppo o troppo a lungo a un\'opera</li><li>Riconoscimento facciale su blacklist internazionale</li><li>Analisi delle borse e zaini con AI + raggi X</li><li>Robot Cobalt che pattugliano di notte</li><li>Predizione AI degli orari a rischio basata su 10 anni di dati</li></ul>'};
+MD.lou_piramide={ico:'\u25b3',tag:'PIRAMIDE',h:'La Piramide del Louvre',b:'<p>La <strong>Piramide di vetro</strong> fu realizzata da I.M. Pei nel 1989:</p><ul><li>Alta 21.6 metri, composta da 673 lastre di vetro</li><li>Fu molto controversa: accusata di "deturpare" il palazzo reale</li><li>Oggi \u00e8 l\'ingresso principale del museo</li><li>Nel 2019 restaurata con nuove lastre ultraresistenti</li><li>Il vetro ha anche una funzione di sicurezza: \u00e8 antisfondamento</li><li>Sotto la piramide: lobby, bookshop, ristorante Napoleon</li></ul>'};
+MD.lou_record={ico:'\u1f3c6',tag:'RECORD',h:'I Record del Louvre',b:'<p>Il Louvre in numeri:</p><ul><li><strong>9 milioni</strong> di visitatori annui (record 2018)</li><li><strong>380.000</strong> opere esposte su 60.000 m\u00b2</li><li><strong>35km</strong> di gallerie se messe in fila</li><li>Pi\u00f9 di <strong>30.000 anni</strong> di storia umana rappresentati</li><li>Budget sicurezza: circa <strong>60 milioni/anno</strong></li><li>Fondato nel <strong>1793</strong> dopo la Rivoluzione Francese</li></ul>'};
+
+// ======== PART 13 ED CIVICA — AGENDA 2030 ========
+function goToP13(){
+  curPart=13;
+  var bl=document.getElementById('tblack');
+  if(bl){bl.style.opacity='1';bl.style.pointerEvents='all';}
+  ['scIntro','scP1','scP2','scP3','scP4','scP5','scP6','scP7','scP8','scP9','scP10','scP11','scP12'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.classList.remove('active');
+  });
+  // Hopeful uplifting transition audio
+  try{
+    var ac=new(window.AudioContext||window.webkitAudioContext)();var now=ac.currentTime;
+    function tn(f,s,d,t,v){var o=ac.createOscillator(),g=ac.createGain();o.type=t||'sine';o.frequency.value=f;g.gain.setValueAtTime(0,now+s);g.gain.linearRampToValueAtTime(v||.05,now+s+.1);g.gain.linearRampToValueAtTime(0,now+s+d);o.connect(g);g.connect(ac.destination);o.start(now+s);o.stop(now+s+d+.1);}
+    [261,329,392,523,659,784,1046].forEach(function(f,i){tn(f,i*.25,.6,'sine',.04);});
+    tn(110,.5,3,'triangle',.05);
+    [523,659,784,1046].forEach(function(f,i){tn(f,2.5+i*.2,.5,'triangle',.05);});
+  }catch(e){}
+  setTimeout(function(){
+    if(bl){bl.style.opacity='0';bl.style.pointerEvents='none';}
+    var sc=document.getElementById('scP13');
+    if(sc){sc.classList.add('active');sc.scrollTop=0;}
+    // Title sequence
+    var d1=document.createElement('div');
+    d1.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;';
+    d1.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:clamp(.55rem,1.5vw,.85rem);color:rgba(0,200,150,.85);letter-spacing:.5em;text-transform:uppercase;margin-bottom:10px;">&#10024; ULTIMA PARTE &#10024;</div>'
+      +'<div style="font-family:Orbitron,sans-serif;font-size:clamp(2rem,8vw,5.5rem);font-weight:900;color:#33ddaa;text-shadow:0 0 40px rgba(0,200,150,.7),0 0 80px rgba(0,150,200,.4);letter-spacing:.12em;text-transform:uppercase;line-height:1.05">ED. CIVICA</div>';
+    document.body.appendChild(d1);
+    setTimeout(function(){d1.style.opacity='1';},80);
+    setTimeout(function(){d1.style.opacity='0';
+      setTimeout(function(){
+        if(d1.parentNode)d1.parentNode.removeChild(d1);
+        var d2=document.createElement('div');
+        d2.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5000;text-align:center;opacity:0;transition:opacity .7s;pointer-events:none;max-width:88vw;';
+        d2.innerHTML='<div style="font-size:2.5rem;margin-bottom:14px">&#127757;&#129302;&#127793;</div><div style="font-family:Orbitron,sans-serif;font-size:clamp(.85rem,2.6vw,1.85rem);color:#33ddaa;text-shadow:0 0 25px rgba(0,200,150,.6);letter-spacing:.05em;line-height:1.6;">COME LE TECNOLOGIE<br>CI AIUTERANNO<br><span style=\"font-size:.7em;color:#0099bb;font-family:Share Tech Mono,monospace\">nell\'Agenda 2030</span></div>';
+        document.body.appendChild(d2);
+        setTimeout(function(){d2.style.opacity='1';},80);
+        setTimeout(function(){d2.style.opacity='0';setTimeout(function(){if(d2.parentNode)d2.parentNode.removeChild(d2);},800);},2700);
+      },800);
+    },2500);
+    RV('scP13');initQ13();
+  },4000);
+}
+
+// ======== QUIZ 13 ========
+var Q13=[
+  {q:'Quanti sono gli Obiettivi di Sviluppo Sostenibile dell\'Agenda 2030?',o:['10','15','17','20'],a:2,e:'17 obiettivi! Adottati nel 2015 da 193 paesi ONU, da raggiungere entro il 2030.'},
+  {q:'In che anno \u00e8 stata firmata l\'Agenda 2030?',o:['2010','2015','2018','2020'],a:1,e:'Settembre 2015! All\'Assemblea ONU di New York. Tutti i 193 Stati membri hanno firmato.'},
+  {q:'Come pu\u00f2 l\'AI aiutare a sconfiggere la fame (SDG 2)?',o:['Solo cucinando','Robot agricoli che ottimizzano la produzione','Sostituendo gli agricoltori','Non pu\u00f2 aiutare'],a:1,e:'Robot agricoli! Possono seminare, raccogliere e analizzare il terreno aumentando la produzione del 70%.'},
+  {q:'Quale tecnologia monitora la deforestazione?',o:['Solo guardie umane','Satelliti e sensori IoT','Telegrafo','Lettere postali'],a:1,e:'Satelliti e sensori IoT! Monitorano oceani, foreste e ghiacciai 24/7 in tempo reale.'},
+  {q:'Cosa sono le Smart Cities?',o:['Citt\u00e0 di videogioco','Citt\u00e0 con AI per traffico, energia e servizi','Citt\u00e0 senza tecnologia','Citt\u00e0 sotto terra'],a:1,e:'Citt\u00e0 intelligenti! Usano AI per ottimizzare traffico, illuminazione, raccolta rifiuti, riducendo le emissioni.'}
+];
+var q13i=0,q13s=0;
+function initQ13(){q13i=0;q13s=0;showQ13();}
+function showQ13(){
+  if(q13i>=Q13.length){endQ('qb13','\u2728',q13s,Q13.length,'initQ13');return;}
+  var q=Q13[q13i];
+  var t=document.getElementById('q13t');if(t)t.textContent='Domanda '+(q13i+1)+'/'+Q13.length+': '+q.q;
+  var el=document.getElementById('q13o');if(!el)return;el.innerHTML='';
+  q.o.forEach(function(o,i){var b=document.createElement('button');b.className='qo';b.textContent=o;b.onclick=function(){ansQ13(i);};el.appendChild(b);});
+  var f=document.getElementById('q13f');if(f)f.className='qfb';
+  var n=document.getElementById('q13n');if(n)n.className='qnx';
+}
+function ansQ13(i){var q=Q13[q13i];var opts=document.querySelectorAll('#q13o .qo');opts.forEach(function(b){b.style.pointerEvents='none';});var fb=document.getElementById('q13f');if(i===q.a){opts[i].classList.add('ok');q13s++;if(fb){fb.textContent=q.e;fb.className='qfb show ok';}}else{opts[i].classList.add('ko');opts[q.a].classList.add('ok');if(fb){fb.textContent=q.e;fb.className='qfb show ko';}}var n=document.getElementById('q13n');if(n)n.className='qnx show';}
+function nxQ13(){q13i++;showQ13();}
+
+// ======== AGENDA 2030 POPUPS ========
+MD.sdg1={ico:'\u1f3eb',tag:'OBIETTIVO 1',h:'Sconfiggere la Povert\u00e0',b:'<p>Eliminare la povert\u00e0 estrema entro il 2030.</p><ul><li>Oggi 700 milioni di persone vivono con meno di 2$/giorno</li><li>La tecnologia mobile (M-Pesa in Africa) ha portato banking ai poveri</li><li>L\'AI aiuta a distribuire aiuti dove servono</li></ul>'};
+MD.sdg2={ico:'\u1f33e',tag:'OBIETTIVO 2',h:'Sconfiggere la Fame',b:'<p>Garantire cibo nutriente per tutti.</p><ul><li>Robot agricoli aumentano la produttivit\u00e0 del 70%</li><li>Drones monitorano i campi 24/7</li><li>Vertical farming risparmia il 95% di acqua</li></ul>'};
+MD.sdg3={ico:'\u2764',tag:'OBIETTIVO 3',h:'Salute e Benessere',b:'<p>Vita sana per tutti.</p><ul><li>AI diagnostica il cancro con maggiore precisione dei medici</li><li>Telemedicina raggiunge zone remote</li><li>Robot chirurghi (Da Vinci) eseguono operazioni precise al millimetro</li></ul>'};
+MD.sdg4={ico:'\u1f4da',tag:'OBIETTIVO 4',h:'Istruzione di Qualit\u00e0',b:'<p>Educazione equa e di qualit\u00e0 per tutti.</p><ul><li>AI tutor personalizzati (Khan Academy)</li><li>Realt\u00e0 virtuale per scuole povere</li><li>Tradizioni automatica abbatte le barriere linguistiche</li></ul>'};
+MD.sdg5={ico:'\u2640',tag:'OBIETTIVO 5',h:'Parit\u00e0 di Genere',b:'<p>Uguaglianza tra donne e uomini.</p><ul><li>Algoritmi anti-bias nei colloqui di lavoro</li><li>Piattaforme digitali contro la violenza di genere</li><li>Il 65% degli sviluppatori AI deve diventare donne entro il 2030</li></ul>'};
+MD.sdg6={ico:'\u1f4a7',tag:'OBIETTIVO 6',h:'Acqua Pulita',b:'<p>Acqua e servizi igienici per tutti.</p><ul><li>Filtri AI riducono lo spreco idrico</li><li>Robot puliscono fiumi e oceani</li><li>Sensori IoT identificano perdite nelle tubature</li></ul>'};
+MD.sdg7={ico:'\u26a1',tag:'OBIETTIVO 7',h:'Energia Pulita e Accessibile',b:'<p>Energia rinnovabile per tutti.</p><ul><li>Pannelli solari ottimizzati con AI</li><li>Smart grid distribuisce energia in tempo reale</li><li>Batterie a stato solido raddoppiano l\'autonomia delle auto elettriche</li></ul>'};
+MD.sdg8={ico:'\u1f4b8',tag:'OBIETTIVO 8',h:'Lavoro Dignitoso',b:'<p>Crescita economica e lavoro per tutti.</p><ul><li>I robot prendono i lavori pi\u00f9 pericolosi</li><li>Nuove professioni: AI ethicist, robot trainer, prompt engineer</li><li>Smart working migliora la qualit\u00e0 della vita</li></ul>'};
+MD.sdg9={ico:'\u2699',tag:'OBIETTIVO 9',h:'Innovazione e Infrastrutture',b:'<p>Industria sostenibile, infrastrutture innovative.</p><ul><li>Stampa 3D di edifici (case in 24h)</li><li>Treni Hyperloop a 1.200 km/h</li><li>Internet via satellite (Starlink) raggiunge ogni angolo del mondo</li></ul>'};
+MD.sdg10={ico:'\u2696',tag:'OBIETTIVO 10',h:'Ridurre le Disuguaglianze',b:'<p>Riduzione delle disuguaglianze.</p><ul><li>Mobile banking democratizza il denaro</li><li>Traduzione automatica abbatte le barriere</li><li>L\'AI individua discriminazioni nei dati</li></ul>'};
+MD.sdg11={ico:'\u1f3d9',tag:'OBIETTIVO 11',h:'Citt\u00e0 Sostenibili',b:'<p>Citt\u00e0 inclusive e resilienti.</p><ul><li>Singapore: smart city con sensori ovunque</li><li>Auto a guida autonoma riducono incidenti del 90%</li><li>Robot di pulizia urbana 24/7</li></ul>'};
+MD.sdg12={ico:'\u267b',tag:'OBIETTIVO 12',h:'Consumo Responsabile',b:'<p>Modelli di consumo sostenibili.</p><ul><li>Robot smistano i rifiuti per il riciclo perfetto</li><li>Blockchain traccia l\'origine dei prodotti</li><li>App AI suggeriscono scelte sostenibili</li></ul>'};
+MD.sdg13={ico:'\u1f30d',tag:'OBIETTIVO 13',h:'Lotta al Cambiamento Climatico',b:'<p>Azione urgente contro il cambiamento climatico.</p><ul><li>Satelliti monitorano emissioni in tempo reale</li><li>AI predice eventi climatici estremi</li><li>Robot piantano milioni di alberi</li></ul>'};
+MD.sdg14={ico:'\u1f30a',tag:'OBIETTIVO 14',h:'Vita Sott\'acqua',b:'<p>Conservare gli oceani.</p><ul><li>Robot subacquei autonomi mappano i fondali</li><li>The Ocean Cleanup raccoglie plastica con sistemi automatici</li><li>AI conta i pesci per gestire la pesca</li></ul>'};
+MD.sdg15={ico:'\u1f332',tag:'OBIETTIVO 15',h:'Vita sulla Terra',b:'<p>Proteggere ecosistemi terrestri.</p><ul><li>Drone monitorano la deforestazione</li><li>AI riconosce specie animali a rischio</li><li>Robot ripiantano foreste in zone difficili</li></ul>'};
+MD.sdg16={ico:'\u2696',tag:'OBIETTIVO 16',h:'Pace, Giustizia e Istituzioni',b:'<p>Societ\u00e0 pacifiche e giuste.</p><ul><li>Blockchain garantisce trasparenza nei voti</li><li>AI identifica fake news</li><li>Robot di sminamento salvano vite</li></ul>'};
+MD.sdg17={ico:'\u1f91d',tag:'OBIETTIVO 17',h:'Partnership per gli Obiettivi',b:'<p>Collaborazione globale.</p><ul><li>Open source e condivisione di codice tra paesi</li><li>Internet democratizza l\'accesso alla conoscenza</li><li>AI traduce documenti tra 100+ lingue</li></ul>'};
+
+MD.agenda_storia={ico:'\u1f4d6',tag:'STORIA',h:'Storia dell\'Agenda 2030',b:'<p>Prima dell\'Agenda 2030 c\'erano gli <strong>Obiettivi del Millennio</strong> (2000-2015):</p><ul><li>2000: 8 obiettivi del Millennio (MDG)</li><li>2012: Conferenza Rio+20 sullo sviluppo sostenibile</li><li>2015: 193 paesi adottano i 17 SDG entro il 2030</li><li>L\'Italia ha pubblicato il proprio piano nel 2017</li></ul>'};
+MD.agenda_robot={ico:'\u1f916',tag:'ROBOT VERDI',h:'Robot per l\'Ambiente',b:'<p>Robot specializzati nella sostenibilit\u00e0:</p><ul><li><strong>Larviki</strong>: robot che separa la plastica dagli oceani</li><li><strong>TreeSeeker</strong>: drone pianta 1.500 alberi al giorno</li><li><strong>Cobalt Robotics</strong>: pattuglia musei e aeroporti senza emissioni</li><li><strong>Robomow</strong>: tagliaerba autonomo a energia solare</li></ul>'};
+MD.agenda_ai={ico:'\u1f52c',tag:'AI E CLIMA',h:'AI Contro il Cambiamento Climatico',b:'<p>L\'intelligenza artificiale al servizio del pianeta:</p><ul><li>DeepMind ha ridotto consumi data center Google del 40%</li><li>AI predice tempeste con 7 giorni di anticipo</li><li>Modelli climatici riducono incertezze al 5%</li><li>Computer quantistici simulano nuovi materiali sostenibili</li></ul>'};
+MD.agenda_italia={ico:'\u1f1ee\u1f1f9',tag:'ITALIA',h:'Italia e Agenda 2030',b:'<p>Come l\'Italia sta lavorando:</p><ul><li>Strategia Nazionale dello Sviluppo Sostenibile (2017)</li><li>PNRR (Piano Nazionale di Ripresa e Resilienza) destina 191 miliardi al green</li><li>L\'Italia \u00e8 al 26\u00b0 posto mondiale nel Sustainable Development Report</li><li>Obiettivo: rinnovabili al 50% entro il 2030</li></ul>'};
+MD.agenda_sfide={ico:'\u26a0',tag:'SFIDE',h:'Le Sfide del 2030',b:'<p>Non tutto va come previsto:</p><ul><li>La pandemia ha rallentato 8 obiettivi su 17</li><li>L\'energia rinnovabile cresce ma le emissioni anche</li><li>1 miliardo di persone ancora senza elettricit\u00e0</li><li>L\'AI usa molta energia: data center = 4% emissioni globali</li></ul>'};
+MD.agenda_giovani={ico:'\u1f9d1',tag:'I GIOVANI',h:'Il Ruolo dei Giovani',b:'<p>I giovani sono i protagonisti del cambiamento:</p><ul><li>Greta Thunberg ha mobilitato milioni di studenti</li><li>Fridays for Future presente in 150 paesi</li><li>I Gen Z preferiscono lavorare per aziende sostenibili</li><li>Christian Caruso e la sua tesina ne sono un esempio!</li></ul>'};
+
+// ======== UPDATE ROBOT FUN FACTS ========
+// Add facts on all topics covered in tesina
+ROBOT_FACTS.push('La <strong>Gioconda</strong> al Louvre \u00e8 protetta da un vetro antiproiettile da 4cm e da 2.000 telecamere AI!');
+ROBOT_FACTS.push('Nella <strong>WWII</strong> i tedeschi inventarono il primo razzo (V-2) che port\u00f2 poi l\'uomo sulla Luna nel 1969!');
+ROBOT_FACTS.push('I Robot di <strong>Chuck E. Cheese</strong> nacquero nel 1977 da Atari: il primo intrattenimento robotico al mondo!');
+ROBOT_FACTS.push('Nel <strong>2030</strong> robot agricoli aumenteranno la produzione di cibo del 70% sconfiggendo la fame mondiale!');
+ROBOT_FACTS.push('<strong>Leonardo da Vinci</strong> progett\u00f2 un robot cavaliere meccanico nel 1495 - 500 anni prima dei moderni!');
+ROBOT_FACTS.push('Per programmare in <strong>Python</strong> bastano 10 righe per controllare un braccio robotico ROS!');
+ROBOT_FACTS.push('Una <strong>sfera in acciaio</strong> di 4cm di raggio pesa <strong>2.1 kg</strong> (V=4/3\u03c0r\u00b3 \u00d7 7.85g/cm\u00b3)!');
+ROBOT_FACTS.push('La <strong>seconda rivoluzione industriale</strong> dur\u00f2 dal 1856 al 1914 e cambi\u00f2 il mondo per sempre!');
+ROBOT_FACTS.push('<strong>Edison</strong> aveva 1.093 brevetti, ma <strong>Tesla</strong> parlava 8 lingue e aveva memoria fotografica!');
+ROBOT_FACTS.push('Nel 2045 potremmo raggiungere la <strong>Singolarit\u00e0 Tecnologica</strong>: AI pi\u00f9 intelligenti dell\'uomo!');
 </script>
 </body>
 </html>

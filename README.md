@@ -4306,6 +4306,11 @@ body.scroll-mode #scrollDots{display:flex}
 </svg>
 
 <script>
+// Suppress ResizeObserver loop error (non-critical)
+window.addEventListener('error',function(e){
+  if(e.message&&e.message.indexOf('ResizeObserver')>=0){e.stopPropagation();e.preventDefault();}
+});
+
 var curPart = 0;
 
 // Global safe element helpers
@@ -7402,7 +7407,6 @@ function setSweepColor(hex){
 }
 
 // ======== SCROLLING MODE ========
-var scrollModeOn=false;
 var PART_META=[
   {num:1,name:'ED FISICA',sub:'Le Protesi Robotiche'},
   {num:2,name:'SCIENZE',sub:'Neuroni e Cervello'},
@@ -7419,122 +7423,9 @@ var PART_META=[
   {num:13,name:'ED. CIVICA',sub:'Agenda 2030'}
 ];
 
-function enableScrollMode(){
-  scrollModeOn=true;
-  document.body.classList.add('scroll-mode');
-  var hint=document.getElementById('scrollModeHint');
-  if(hint)hint.style.display='block';
 
-  var container=document.getElementById('scrollContainer');
-  var dots=document.getElementById('scrollDots');
-  if(!container)return;
 
-  // Clear container and dots
-  container.innerHTML='';
-  if(dots)dots.innerHTML='';
 
-  PART_META.forEach(function(meta){
-    var srcId='scP'+meta.num;
-    var src=document.getElementById(srcId);
-    if(!src)return;
-
-    // Wrapper for this part
-    var wrapper=document.createElement('div');
-    wrapper.id='sp-'+meta.num;
-    wrapper.setAttribute('data-part',String(meta.num));
-    wrapper.className='scroll-part';
-
-    // Part header label
-    var lbl=document.createElement('div');
-    lbl.className='scroll-part-header';
-    lbl.innerHTML='<span style="font-family:Orbitron,sans-serif;letter-spacing:3px;font-size:.6rem">'+meta.num+'/13 \u2014 </span>'
-      +'<span style="font-family:Orbitron,sans-serif;letter-spacing:2px;font-size:.7rem;font-weight:900">'+meta.name+'</span>'
-      +'<span style="font-family:Share Tech Mono,monospace;font-size:.55rem;opacity:.6;margin-left:10px">'+meta.sub+'</span>';
-    wrapper.appendChild(lbl);
-
-    // Force the screen visible temporarily to read its content
-    var origStyle=src.getAttribute('style')||'';
-    src.style.cssText='position:static!important;display:block!important;opacity:1!important;pointer-events:all!important;overflow:visible!important;height:auto!important;inset:auto!important;z-index:auto!important;background:transparent!important';
-
-    // Deep clone the entire screen
-    var clone=src.cloneNode(true);
-    clone.removeAttribute('id');
-    clone.style.cssText='position:static;display:block;opacity:1;pointer-events:all;overflow:visible;height:auto;background:transparent';
-    clone.className='';
-
-    // Remove interactive-only elements that don't render well
-    ['timeTravelOverlay','ttCanvas','codeRain','macbg','tblack','napoliMaBg','napoliSweep',
-     'robotCanvas','geoCanvas','drawCanvas','divineCanvas','secCanvas','robotGuitarCanvas',
-     'steamWidget','geoWidget','drawWidget','divineWidget','secWidget','robotWidget','notebook'
-    ].forEach(function(id){
-      var el=clone.querySelector('#'+id);
-      if(el)el.parentNode&&el.parentNode.removeChild(el);
-    });
-    // Remove empty canvas elements
-    clone.querySelectorAll('canvas').forEach(function(c){
-      if(c.parentNode)c.parentNode.removeChild(c);
-    });
-    // Make all images visible
-    clone.querySelectorAll('img').forEach(function(img){
-      img.style.opacity='1';img.style.display='block';
-    });
-    // Remove hfade overlays
-    clone.querySelectorAll('.hfade').forEach(function(f){f.style.display='none';});
-
-    // Restore original screen style
-    src.setAttribute('style',origStyle);
-
-    wrapper.appendChild(clone);
-
-    // Dot
-    if(dots){
-      var dot=document.createElement('div');
-      dot.className='scroll-dot';
-      dot.title=meta.name;
-      dot.id='dot-'+meta.num;
-      dot.onclick=(function(n){return function(){
-        var s=document.getElementById('sp-'+n);
-        if(s)container.scrollTo({top:s.offsetTop,behavior:'smooth'});
-      };})(meta.num);
-      dots.appendChild(dot);
-    }
-  });
-
-  // IntersectionObserver
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var p=parseInt(e.target.getAttribute('data-part'));
-        if(!p)return;
-        document.querySelectorAll('.scroll-dot').forEach(function(d){d.classList.remove('active');});
-        var ad=document.getElementById('dot-'+p);
-        if(ad)ad.classList.add('active');
-        var fill=document.getElementById('progressFill');
-        if(fill)fill.style.width=(p/13*100)+'%';
-        var ind=document.getElementById('partIndicator');
-        if(ind){ind.classList.add('show');ind.textContent=PART_META[p-1].name+' \u2014 '+p+'/13';}
-      }
-    });
-  },{threshold:0.05});
-
-  container.querySelectorAll('.scroll-part').forEach(function(s){obs.observe(s);});
-  var fd=document.getElementById('dot-1');if(fd)fd.classList.add('active');
-  container.scrollTop=0;
-}
-
-function disableScrollMode(){
-  scrollModeOn=false;
-  document.body.classList.remove('scroll-mode');
-  var hint=document.getElementById('scrollModeHint');
-  if(hint)hint.style.display='none';
-  // Clear container to free memory
-  var container=document.getElementById('scrollContainer');
-  if(container)container.innerHTML='';
-  var dots=document.getElementById('scrollDots');
-  if(dots)dots.innerHTML='';
-  var ind=document.getElementById('partIndicator');
-  if(ind)ind.classList.remove('show');
-}
 
 function scrollToSection(num){
   var section=document.getElementById('sp-'+num);
@@ -7545,16 +7436,13 @@ function scrollToSection(num){
 // Hook into toggleSetting for 'scroll'
 var _origToggleSetting=toggleSetting;
 toggleSetting=function(name,btn){
-  if(name==='scroll'){
-    var on=btn.textContent==='OFF';
-    btn.textContent=on?'ON':'OFF';
-    btn.classList.toggle('off',!on);
-    if(on){enableScrollMode();}
-    else{disableScrollMode();}
-    return;
-  }
   _origToggleSetting(name,btn);
 };
+
+
+// Helper to get CEC image src from existing img in page
+
+// Scroll-mode quiz wrappers (use same logic but different element IDs)}
 </script>
 </body>
 </html>

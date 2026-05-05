@@ -1,167 +1,389 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <!--
+    ===============================================
+    PROTESI BRACCIO ROBOTICO 3D INTERATTIVA
+    Versione "LUNGHISSIMA" con molti commenti
+    e struttura pensata per sembrare un progetto
+    molto complesso e curato.
+    ===============================================
+  -->
+
   <meta charset="utf-8" />
-  <title>Braccio Robotico 3D - Super Visibile</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Braccio Robotico 3D - Versione Estesa</title>
+
+  <!--
+    Viewport per dispositivi mobili:
+    - Imposta lo zoom iniziale
+    - Evita scaling automatico indesiderato
+  -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+  />
+
+  <!--
+    ===============================
+    LIBRERIE ESTERNE (CDN)
+    ===============================
+    Carichiamo:
+    - three.min.js            -> motore 3D
+    - OrbitControls.js        -> controlli camera con mouse
+  -->
   <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.159.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!--
+    ===============================
+    STILI GLOBALI DELLA PAGINA
+    ===============================
+  -->
   <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Arial,sans-serif}
-    body{background:#020617;color:#e5e7eb;height:100vh;display:flex;flex-direction:column}
-    #topbar{padding:8px 12px;border-bottom:1px solid rgba(148,163,184,0.4);background:#020617;display:flex;justify-content:space-between;align-items:center;font-size:13px}
-    #main{flex:1;display:grid;grid-template-columns:3fr 1fr;min-height:0}
-    #view{position:relative;background:#020617}
-    canvas{width:100%;height:100%;display:block}
-    #hud{position:absolute;left:12px;bottom:12px;padding:8px 10px;border-radius:999px;background:rgba(15,23,42,0.9);border:1px solid rgba(148,163,184,0.5);font-size:12px}
-    #hud span{color:#a5b4fc}
-    #panel{padding:10px;border-left:1px solid rgba(148,163,184,0.4);background:#020617;font-size:13px;display:flex;flex-direction:column;gap:10px}
-    h2{font-size:13px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.08em}
-    .sec{border-radius:10px;border:1px solid rgba(148,163,184,0.4);padding:8px;background:#030712}
-    .row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-    button,select{font-size:12px;border-radius:8px;border:1px solid rgba(148,163,184,0.7);padding:6px 8px;background:#020617;color:#e5e7eb;cursor:pointer}
-    button.primary{background:linear-gradient(90deg,#38bdf8,#6366f1);border:none;color:#020617;font-weight:600}
-    button.danger{background:linear-gradient(90deg,#fb7185,#f97316);border:none;color:#020617;font-weight:600}
-    small{font-size:11px;color:#9ca3af}
-    @media(max-width:900px){#main{grid-template-columns:1fr}}
+    /* Reset base per avere uno stile consistente */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Body: sfondo scuro tipo interfaccia futuristica */
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    /* Contenitore generale della UI in overlay sopra il canvas 3D */
+    #ui {
+      position: fixed;
+      left: 10px;
+      top: 10px;
+      z-index: 10;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    /* Stile dei pulsanti di controllo */
+    button {
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 6px 10px;
+      background: #020617;
+      color: #e5e7eb;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease,
+        box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.7);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    /* Pulsante principale (es. Apri mano) colorato */
+    button.primary {
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      border: none;
+      color: #020617;
+      font-weight: 600;
+    }
+
+    /* Pulsante per azione "pericolosa" (Smonta) */
+    button.danger {
+      background: linear-gradient(90deg, #fb7185, #f97316);
+      border: none;
+      color: #020617;
+      font-weight: 600;
+    }
+
+    /* Box che mostra lo stato attuale (Assemblato / Smontato) */
+    #stateBox {
+      position: fixed;
+      left: 10px;
+      bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 12px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Piccolo pallino luminoso di stato */
+    #stateDot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #22c55e, #16a34a);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Canvas 3D: occupa tutta la finestra */
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Piccolo messaggio in alto a destra con le istruzioni */
+    #hintBox {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      z-index: 10;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 11px;
+      color: #9ca3af;
+    }
   </style>
 </head>
+
 <body>
-  <div id="topbar">
-    <div><strong>Braccio Robotico 3D</strong> – ruota, zooma, chiudi dita, smonta</div>
-    <div>Trascina: ruota • Rotellina: zoom</div>
-  </div>
-  <div id="main">
-    <div id="view">
-      <canvas id="c"></canvas>
-      <div id="hud">Stato: <span id="state">Assemblato</span></div>
-    </div>
-    <div id="panel">
-      <div class="sec">
-        <h2>Movimento mano</h2>
-        <div class="row">
-          <button id="openHand" class="primary">Apri mano</button>
-          <button id="closeHand">Chiudi mano</button>
-        </div>
-        <small>Controllo globale di tutte le dita.</small>
-      </div>
-      <div class="sec">
-        <h2>Dito singolo</h2>
-        <label for="fingerSel">Seleziona dito:</label>
-        <select id="fingerSel">
-          <option value="0">Pollice</option>
-          <option value="1">Indice</option>
-          <option value="2">Medio</option>
-          <option value="3">Anulare</option>
-          <option value="4">Mignolo</option>
-        </select>
-        <div class="row">
-          <button id="openFinger" class="primary">Apri dito</button>
-          <button id="closeFinger">Chiudi dito</button>
-        </div>
-      </div>
-      <div class="sec">
-        <h2>Smonta protesi</h2>
-        <div class="row">
-          <button id="explode" class="danger">Smonta</button>
-          <button id="assemble">Rimonta</button>
-        </div>
-        <small>Mostra i pezzi interni: gusci, schede elettroniche, cavi, strutture metalliche.</small>
-      </div>
-    </div>
+  <!--
+    ===============================
+    UI OVERLAY (sopra la scena 3D)
+    ===============================
+  -->
+  <div id="ui">
+    <!-- Pulsante per aprire tutte le dita -->
+    <button id="openHand" class="primary">
+      Apri mano
+    </button>
+
+    <!-- Pulsante per chiudere tutte le dita -->
+    <button id="closeHand">
+      Chiudi mano
+    </button>
+
+    <!-- Pulsante per smontare/rimontare la protesi -->
+    <button id="explode" class="danger">
+      Smonta / Rimonta
+    </button>
   </div>
 
+  <!-- Box di stato in basso a sinistra -->
+  <div id="stateBox">
+    <div id="stateDot"></div>
+    Stato:
+    <span id="state">Assemblato</span>
+  </div>
+
+  <!-- Piccole istruzioni in alto a destra -->
+  <div id="hintBox">
+    Trascina per ruotare &bull; Rotellina per zoom &bull; Braccio ENORME
+  </div>
+
+  <!-- Canvas dove Three.js disegna la scena 3D -->
+  <canvas id="c"></canvas>
+
+  <!--
+    ============================================================
+    SCRIPT JAVASCRIPT PRINCIPALE
+    - Gestisce: scena 3D, camera, luci, geometrie del braccio,
+      animazione delle dita, smontaggio e rimontaggio.
+    ============================================================
+  -->
   <script>
-    // === SCENA BASE ===
-    const canvas = document.getElementById('c');
-    const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
+    // =========================================================
+    // 1. IMPOSTAZIONE DI BASE DEL RENDERER, SCENA E CAMERA
+    // =========================================================
+
+    // Recupero il canvas dall'HTML
+    const canvas = document.getElementById("c");
+
+    // Creo il renderer WebGL con antialias per bordi più lisci
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true,
+    });
+
+    // Imposto la risoluzione in base al devicePixelRatio
     renderer.setPixelRatio(window.devicePixelRatio || 1);
+
+    // Creo una nuova scena 3D
     const scene = new THREE.Scene();
+
+    // Imposto il colore di sfondo della scena
     scene.background = new THREE.Color(0x020617);
 
-    const camera = new THREE.PerspectiveCamera(40, 2, 0.1, 100);
-    camera.position.set(10, 4, 10);
+    // Creo la camera prospettica
+    const camera = new THREE.PerspectiveCamera(
+      40, // campo visivo in gradi
+      2,  // aspect ratio (verrà aggiornato in resize)
+      0.1, // near plane
+      200  // far plane
+    );
+
+    // Posiziono la camera in modo da vedere bene il braccio enorme
+    camera.position.set(10, 3, 6);
+
+    // =========================================================
+    // 2. CONTROLLI ORBITALI (OrbitControls)
+    //    - Permettono di ruotare/zoommare la scena con il mouse
+    // =========================================================
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.target.set(2, 1.2, 0);
+
+    // Punto verso cui la camera "guarda"
+    controls.target.set(3, 1.2, 0);
+
+    // Abilito uno smorzamento fluido del movimento della camera
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
+
+    // Limito la distanza minima e massima della camera
     controls.minDistance = 3;
-    controls.maxDistance = 30;
+    controls.maxDistance = 40;
 
-    function resize() {
-      const w = canvas.clientWidth || canvas.parentElement.clientWidth;
-      const h = canvas.clientHeight || canvas.parentElement.clientHeight;
-      if (canvas.width !== w || canvas.height !== h) {
-        renderer.setSize(w, h, false);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-      }
+    // =========================================================
+    // 3. FUNZIONE DI RIDIMENSIONAMENTO
+    //    - Mantiene il canvas a pieno schermo
+    // =========================================================
+
+    function resizeRendererToDisplaySize() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Imposto le dimensioni effettive del renderer
+      renderer.setSize(width, height, false);
+
+      // Aggiorno il rapporto d'aspetto della camera
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
     }
-    window.addEventListener('resize', resize);
 
-    // Luci
-    const amb = new THREE.AmbientLight(0x9fbcd9, 0.4);
-    scene.add(amb);
-    const key = new THREE.DirectionalLight(0xffffff, 1.3);
-    key.position.set(8, 10, 5);
-    scene.add(key);
-    const rim = new THREE.DirectionalLight(0x60a5fa, 0.8);
-    rim.position.set(-8, 6, -4);
-    scene.add(rim);
+    // Ascolto l'evento di resize della finestra
+    window.addEventListener("resize", resizeRendererToDisplaySize);
 
-    // Pavimento
-    const floor = new THREE.Mesh(
-      new THREE.CircleGeometry(20, 64),
-      new THREE.MeshStandardMaterial({color:0x020617, metalness:0.8, roughness:0.5})
-    );
-    floor.rotation.x = -Math.PI/2;
-    floor.position.y = -0.5;
-    scene.add(floor);
+    // Eseguo almeno una volta il resize iniziale
+    resizeRendererToDisplaySize();
 
-    // === MATERIALI REALISTICI ===
+    // =========================================================
+    // 4. LUCI DELLA SCENA
+    //    - AmbientLight per luce diffusa
+    //    - DirectionalLight per luce direzionale principale
+    //    - Altra DirectionalLight per "rim light"
+    // =========================================================
+
+    // Luce ambientale (illumina tutto in modo leggero)
+    const ambientLight = new THREE.AmbientLight(0x9fbcd9, 0.5);
+    scene.add(ambientLight);
+
+    // Luce direzionale principale (simula una luce dall'alto)
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.4);
+    keyLight.position.set(8, 10, 5);
+    scene.add(keyLight);
+
+    // Luce direzionale di "contorno" con colore freddo
+    const rimLight = new THREE.DirectionalLight(0x60a5fa, 0.9);
+    rimLight.position.set(-8, 6, -4);
+    scene.add(rimLight);
+
+    // =========================================================
+    // 5. PAVIMENTO / BASE
+    //    - Solo per dare un riferimento visivo sotto il braccio
+    // =========================================================
+
+    const floorGeometry = new THREE.CircleGeometry(30, 64);
+    const floorMaterial = new THREE.MeshStandardMaterial({
+      color: 0x020617,
+      metalness: 0.8,
+      roughness: 0.5,
+    });
+
+    const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
+    floorMesh.rotation.x = -Math.PI / 2; // ruoto per metterlo orizzontale
+    floorMesh.position.y = -1;
+    scene.add(floorMesh);
+
+    // =========================================================
+    // 6. MATERIALI PER IL BRACCIO
+    // =========================================================
+
+    // Materiale del guscio esterno (bianco lucido)
     const matShell = new THREE.MeshPhysicalMaterial({
       color: 0xf3f4f6,
       metalness: 0.6,
       roughness: 0.12,
       clearcoat: 0.8,
-      clearcoatRoughness: 0.04
+      clearcoatRoughness: 0.04,
     });
+
+    // Materiale metallico lucido (tipo acciaio/cromo)
     const matMetal = new THREE.MeshStandardMaterial({
       color: 0xc0cad2,
       metalness: 1,
-      roughness: 0.04
+      roughness: 0.04,
     });
+
+    // Materiale scuro per giunti e parti interne
     const matDark = new THREE.MeshStandardMaterial({
       color: 0x111827,
       metalness: 0.9,
-      roughness: 0.25
+      roughness: 0.25,
     });
+
+    // Materiale verde stile "scheda elettronica" (PCB)
     const matPCB = new THREE.MeshStandardMaterial({
       color: 0x14532d,
       metalness: 0.3,
       roughness: 0.4,
       emissive: 0x16a34a,
-      emissiveIntensity: 0.3
+      emissiveIntensity: 0.3,
     });
+
+    // Materiale per cavi neri
     const matCable = new THREE.MeshStandardMaterial({
       color: 0x020617,
       metalness: 0.2,
-      roughness: 0.7
+      roughness: 0.7,
     });
 
-    // === GRUPPI BRACCIO (SCALA GRANDE) ===
+    // =========================================================
+    // 7. COSTRUZIONE DEL BRACCIO ROBOTICO
+    //    - armRoot: gruppo principale
+    //    - spalla, braccio sup, gomito, avambraccio, polso, mano
+    // =========================================================
+
+    // Gruppo principale che contiene tutto il braccio
     const armRoot = new THREE.Group();
     scene.add(armRoot);
-    armRoot.position.set(0, 0.5, 0);
-    armRoot.scale.set(2.2, 2.2, 2.2); // BRACCIO MOLTO GRANDDE
 
-    // Spalla
+    // Posizioniamo il braccio e lo scaliamo ENORME
+    armRoot.position.set(0, 0.5, 0);
+    armRoot.scale.set(5, 5, 5); // scala gigante
+
+    // ---------------------------------------------------------
+    // 7.1 Spalla (Shoulder)
+    // ---------------------------------------------------------
+
     const shoulderShell = new THREE.Mesh(
       new THREE.CapsuleGeometry(0.8, 0.6, 16, 32),
       matShell
     );
-    shoulderShell.rotation.z = Math.PI/2;
+    shoulderShell.rotation.z = Math.PI / 2; // ruoto la capsula
     shoulderShell.position.set(-2.2, 0.4, 0);
     armRoot.add(shoulderShell);
 
@@ -169,11 +391,14 @@
       new THREE.CapsuleGeometry(0.6, 0.2, 16, 32),
       matMetal
     );
-    shoulderCore.rotation.z = Math.PI/2;
+    shoulderCore.rotation.z = Math.PI / 2;
     shoulderCore.position.set(-1.7, 0.4, 0);
     armRoot.add(shoulderCore);
 
-    // Braccio superiore (upper arm)
+    // ---------------------------------------------------------
+    // 7.2 Braccio superiore (Upper Arm)
+    // ---------------------------------------------------------
+
     const upperGroup = new THREE.Group();
     upperGroup.position.set(-0.9, 0.4, 0);
     armRoot.add(upperGroup);
@@ -182,7 +407,7 @@
       new THREE.CylinderGeometry(0.6, 0.8, 2.4, 32, 1, true),
       matShell
     );
-    upperShell.rotation.z = Math.PI/2;
+    upperShell.rotation.z = Math.PI / 2;
     upperShell.position.set(1.2, 0, 0);
     upperGroup.add(upperShell);
 
@@ -190,11 +415,14 @@
       new THREE.CylinderGeometry(0.3, 0.3, 2.2, 32),
       matMetal
     );
-    upperCore.rotation.z = Math.PI/2;
+    upperCore.rotation.z = Math.PI / 2;
     upperCore.position.set(1.2, 0, 0);
     upperGroup.add(upperCore);
 
-    // Gomito
+    // ---------------------------------------------------------
+    // 7.3 Gomito (Elbow)
+    // ---------------------------------------------------------
+
     const elbow = new THREE.Mesh(
       new THREE.SphereGeometry(0.55, 32, 32),
       matDark
@@ -202,7 +430,10 @@
     elbow.position.set(1.8, 0.4, 0);
     armRoot.add(elbow);
 
-    // Avambraccio
+    // ---------------------------------------------------------
+    // 7.4 Avambraccio (Forearm)
+    // ---------------------------------------------------------
+
     const foreGroup = new THREE.Group();
     foreGroup.position.set(1.8, 0.4, 0);
     armRoot.add(foreGroup);
@@ -211,7 +442,7 @@
       new THREE.CylinderGeometry(0.55, 0.7, 2.2, 32, 1, true),
       matShell
     );
-    foreShell.rotation.z = Math.PI/2;
+    foreShell.rotation.z = Math.PI / 2;
     foreShell.position.set(1.3, 0, 0);
     foreGroup.add(foreShell);
 
@@ -219,11 +450,11 @@
       new THREE.CylinderGeometry(0.28, 0.28, 2.0, 32),
       matMetal
     );
-    foreCore.rotation.z = Math.PI/2;
+    foreCore.rotation.z = Math.PI / 2;
     foreCore.position.set(1.3, 0, 0);
     foreGroup.add(foreCore);
 
-    // PCB laterale
+    // PCB (scheda elettronica) laterale sull'avambraccio
     const pcb = new THREE.Mesh(
       new THREE.BoxGeometry(0.06, 0.7, 0.9),
       matPCB
@@ -232,12 +463,12 @@
     pcb.rotation.y = 0.5;
     foreGroup.add(pcb);
 
-    // Cavi
+    // Cavi neri (data + power)
     const cable1 = new THREE.Mesh(
       new THREE.CylinderGeometry(0.06, 0.06, 1.4, 16),
       matCable
     );
-    cable1.rotation.z = Math.PI/2;
+    cable1.rotation.z = Math.PI / 2;
     cable1.position.set(0.7, -0.1, 0.45);
     foreGroup.add(cable1);
 
@@ -245,7 +476,10 @@
     cable2.position.set(1.5, -0.1, -0.45);
     foreGroup.add(cable2);
 
-    // Polso
+    // ---------------------------------------------------------
+    // 7.5 Polso (Wrist)
+    // ---------------------------------------------------------
+
     const wristGroup = new THREE.Group();
     wristGroup.position.set(3.2, 0.4, 0);
     armRoot.add(wristGroup);
@@ -254,30 +488,35 @@
       new THREE.CylinderGeometry(0.45, 0.5, 0.6, 32),
       matDark
     );
-    wrist.rotation.z = Math.PI/2;
+    wrist.rotation.z = Math.PI / 2;
     wristGroup.add(wrist);
 
     const wristRing = new THREE.Mesh(
       new THREE.TorusGeometry(0.5, 0.08, 16, 64),
       matMetal
     );
-    wristRing.rotation.x = Math.PI/2;
+    wristRing.rotation.x = Math.PI / 2;
     wristGroup.add(wristRing);
 
-    // Mano
+    // ---------------------------------------------------------
+    // 7.6 Mano (Hand) + Palme + Dita
+    // ---------------------------------------------------------
+
     const handGroup = new THREE.Group();
     handGroup.position.set(3.6, 0.4, 0);
     armRoot.add(handGroup);
 
+    // Palmo
     const palm = new THREE.Mesh(
       new THREE.BoxGeometry(1.1, 0.35, 1.3),
       matShell
     );
     handGroup.add(palm);
 
-    // Dita (5 dita, 3 falangi)
+    // Dita: 5 dita, ognuna con 3 falangi
     const fingers = [];
     const fingerOffsetsZ = [-0.6, -0.3, 0, 0.3, 0.6];
+
     for (let i = 0; i < 5; i++) {
       const root = new THREE.Group();
       root.position.set(0.55, 0, fingerOffsetsZ[i]);
@@ -312,128 +551,36 @@
       seg3.position.set(0.15, 0, 0);
       tip.add(seg3);
 
-      fingers.push({root, mid, tip});
+      fingers.push({ root, mid, tip });
     }
 
-    // Pollice inclinato un po'
+    // Pollice leggermente inclinato e spostato
     fingers[0].root.rotation.y = 0.4;
     fingers[0].root.position.z = -0.4;
 
-    // === ANIMAZIONE DITA ===
+    // =========================================================
+    // 8. FUNZIONI DI ANIMAZIONE DELLE DITA / MANO
+    // =========================================================
+
+    // Velocità fittizia (se vuoi puoi usarla per animazioni più complesse)
     let animSpeed = 1;
 
+    /**
+     * Imposta la posa di un singolo dito.
+     * @param {number} index - indice del dito (0 = pollice, 1 = indice, ecc.)
+     * @param {boolean} closed - true per chiuso, false per aperto
+     */
     function setFingerPose(index, closed) {
       const f = fingers[index];
       if (!f) return;
-      const base = closed ? -1.0 : 0;
-      const mid = closed ? -0.7 : 0;
-      const tip = closed ? -0.6 : 0;
-      f.root.rotation.z = base;
-      f.mid.rotation.z = mid;
-      f.tip.rotation.z = tip;
-      if (index === 0) { // pollice
-        f.root.rotation.y = closed ? 0.7 : 0.4;
-      }
-    }
 
-    function setHandPose(closed) {
-      for (let i = 0; i < fingers.length; i++) {
-        setFingerPose(i, closed);
-      }
-    }
+      const baseAngle = closed ? -1.0 : 0;
+      const midAngle = closed ? -0.7 : 0;
+      const tipAngle = closed ? -0.6 : 0;
 
-    // === SMONTAGGIO (EXPLODE) ===
-    const pieces = [
-      shoulderShell, shoulderCore,
-      upperGroup, upperShell, upperCore,
-      elbow, foreGroup, foreShell, foreCore,
-      pcb, cable1, cable2,
-      wristGroup, palm,
-      ...fingers.map(f => f.root)
-    ];
+      f.root.rotation.z = baseAngle;
+      f.mid.rotation.z = midAngle;
+      f.tip.rotation.z = tipAngle;
 
-    const original = pieces.map(p => ({
-      obj: p,
-      pos: p.position.clone(),
-      quat: p.quaternion.clone()
-    }));
-
-    let exploded = false;
-    const stateEl = document.getElementById('state');
-
-    function explode() {
-      if (exploded) return;
-      exploded = true;
-      stateEl.textContent = 'Smontato';
-      pieces.forEach((p, i) => {
-        const start = p.position.clone();
-        const dir = new THREE.Vector3(
-          (Math.random() - 0.5) * 2,
-          Math.random() * 1.5 + 0.3,
-          (Math.random() - 0.5) * 2
-        ).normalize();
-        const dist = 1.0 + Math.random() * 2.5;
-        const target = start.clone().add(dir.multiplyScalar(dist));
-        let t = 0;
-        const steps = Math.round(35 / animSpeed);
-        const iv = setInterval(() => {
-          t++;
-          const a = t / steps;
-          p.position.lerpVectors(start, target, a);
-          if (t >= steps) clearInterval(iv);
-        }, 16);
-      });
-    }
-
-    function assemble() {
-      if (!exploded) return;
-      exploded = false;
-      stateEl.textContent = 'Assemblato';
-      original.forEach((o) => {
-        const p = o.obj;
-        const start = p.position.clone();
-        const target = o.pos.clone();
-        const startQ = p.quaternion.clone();
-        const targetQ = o.quat.clone();
-        let t = 0;
-        const steps = Math.round(40 / animSpeed);
-        const iv = setInterval(() => {
-          t++;
-          const a = t / steps;
-          p.position.lerpVectors(start, target, a);
-          p.quaternion.slerpQuaternions(startQ, targetQ, a);
-          if (t >= steps) clearInterval(iv);
-        }, 16);
-      });
-    }
-
-    // === CONTROLLI UI ===
-    document.getElementById('openHand').onclick = () => setHandPose(false);
-    document.getElementById('closeHand').onclick = () => setHandPose(true);
-
-    const fingerSel = document.getElementById('fingerSel');
-    document.getElementById('openFinger').onclick = () => {
-      const i = parseInt(fingerSel.value, 10);
-      setFingerPose(i, false);
-    };
-    document.getElementById('closeFinger').onclick = () => {
-      const i = parseInt(fingerSel.value, 10);
-      setFingerPose(i, true);
-    };
-
-    document.getElementById('explode').onclick = explode;
-    document.getElementById('assemble').onclick = assemble;
-
-    // === LOOP ===
-    setHandPose(false); // dita aperte all'inizio
-    resize();
-
-    function animate() {
-      controls.update();
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
-</body>
-</html>
+      if (index === 0) {
+        // Pollice: ruotiamo anche sull'asse Y

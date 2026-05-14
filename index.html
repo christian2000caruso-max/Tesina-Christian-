@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title>Tesina Christian V29</title>
+        <title>Tesina Christian V30</title>
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
         <style>
             * {
@@ -8965,7 +8965,8 @@
             }
 
             #armwrap {
-                height: 420px;
+                height: clamp(380px,44vh,460px);
+                min-height: 380px;
                 background: linear-gradient(rgba(115,215,232,.05) 1px,transparent 1px), linear-gradient(90deg,rgba(115,215,232,.05) 1px,transparent 1px), radial-gradient(circle at 50% 55%,rgba(115,215,232,.12),transparent 20rem);
                 background-size: 34px 34px,34px 34px,100% 100%;
             }
@@ -9362,6 +9363,253 @@
                     height: 138px
                 }
             }
+
+            @media(max-height: 820px) and (min-width:700px) {
+                #armwrap {
+                    height:390px;
+                    min-height: 390px
+                }
+
+                .actrl {
+                    padding: 12px 16px;
+                    gap: 8px
+                }
+
+                .arm-readout span {
+                    padding: 7px 8px
+                }
+            }
+
+            /* V30 GLOBAL DIVINE BLUE NEURAL MATRIX STYLE */
+            #v30MatrixCanvas,#v30NeuralCanvas {
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+
+            #v30MatrixCanvas {
+                z-index: 1;
+                opacity: .5;
+                mix-blend-mode: screen
+            }
+
+            #v30NeuralCanvas {
+                z-index: 2;
+                opacity: .62;
+                mix-blend-mode: screen
+            }
+
+            body.v30-blue {
+                --b: #35dfff;
+                --bb: #9ef8ff;
+                --bd: #148fe8;
+                --bg: #020915;
+                --glow: rgba(53,223,255,.34);
+                --w: #e8fbff;
+                --dim: #a8cfe4;
+                background: #020915 !important;
+            }
+
+            body.v30-blue::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                z-index: 0;
+                pointer-events: none;
+                background: radial-gradient(ellipse at 50% 10%,rgba(53,223,255,.20),transparent 36rem), radial-gradient(ellipse at 80% 74%,rgba(72,128,255,.16),transparent 32rem), linear-gradient(180deg,#031329 0%,#020915 48%,#00040b 100%);
+            }
+
+            body.v30-blue::after {
+                content: '';
+                position: fixed;
+                inset: 0;
+                z-index: 3;
+                pointer-events: none;
+                background: repeating-linear-gradient(to bottom,rgba(158,248,255,.035) 0 1px,transparent 1px 4px), linear-gradient(90deg,transparent,rgba(53,223,255,.10),transparent);
+                opacity: .72;
+            }
+
+            body.v30-blue .matrix-grid {
+                display: none
+            }
+
+            body.v30-blue .screen, body.v30-blue #scP5, body.v30-blue #scP9, body.v30-blue #scP10, body.v30-blue #scP11 {
+                background: transparent !important;
+                color: var(--w) !important;
+            }
+
+            body.v30-blue .screen::before, body.v30-blue #scP5::before, body.v30-blue #scP10::before, body.v30-blue #scP11::before {
+                opacity: .08 !important;
+            }
+
+            body.v30-blue .screen > *, body.v30-blue .sec, body.v30-blue .hero, body.v30-blue .divider, body.v30-blue .qbox, body.v30-blue #notebook, body.v30-blue #guitarWidget, body.v30-blue #aiWidget, body.v30-blue #divineCanvasWrap {
+                position: relative;
+                z-index: 10;
+            }
+
+            body.v30-blue .sec h2, body.v30-blue #scP5 .sec h2, body.v30-blue #scP10 .sec h2, body.v30-blue #scP11 .sec h2 {
+                color: #d8fbff !important;
+                text-shadow: 0 0 18px rgba(53,223,255,.38),0 0 46px rgba(53,223,255,.18) !important;
+                font-family: 'Orbitron',sans-serif !important;
+            }
+
+            body.v30-blue .sec p, body.v30-blue #scP5 .sec p, body.v30-blue #scP10 .sec p, body.v30-blue #scP11 .sec p {
+                color: #b8d6e6 !important;
+            }
+
+            body.v30-blue .sec p strong, body.v30-blue #scP5 .sec p strong, body.v30-blue #scP10 .sec p strong, body.v30-blue #scP11 .sec p strong {
+                color: #35dfff !important;
+            }
+
+            body.v30-blue .stag, body.v30-blue #scP5 .stag, body.v30-blue #scP10 .stag, body.v30-blue #scP11 .stag {
+                color: #35dfff !important;
+                text-shadow: 0 0 14px rgba(53,223,255,.42);
+            }
+
+            body.v30-blue .stag::before, body.v30-blue #scP5 .stag::before, body.v30-blue #scP10 .stag::before, body.v30-blue #scP11 .stag::before {
+                background: #35dfff !important;
+                box-shadow: 0 0 18px rgba(53,223,255,.65);
+            }
+
+            body.v30-blue .card, body.v30-blue .step, body.v30-blue .infobox, body.v30-blue .qbox, body.v30-blue #notebook, body.v30-blue #guitarWidget, body.v30-blue #aiWidget {
+                background: linear-gradient(145deg,rgba(4,22,40,.86),rgba(2,10,22,.92)) !important;
+                border-color: rgba(53,223,255,.24) !important;
+                border-top-color: rgba(158,248,255,.72) !important;
+                box-shadow: 0 18px 60px rgba(0,0,0,.30),inset 0 0 28px rgba(53,223,255,.045) !important;
+            }
+
+            body.v30-blue .card h3, body.v30-blue #scP5 .card h3, body.v30-blue #scP10 .card h3 {
+                color: #9ef8ff !important;
+                font-family: 'Orbitron',sans-serif !important;
+            }
+
+            body.v30-blue .card p, body.v30-blue .step, body.v30-blue .qbox, body.v30-blue #scP5 .card p, body.v30-blue #scP10 .card p {
+                color: #a8cfe4 !important;
+            }
+
+            body.v30-blue .pbtn, body.v30-blue .pgbtn, body.v30-blue .qo, body.v30-blue .qnx, body.v30-blue .nbBtn, body.v30-blue .aud-btn {
+                background: rgba(5,24,42,.78) !important;
+                border-color: rgba(53,223,255,.42) !important;
+                color: #9ef8ff !important;
+                box-shadow: 0 0 16px rgba(53,223,255,.08) !important;
+            }
+
+            body.v30-blue .pbtn:hover, body.v30-blue .pgbtn:hover, body.v30-blue .qo:hover, body.v30-blue .nbBtn:hover {
+                border-color: #9ef8ff !important;
+                box-shadow: 0 0 24px rgba(53,223,255,.28) !important;
+            }
+
+            body.v30-blue #notebookContent {
+                background: linear-gradient(rgba(53,223,255,.055) 1px,transparent 1px), linear-gradient(90deg,rgba(53,223,255,.04) 1px,transparent 1px), rgba(3,17,30,.84) !important;
+                background-size: 26px 26px,26px 26px,100% 100% !important;
+            }
+
+            body.v30-blue .nbTitle, body.v30-blue .nbText, body.v30-blue .nbStep, body.v30-blue #nbPageNum {
+                color: #c8f7ff !important;
+                font-family: 'Share Tech Mono',monospace !important;
+            }
+
+            body.v30-blue .nbNum {
+                background: rgba(53,223,255,.14) !important;
+                border-color: rgba(53,223,255,.45) !important;
+                color: #9ef8ff !important;
+            }
+
+            body.v30-blue[data-v30-bg="matrix"] #v30NeuralCanvas {
+                opacity: .16
+            }
+
+            body.v30-blue[data-v30-bg="matrix"] #v30MatrixCanvas {
+                opacity: .78
+            }
+
+            body.v30-blue[data-v30-bg="neural"] #v30MatrixCanvas {
+                opacity: .16
+            }
+
+            body.v30-blue[data-v30-bg="neural"] #v30NeuralCanvas {
+                opacity: .8
+            }
+
+            body.v30-blue[data-v30-bg="calm"] #v30MatrixCanvas {
+                opacity: .18
+            }
+
+            body.v30-blue[data-v30-bg="calm"] #v30NeuralCanvas {
+                opacity: .24
+            }
+
+            .v30-bg-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .v30-bg-btn {
+                border: 1px solid rgba(34,221,255,.22);
+                background: rgba(0,20,50,.55);
+                color: #88ccee;
+                border-radius: 6px;
+                padding: 9px 7px;
+                font-family: 'Share Tech Mono',monospace;
+                font-size: .54rem;
+                letter-spacing: 1.4px;
+                cursor: pointer;
+            }
+
+            .v30-bg-btn.active, .v30-bg-btn:hover {
+                border-color: #9ef8ff;
+                color: #fff;
+                box-shadow: 0 0 16px rgba(53,223,255,.22);
+            }
+
+            #catapultHolo {
+                width: 100%;
+                height: 190px;
+                display: block;
+                margin: 12px 0;
+                border: 1px solid rgba(53,223,255,.22);
+                border-radius: 8px;
+                background: radial-gradient(circle at 50% 56%,rgba(53,223,255,.12),rgba(2,10,22,.8));
+            }
+
+            .catapult-guide {
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                gap: 8px;
+                margin-top: 10px;
+            }
+
+            .catapult-guide span {
+                border: 1px solid rgba(53,223,255,.18);
+                background: rgba(4,18,32,.68);
+                border-radius: 6px;
+                padding: 8px 9px;
+                color: #b8d6e6;
+                font-family: 'Share Tech Mono',monospace;
+                font-size: .58rem;
+                letter-spacing: 1px;
+            }
+
+            @media(max-width: 720px),(max-height:820px) {
+                #v30MatrixCanvas {
+                    opacity:.34
+                }
+
+                #v30NeuralCanvas {
+                    opacity: .42
+                }
+
+                .catapult-guide {
+                    grid-template-columns: 1fr
+                }
+
+                #catapultHolo {
+                    height: 150px
+                }
+            }
         </style>
     </head>
     <body>
@@ -9424,6 +9672,15 @@
                     <div class="set-toggle-row">
                         <span class="set-toggle-label">Particelle sfondo</span>
                         <button class="set-toggle" id="tog-particles" onclick="toggleSetting('particles',this)">ON</button>
+                    </div>
+                </div>
+                <div class="set-section">
+                    <div class="set-label">SFONDO DINAMICO V30</div>
+                    <div class="v30-bg-grid">
+                        <button class="v30-bg-btn active" data-bg="neural-matrix" onclick="setV30BgMode('neural-matrix',this)">MATRIX + NEURALE</button>
+                        <button class="v30-bg-btn" data-bg="matrix" onclick="setV30BgMode('matrix',this)">SOLO CODICE</button>
+                        <button class="v30-bg-btn" data-bg="neural" onclick="setV30BgMode('neural',this)">SOLO NEURONI</button>
+                        <button class="v30-bg-btn" data-bg="calm" onclick="setV30BgMode('calm',this)">LEGGERO</button>
                     </div>
                 </div>
                 <div class="set-section">
@@ -19430,6 +19687,9 @@
                         elbowTarget: 0,
                         wrist: .05,
                         wristTarget: .05,
+                        viewZoom: .9,
+                        viewX: 0,
+                        viewY: 0,
                         t: 0
                     };
                     window.fingerAngles = state.fingers;
@@ -19437,8 +19697,14 @@
                     window.armStraight = true;
                     function fit() {
                         var d = window.devicePixelRatio || 1;
-                        cv.width = Math.max(320, wrap.clientWidth) * d;
-                        cv.height = Math.max(320, wrap.clientHeight) * d;
+                        var w = Math.max(320, wrap.clientWidth);
+                        var h = Math.max(320, wrap.clientHeight);
+                        var shortView = h < 430 || window.innerHeight < 820;
+                        state.viewZoom = wrap.clientWidth < 620 ? .76 : (shortView ? .82 : .94);
+                        state.viewX = wrap.clientWidth < 620 ? -6 : 0;
+                        state.viewY = shortView ? -12 : -4;
+                        cv.width = w * d;
+                        cv.height = h * d;
                         ctx.setTransform(d, 0, 0, d, 0, 0);
                     }
                     fit();
@@ -19459,10 +19725,10 @@
                           , rz = -x * sy + z * cy;
                         var ry = y * cp - rz * sp
                           , rz2 = y * sp + rz * cp;
-                        var s = 660 / (780 + rz2);
+                        var s = (620 * state.viewZoom) / (780 + rz2);
                         return {
-                            x: wrap.clientWidth / 2 + rx * s,
-                            y: wrap.clientHeight / 2 + 74 + ry * s,
+                            x: wrap.clientWidth / 2 + state.viewX + rx * s,
+                            y: wrap.clientHeight / 2 + state.viewY + ry * s,
                             s: s,
                             z: rz2
                         };
@@ -20481,6 +20747,390 @@
                             window.initGuitarRobot();
                     }
                 });
+            }
+            )();
+
+            // V30: global blue neural matrix, transition sound design, and focused interactive upgrades.
+            (function() {
+                function ready(fn) {
+                    if (document.readyState === 'loading')
+                        document.addEventListener('DOMContentLoaded', fn);
+                    else
+                        fn();
+                }
+                function clamp(v, a, b) {
+                    return Math.max(a, Math.min(b, v));
+                }
+                function makeCanvas(id) {
+                    var cv = document.getElementById(id);
+                    if (!cv) {
+                        cv = document.createElement('canvas');
+                        cv.id = id;
+                        document.body.insertBefore(cv, document.body.firstChild);
+                    }
+                    return cv;
+                }
+
+                function initV30Background() {
+                    document.body.classList.add('v30-blue');
+                    var saved = localStorage.getItem('v30-bg-mode') || 'neural-matrix';
+                    window.setV30BgMode(saved);
+                    var matrix = makeCanvas('v30MatrixCanvas');
+                    var neural = makeCanvas('v30NeuralCanvas');
+                    var mx = matrix.getContext('2d');
+                    var nx = neural.getContext('2d');
+                    var snippets = ['function think()', 'const robot = new Arm()', 'if(signal > threshold)', 'neuron.fire()', 'await future()', 'servo.write(angle)', 'matrix.scan()', 'AI.learn(data)', 'while(alive){move()}', 'return empathy', 'synapse.connect()', 'ROS.publish()', 'brain.map()', 'let hope = true'];
+                    var drops = []
+                      , nodes = [];
+                    function fit() {
+                        var d = window.devicePixelRatio || 1
+                          , w = innerWidth
+                          , h = innerHeight;
+                        [matrix, neural].forEach(function(cv) {
+                            cv.width = w * d;
+                            cv.height = h * d;
+                            cv.style.width = w + 'px';
+                            cv.style.height = h + 'px';
+                        });
+                        mx.setTransform(d, 0, 0, d, 0, 0);
+                        nx.setTransform(d, 0, 0, d, 0, 0);
+                        var cols = Math.ceil(w / 28);
+                        drops = [];
+                        for (var i = 0; i < cols; i++)
+                            drops.push({
+                                x: i * 28,
+                                y: Math.random() * -h,
+                                s: .45 + Math.random() * 1.1,
+                                t: snippets[Math.floor(Math.random() * snippets.length)]
+                            });
+                        nodes = [];
+                        var count = clamp(Math.floor(w * h / 26000), 22, 58);
+                        for (i = 0; i < count; i++)
+                            nodes.push({
+                                x: Math.random() * w,
+                                y: Math.random() * h,
+                                vx: (Math.random() - .5) * .35,
+                                vy: (Math.random() - .5) * .35,
+                                r: 1.2 + Math.random() * 2.4,
+                                p: Math.random() * 6.28
+                            });
+                    }
+                    fit();
+                    window.addEventListener('resize', fit);
+                    function drawMatrix() {
+                        var w = innerWidth
+                          , h = innerHeight;
+                        mx.clearRect(0, 0, w, h);
+                        mx.fillStyle = 'rgba(2,9,21,.10)';
+                        mx.fillRect(0, 0, w, h);
+                        mx.font = '12px Share Tech Mono, monospace';
+                        for (var i = 0; i < drops.length; i++) {
+                            var d = drops[i];
+                            var bright = Math.random() > .94;
+                            mx.shadowBlur = bright ? 14 : 5;
+                            mx.shadowColor = 'rgba(158,248,255,.9)';
+                            mx.fillStyle = bright ? 'rgba(232,251,255,.72)' : 'rgba(53,223,255,.28)';
+                            mx.fillText(d.t, d.x, d.y);
+                            mx.fillStyle = 'rgba(53,223,255,.12)';
+                            mx.fillText(d.t.slice(0, Math.max(3, d.t.length - 4)), d.x, d.y - 22);
+                            d.y += d.s;
+                            if (d.y > h + 60) {
+                                d.y = -40 - Math.random() * h * .4;
+                                d.t = snippets[Math.floor(Math.random() * snippets.length)];
+                            }
+                        }
+                        mx.shadowBlur = 0;
+                        requestAnimationFrame(drawMatrix);
+                    }
+                    function drawNeural() {
+                        var w = innerWidth
+                          , h = innerHeight
+                          , t = Date.now() * .001;
+                        nx.clearRect(0, 0, w, h);
+                        nx.globalCompositeOperation = 'lighter';
+                        for (var i = 0; i < nodes.length; i++) {
+                            var a = nodes[i];
+                            a.x += a.vx;
+                            a.y += a.vy;
+                            if (a.x < 0 || a.x > w)
+                                a.vx *= -1;
+                            if (a.y < 0 || a.y > h)
+                                a.vy *= -1;
+                            for (var j = i + 1; j < nodes.length; j++) {
+                                var b = nodes[j]
+                                  , dist = Math.hypot(a.x - b.x, a.y - b.y);
+                                if (dist < 150) {
+                                    nx.strokeStyle = 'rgba(53,223,255,' + ((1 - dist / 150) * .17) + ')';
+                                    nx.lineWidth = .9;
+                                    nx.beginPath();
+                                    nx.moveTo(a.x, a.y);
+                                    nx.lineTo(b.x, b.y);
+                                    nx.stroke();
+                                }
+                            }
+                            var pulse = (Math.sin(t * 2 + a.p) + 1) / 2;
+                            nx.fillStyle = 'rgba(158,248,255,' + (.34 + pulse * .32) + ')';
+                            nx.shadowBlur = 10 + pulse * 14;
+                            nx.shadowColor = 'rgba(53,223,255,.9)';
+                            nx.beginPath();
+                            nx.arc(a.x, a.y, a.r + pulse * 1.2, 0, Math.PI * 2);
+                            nx.fill();
+                        }
+                        nx.shadowBlur = 0;
+                        nx.globalCompositeOperation = 'source-over';
+                        requestAnimationFrame(drawNeural);
+                    }
+                    if (!matrix.__v30Loop) {
+                        matrix.__v30Loop = true;
+                        drawMatrix();
+                        drawNeural();
+                    }
+                }
+
+                window.setV30BgMode = function(mode, btn) {
+                    mode = mode || 'neural-matrix';
+                    document.body.classList.add('v30-blue');
+                    document.body.setAttribute('data-v30-bg', mode);
+                    try {
+                        localStorage.setItem('v30-bg-mode', mode);
+                    } catch (e) {}
+                    document.querySelectorAll('.v30-bg-btn').forEach(function(b) {
+                        b.classList.toggle('active', b === btn || b.getAttribute('data-bg') === mode);
+                    });
+                }
+                ;
+
+                var lastV30Sound = 0;
+                window.playV30Transition = function(part) {
+                    var nowMs = Date.now();
+                    if (nowMs - lastV30Sound < 350)
+                        return;
+                    lastV30Sound = nowMs;
+                    try {
+                        var ac = window.__v30Audio || (window.__v30Audio = new (window.AudioContext || window.webkitAudioContext)());
+                        if (ac.state === 'suspended')
+                            ac.resume();
+                        var now = ac.currentTime
+                          , base = 150 + (Number(part) || 1) * 24;
+                        function tone(type, f0, f1, start, dur, vol, pan) {
+                            var o = ac.createOscillator()
+                              , g = ac.createGain()
+                              , p = ac.createStereoPanner ? ac.createStereoPanner() : null;
+                            o.type = type;
+                            o.frequency.setValueAtTime(f0, now + start);
+                            o.frequency.exponentialRampToValueAtTime(Math.max(30, f1), now + start + dur);
+                            g.gain.setValueAtTime(0.0001, now + start);
+                            g.gain.linearRampToValueAtTime(vol, now + start + .025);
+                            g.gain.exponentialRampToValueAtTime(0.0001, now + start + dur);
+                            o.connect(g);
+                            if (p) {
+                                p.pan.value = pan || 0;
+                                g.connect(p);
+                                p.connect(ac.destination);
+                            } else
+                                g.connect(ac.destination);
+                            o.start(now + start);
+                            o.stop(now + start + dur + .03);
+                        }
+                        function noise(start, dur, vol) {
+                            var src = ac.createBufferSource()
+                              , buf = ac.createBuffer(1, Math.floor(ac.sampleRate * dur), ac.sampleRate)
+                              , data = buf.getChannelData(0);
+                            for (var i = 0; i < data.length; i++)
+                                data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 2.4);
+                            var f = ac.createBiquadFilter()
+                              , g = ac.createGain();
+                            f.type = 'bandpass';
+                            f.frequency.value = 1800 + Math.random() * 1800;
+                            f.Q.value = 9;
+                            g.gain.setValueAtTime(0.0001, now + start);
+                            g.gain.linearRampToValueAtTime(vol, now + start + .01);
+                            g.gain.exponentialRampToValueAtTime(0.0001, now + start + dur);
+                            src.buffer = buf;
+                            src.connect(f);
+                            f.connect(g);
+                            g.connect(ac.destination);
+                            src.start(now + start);
+                        }
+                        tone('sine', base, base * 3, 0, .34, .035, -.35);
+                        tone('triangle', base * 1.5, base * .75, .08, .46, .025, .35);
+                        tone('sawtooth', base * .5, base * .25, 0, .42, .018, 0);
+                        for (var k = 0; k < 4; k++)
+                            tone('sine', base * (1.8 + k * .35), base * (2.2 + k * .45), .16 + k * .055, .16, .018, k % 2 ? -.25 : .25);
+                        noise(.05, .22, .035);
+                    } catch (e) {}
+                }
+                ;
+
+                function installV30AudioHooks() {
+                    if (window.__v30AudioHooks)
+                        return;
+                    window.__v30AudioHooks = true;
+                    var oldTransition = window.transitionAudio;
+                    if (typeof oldTransition === 'function') {
+                        window.transitionAudio = function(part) {
+                            window.playV30Transition(part);
+                            return oldTransition.apply(this, arguments);
+                        }
+                        ;
+                    }
+                    var oldScreen = window.goToScreen;
+                    if (typeof oldScreen === 'function') {
+                        window.goToScreen = function(s) {
+                            var n = s === 'intro' ? 0 : parseInt(String(s).replace('p', ''), 10);
+                            window.playV30Transition(n || 0);
+                            return oldScreen.apply(this, arguments);
+                        }
+                        ;
+                    }
+                    ['goToP1', 'goToP2', 'goToP3', 'goToP4', 'goToP5', 'goToP6', 'goToP7', 'goToP8', 'goToP9', 'goToP10', 'goToP11', 'goToP12', 'goToP13'].forEach(function(name, idx) {
+                        var old = window[name];
+                        if (typeof old === 'function') {
+                            window[name] = function() {
+                                window.playV30Transition(idx + 1);
+                                return old.apply(this, arguments);
+                            }
+                            ;
+                        }
+                    });
+                }
+
+                function upgradeNeuronElectricity() {
+                    var wrap = document.getElementById('ncwrap')
+                      , cv = document.getElementById('nc');
+                    if (!wrap || !cv || wrap.__v30Neuron)
+                        return;
+                    wrap.__v30Neuron = true;
+                    wrap.style.background = 'radial-gradient(circle at 50% 50%,rgba(53,223,255,.16),rgba(2,10,22,.88))';
+                    wrap.style.boxShadow = 'inset 0 0 45px rgba(53,223,255,.12),0 0 34px rgba(53,223,255,.12)';
+                    var badge = document.createElement('div');
+                    badge.style.cssText = 'position:absolute;top:12px;right:12px;z-index:4;font-family:Share Tech Mono,monospace;font-size:.58rem;letter-spacing:2px;color:#9ef8ff;border:1px solid rgba(53,223,255,.28);background:rgba(2,10,22,.58);padding:6px 9px;border-radius:999px;pointer-events:none';
+                    badge.textContent = 'NEURAL STORM V30';
+                    wrap.appendChild(badge);
+                    cv.addEventListener('pointerdown', function(e) {
+                        window.playV30Transition(2);
+                    }, {
+                        passive: true
+                    });
+                }
+
+                function upgradeCatapultNotebook() {
+                    var notebook = document.getElementById('notebook');
+                    if (!notebook || document.getElementById('catapultHolo'))
+                        return;
+                    var canvas = document.createElement('canvas');
+                    canvas.id = 'catapultHolo';
+                    var guide = document.createElement('div');
+                    guide.className = 'catapult-guide';
+                    guide.innerHTML = '<span>1. Base stabile e fulcro centrato</span><span>2. Contrappeso sul braccio corto</span><span>3. Rilascio a circa 45 gradi</span>';
+                    var nav = notebook.querySelector('.nbNav');
+                    if (nav) {
+                        notebook.insertBefore(canvas, nav);
+                        notebook.insertBefore(guide, nav);
+                    }
+                    var ctx = canvas.getContext('2d')
+                      , t = 0;
+                    function fit() {
+                        var d = window.devicePixelRatio || 1
+                          , w = canvas.clientWidth || 600
+                          , h = canvas.clientHeight || 180;
+                        canvas.width = w * d;
+                        canvas.height = h * d;
+                        ctx.setTransform(d, 0, 0, d, 0, 0);
+                    }
+                    fit();
+                    try {
+                        new ResizeObserver(fit).observe(canvas);
+                    } catch (e) {
+                        window.addEventListener('resize', fit);
+                    }
+                    function draw() {
+                        var w = canvas.clientWidth || 600
+                          , h = canvas.clientHeight || 180;
+                        t += .016;
+                        ctx.clearRect(0, 0, w, h);
+                        var cx = w * .36
+                          , base = h * .76
+                          , ang = -.85 + Math.sin(t * 1.3) * .34;
+                        ctx.strokeStyle = 'rgba(53,223,255,.14)';
+                        ctx.lineWidth = 1;
+                        for (var g = 0; g < 8; g++) {
+                            ctx.beginPath();
+                            ctx.moveTo(20, base - g * 18);
+                            ctx.lineTo(w - 20, base - g * 18);
+                            ctx.stroke();
+                        }
+                        ctx.lineWidth = 8;
+                        ctx.lineCap = 'round';
+                        ctx.strokeStyle = 'rgba(158,248,255,.85)';
+                        ctx.beginPath();
+                        ctx.moveTo(cx - 120, base);
+                        ctx.lineTo(cx + 120, base);
+                        ctx.stroke();
+                        ctx.lineWidth = 5;
+                        ctx.strokeStyle = 'rgba(214,179,106,.95)';
+                        ctx.beginPath();
+                        ctx.moveTo(cx, base);
+                        ctx.lineTo(cx + Math.cos(ang) * 135, base + Math.sin(ang) * 135);
+                        ctx.stroke();
+                        ctx.fillStyle = 'rgba(53,223,255,.95)';
+                        ctx.shadowBlur = 18;
+                        ctx.shadowColor = '#35dfff';
+                        ctx.beginPath();
+                        ctx.arc(cx, base, 9, 0, Math.PI * 2);
+                        ctx.fill();
+                        var px = cx + Math.cos(ang) * 135
+                          , py = base + Math.sin(ang) * 135;
+                        ctx.fillStyle = 'rgba(246,251,255,.95)';
+                        ctx.beginPath();
+                        ctx.arc(px, py, 6, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                        ctx.strokeStyle = 'rgba(158,248,255,.55)';
+                        ctx.setLineDash([6, 7]);
+                        ctx.lineWidth = 1.4;
+                        ctx.beginPath();
+                        ctx.moveTo(px, py);
+                        ctx.quadraticCurveTo(w * .65, h * .12, w * .88, h * .42);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                        ctx.fillStyle = 'rgba(158,248,255,.82)';
+                        ctx.font = '11px Share Tech Mono,monospace';
+                        ctx.fillText('FULCRO', cx - 24, base + 26);
+                        ctx.fillText('TRAIETTORIA', w * .70, h * .20);
+                        ctx.fillText('SIMULAZIONE DI LANCIO', 18, 24);
+                        requestAnimationFrame(draw);
+                    }
+                    if (!canvas.__v30Loop) {
+                        canvas.__v30Loop = true;
+                        draw();
+                    }
+                    var oldNb = window.nbGo;
+                    if (typeof oldNb === 'function' && !window.__v30NbSound) {
+                        window.__v30NbSound = true;
+                        window.nbGo = function(dir) {
+                            window.playV30Transition(5);
+                            return oldNb.apply(this, arguments);
+                        }
+                        ;
+                    }
+                }
+
+                ready(function() {
+                    initV30Background();
+                    installV30AudioHooks();
+                    upgradeCatapultNotebook();
+                    upgradeNeuronElectricity();
+                });
+                var oldNeuronInit = window.initNeuronTouch;
+                if (typeof oldNeuronInit === 'function') {
+                    window.initNeuronTouch = function() {
+                        var r = oldNeuronInit.apply(this, arguments);
+                        setTimeout(upgradeNeuronElectricity, 80);
+                        return r;
+                    }
+                    ;
+                }
             }
             )();
         </script>
